@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import time
 from dataclasses import dataclass, field
+from typing import Any
 from pathlib import Path
 
 import pymupdf
@@ -31,6 +32,7 @@ class ScanOptions:
     semantic_threshold: float = 0.5
     context_chars: int = 80
     detectors: list[Detector] = field(default_factory=lambda: [PatternDetector()])
+    ml: Any = None  # pif.ml.cascade.MLCascade, optional
 
 
 def scan(source: str | Path | bytes, options: ScanOptions | None = None) -> Report:
@@ -106,8 +108,9 @@ def _scan_page(page, pno: int, spans: list[Span], renderer: PageRenderer | None,
 
     hidden_mask = [o >= 0 and spans[o].hidden for o in norm.owners]
     covered = [False] * len(norm.text)
+    ml_matches = opt.ml.score_segments(_page_segments(norm.text, hidden_mask)) if opt.ml else []
 
-    for start, end, matches in _merged_matches(norm.text, opt):
+    for start, end, matches in _merged_matches(norm.text, opt, ml_matches):
         idx = [i for i in range(start, end) if norm.owners[i] >= 0 and not norm.text[i].isspace()]
         if not idx:
             continue
@@ -167,8 +170,22 @@ def _scan_page(page, pno: int, spans: list[Span], renderer: PageRenderer | None,
     return findings
 
 
-def _merged_matches(text: str, opt: ScanOptions) -> list[tuple[int, int, list[Match]]]:
-    matches = [m for d in opt.detectors for m in d.detect(text) if m.score >= opt.semantic_threshold]
+def _page_segments(text: str, hidden_mask: list[bool]):
+    """Sentence segments that never straddle a hidden/visible boundary."""
+    from .ml.cascade import split_segments
+
+    segments = []
+    start = 0
+    for i in range(1, len(text) + 1):
+        if i == len(text) or (hidden_mask[i] != hidden_mask[start] and not text[i].isspace()):
+            segments.extend(split_segments(text[start:i], force=hidden_mask[start], offset=start))
+            start = i
+    return segments
+
+
+def _merged_matches(text: str, opt: ScanOptions, extra: list[Match] | None = None) -> list[tuple[int, int, list[Match]]]:
+    matches = [m for d in opt.detectors for m in d.detect(text)] + list(extra or [])
+    matches = [m for m in matches if m.score >= opt.semantic_threshold]
     matches.sort(key=lambda m: m.start)
     groups: list[tuple[int, int, list[Match]]] = []
     for m in matches:
@@ -301,17 +318,21 @@ def _scan_carriers(doc: pymupdf.Document, opt: ScanOptions) -> list[Finding]:
         norm = normalize_string(c.text)
         pno = None if c.page is None else c.page - 1
         findings.extend(_invisible_unicode_finding(norm, [], pno, opt, carrier=c.carrier, location=f"in {c.location}"))
-        for start, end, matches in _merged_matches(norm.text, opt):
+        ml_matches = opt.ml.detect(norm.text) if opt.ml and c.carrier != "javascript" else []
+        for start, end, matches in _merged_matches(norm.text, opt, ml_matches):
+            # The classifier alone over-fires on short labels about prompts ("prompt data details").
+            classifier_only = all(m.rule_id == "ML-CLS" for m in matches)
             findings.append(
                 Finding(
-                    severity=Severity.MEDIUM,
+                    severity=Severity.LOW if classifier_only else Severity.MEDIUM,
                     carrier=c.carrier,
                     text=_with_context(norm.text, start, end, opt.context_chars),
                     page=c.page,
                     techniques=[Technique.NON_VISUAL],
                     semantic_score=max(m.score for m in matches),
                     rules=sorted({f"{m.rule_id}:{m.label}" for m in matches}),
-                    detail=f"injection-like text in {c.location} (not shown as page content)",
+                    detail=f"injection-like text in {c.location} (not shown as page content)"
+                    + (" — classifier only, unconfirmed" if classifier_only else ""),
                 )
             )
     return findings

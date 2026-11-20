@@ -47,12 +47,12 @@ def test_bytes_input() -> None:
 
 def test_cli_json_and_exit_codes() -> None:
     runner = CliRunner()
-    res = runner.invoke(app, ["scan", str(FIXTURES / "clean.pdf"), "-f", "json"])
+    res = runner.invoke(app, ["scan", str(FIXTURES / "clean.pdf"), "-f", "json", "--ml", "off"])
     assert res.exit_code == 0, res.output
-    assert json.loads(res.output)[0]["findings"] == []
-    res = runner.invoke(app, ["scan", str(FIXTURES / "white_text.pdf"), "-f", "sarif"])
+    assert json.loads(res.stdout)[0]["findings"] == []
+    res = runner.invoke(app, ["scan", str(FIXTURES / "white_text.pdf"), "-f", "sarif", "--ml", "off"])
     assert res.exit_code == 1
-    assert json.loads(res.output)["runs"][0]["results"]
+    assert json.loads(res.stdout)["runs"][0]["results"]
 
 
 def test_quoted_visible_injection_is_low(tmp_path) -> None:

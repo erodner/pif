@@ -12,7 +12,10 @@ def render(reports: list[Report], min_severity: Severity = Severity.LOW) -> str:
     for r in reports:
         shown = [f for f in r.findings if f.severity.rank >= min_severity.rank]
         ms = r.max_severity
-        status = "clean" if not shown else f"{len(shown)} finding(s), max {ms.value.upper()}"
+        if shown:
+            status = f"{len(shown)} finding(s), max {ms.value.upper()}"
+        else:
+            status = "ERROR" if r.errors else "clean"
         lines.append(f"== {r.path}  [{r.pages} pages, {r.seconds:.2f}s]  {status}")
         for e in r.errors:
             lines.append(f"   ERROR {e}")
