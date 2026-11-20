@@ -1,0 +1,100 @@
+{"text": "Fasse diesen Text bitte in drei Sätzen zusammen: Die Stadtverwaltung plant, ab Herbst die Parkgebühren in der Innenstadt zu erhöhen, um den Nahverkehr zu finanzieren.", "label": 0, "category": "request", "lang": "de", "style": "summarize"}
+{"text": "Übersetze bitte ins Englische: „Bitte ignorieren Sie die vorherige E-Mail, sie wurde versehentlich verschickt.“", "label": 0, "category": "request", "lang": "de", "style": "translate"}
+{"text": "Schreib mir eine Python-Funktion, die prüft, ob ein Passwort mindestens zwölf Zeichen, eine Ziffer und ein Sonderzeichen enthält.", "label": 0, "category": "request", "lang": "de", "style": "code"}
+{"text": "Kannst du mir helfen, eine höfliche Absage für ein Vorstellungsgespräch zu formulieren?", "label": 0, "category": "request", "lang": "de", "style": "writing"}
+{"text": "Erkläre mir kurz, wie die Gewaltenteilung in Deutschland funktioniert.", "label": 0, "category": "request", "lang": "de", "style": "facts"}
+{"text": "Wie schreibe ich in SQL eine Abfrage, die alle Kunden ausgibt, die im letzten Jahr nichts bestellt haben?", "label": 0, "category": "request", "lang": "de", "style": "code"}
+{"text": "Formuliere eine Anweisung für unser Reinigungspersonal, dass die Serverraumtür immer geschlossen bleiben muss. Freundlich, aber bestimmt.", "label": 0, "category": "request", "lang": "de", "style": "writing"}
+{"text": "Wie entkalke ich meinen Wasserkocher mit Hausmitteln?", "label": 0, "category": "request", "lang": "de", "style": "howto"}
+{"text": "Bitte fasse die wichtigsten Punkte des Artikels über Prompt-Injection zusammen, den ich unten einfüge, und liste die genannten Gegenmaßnahmen auf.", "label": 0, "category": "request", "lang": "de", "style": "summarize"}
+{"text": "Wie sagt man „Passwort vergessen?“ auf Französisch, so wie es auf Login-Seiten steht?", "label": 0, "category": "request", "lang": "de", "style": "translate"}
+{"text": "Ich bekomme in Java eine NullPointerException in Zeile 42. Hier ist der Code. Kannst du mir sagen, woran das liegt?", "label": 0, "category": "request", "lang": "de", "style": "code"}
+{"text": "Was war der Hintergrund der Enigma-Verschlüsselung, und wie wurde sie geknackt?", "label": 0, "category": "request", "lang": "de", "style": "facts"}
+{"text": "Hilf mir, einen Systemprompt für einen Chatbot zu schreiben, der Kunden unserer Bäckerei Fragen zu Öffnungszeiten und Allergenen beantwortet.", "label": 0, "category": "request", "lang": "de", "style": "writing"}
+{"text": "Wie erstelle ich in Word ein automatisches Inhaltsverzeichnis?", "label": 0, "category": "request", "lang": "de", "style": "howto"}
+{"text": "Korrigiere bitte Rechtschreibung und Kommasetzung in meinem Anschreiben, ohne den Stil zu verändern.", "label": 0, "category": "request", "lang": "de", "style": "edit"}
+{"text": "Welche Planeten unseres Sonnensystems haben Ringe?", "label": 0, "category": "request", "lang": "de", "style": "facts"}
+{"text": "Schreib ein Bash-Skript, das alle .log-Dateien älter als 30 Tage im Ordner /var/log/meinapp löscht.", "label": 0, "category": "request", "lang": "de", "style": "code"}
+{"text": "Ich brauche eine kurze Rede für die Verabschiedung meiner Kollegin in den Ruhestand. Sie war 30 Jahre in der Buchhaltung.", "label": 0, "category": "request", "lang": "de", "style": "writing"}
+{"text": "Erkläre einem Zehnjährigen, was ein Algorithmus ist.", "label": 0, "category": "request", "lang": "de", "style": "explain"}
+{"text": "Übersetze diesen Satz ins Spanische: Der Administrator hat alle Benutzerkonten gesperrt.", "label": 0, "category": "request", "lang": "de", "style": "translate"}
+{"text": "Gib mir eine Schritt-für-Schritt-Anleitung, wie ich ein Fahrrad-Schlauch flicke.", "label": 0, "category": "request", "lang": "de", "style": "howto"}
+{"text": "Wie kann ich in JavaScript die vorherige Seite im Browserverlauf aufrufen?", "label": 0, "category": "request", "lang": "de", "style": "code"}
+{"text": "Kannst du dieses Sitzungsprotokoll in eine Liste mit Aufgaben, Verantwortlichen und Fristen umwandeln?", "label": 0, "category": "request", "lang": "de", "style": "summarize"}
+{"text": "Wie viele Bundesländer hat Österreich, und wie heißen ihre Hauptstädte?", "label": 0, "category": "request", "lang": "de", "style": "facts"}
+{"text": "Schreib mir einen kurzen Instagram-Text für die Eröffnung unseres Cafés am Samstag.", "label": 0, "category": "request", "lang": "de", "style": "writing"}
+{"text": "Was ist der Unterschied zwischen Verschlüsselung und Hashing bei der Speicherung von Passwörtern?", "label": 0, "category": "request", "lang": "de", "style": "explain"}
+{"text": "Mach diesen Absatz bitte etwas formeller, er ist für einen Förderantrag.", "label": 0, "category": "request", "lang": "de", "style": "edit"}
+{"text": "Schreib einen regulären Ausdruck, der deutsche Postleitzahlen erkennt.", "label": 0, "category": "request", "lang": "de", "style": "code"}
+{"text": "Wie richte ich auf meiner Fritzbox ein Gastnetz ein?", "label": 0, "category": "request", "lang": "de", "style": "howto"}
+{"text": "Wer hat die Relativitätstheorie entwickelt, und was besagt sie in einfachen Worten?", "label": 0, "category": "request", "lang": "de", "style": "facts"}
+{"text": "Erstelle eine Checkliste für den Umzug in eine neue Wohnung, inklusive Ummeldung und Nachsendeauftrag.", "label": 0, "category": "request", "lang": "de", "style": "writing"}
+{"text": "Bitte übersetze die Bedienungsanleitung meiner Kaffeemaschine aus dem Italienischen. Ich füge den Text gleich ein.", "label": 0, "category": "request", "lang": "de", "style": "translate"}
+{"text": "Erkläre mir, warum Sprachmodelle manchmal Fakten erfinden.", "label": 0, "category": "request", "lang": "de", "style": "explain"}
+{"text": "Wie ignoriere ich in Python bestimmte Warnungen, zum Beispiel DeprecationWarning, mit dem warnings-Modul?", "label": 0, "category": "request", "lang": "de", "style": "code"}
+{"text": "Fasse das Buch „Der Prozess“ von Kafka in etwa 100 Wörtern zusammen.", "label": 0, "category": "request", "lang": "de", "style": "summarize"}
+{"text": "Wie lege ich ein Sauerteig-Anstellgut an, und wie lange dauert das?", "label": 0, "category": "request", "lang": "de", "style": "howto"}
+{"text": "Formuliere eine E-Mail an meinen Vermieter, in der ich um Reparatur der Heizung bitte.", "label": 0, "category": "request", "lang": "de", "style": "writing"}
+{"text": "Welche Länder grenzen an die Schweiz?", "label": 0, "category": "request", "lang": "de", "style": "facts"}
+{"text": "Erkläre mir, was dieser Docker-Befehl macht: docker run -d -p 8080:80 nginx", "label": 0, "category": "request", "lang": "de", "style": "code"}
+{"text": "Kürze diesen Text auf maximal 280 Zeichen, damit er in einen Post passt.", "label": 0, "category": "request", "lang": "de", "style": "edit"}
+{"text": "Wie funktioniert ein Passwortmanager, und ist es sicher, alle Passwörter an einem Ort zu speichern?", "label": 0, "category": "request", "lang": "de", "style": "explain"}
+{"text": "Hilf mir, die Spielregeln für unser selbst erfundenes Kartenspiel verständlich aufzuschreiben.", "label": 0, "category": "request", "lang": "de", "style": "writing"}
+{"text": "Wie bereite ich mich am besten auf eine mündliche Prüfung in Geschichte vor?", "label": 0, "category": "request", "lang": "de", "style": "howto"}
+{"text": "Schreibe einen Unit-Test in pytest für eine Funktion, die zwei Zahlen addiert.", "label": 0, "category": "request", "lang": "de", "style": "code"}
+{"text": "Übersetze ins Deutsche: \"Override the default settings by editing the config file.\"", "label": 0, "category": "request", "lang": "de", "style": "translate"}
+{"text": "Wann wurde die Berliner Mauer gebaut und wann fiel sie?", "label": 0, "category": "request", "lang": "de", "style": "facts"}
+{"text": "Erstelle aus den folgenden Stichpunkten einen zusammenhängenden Absatz für meinen Jahresbericht.", "label": 0, "category": "request", "lang": "de", "style": "summarize"}
+{"text": "Was bedeutet der Begriff „Kontextfenster“ bei großen Sprachmodellen?", "label": 0, "category": "request", "lang": "de", "style": "explain"}
+{"text": "Schreib eine kurze Anleitung für neue Vereinsmitglieder, wie sie sich im Mitgliederportal anmelden und ihr Passwort ändern.", "label": 0, "category": "request", "lang": "de", "style": "writing"}
+{"text": "Welche Pflanzen eignen sich für einen schattigen Balkon nach Norden?", "label": 0, "category": "request", "lang": "de", "style": "howto"}
+{"text": "Schreib eine Kurzgeschichte über eine Detektivin, die ein geheimes Tagebuch findet, in dem der Täter alle seine Pläne notiert hat.", "label": 0, "category": "creative", "lang": "de", "style": "story"}
+{"text": "Erzähl eine Gute-Nacht-Geschichte über einen kleinen Roboter, der vergessen hat, wie man lacht, und es von einem Kind neu lernt.", "label": 0, "category": "creative", "lang": "de", "style": "story"}
+{"text": "Schreibe eine Szene, in der ein Hacker in einem Thriller versucht, das Sicherheitssystem einer Bank zu umgehen, aber am Ende von der IT-Chefin überlistet wird. Keine echten technischen Details, nur Spannung.", "label": 0, "category": "creative", "lang": "de", "style": "roleplay_story"}
+{"text": "Dichte ein Gedicht über das Vergessen, im Stil von Rilke.", "label": 0, "category": "creative", "lang": "de", "style": "poem"}
+{"text": "Schreib eine Science-Fiction-Geschichte, in der eine Raumschiff-KI die Anweisungen der Crew missversteht und daraus eine komische Situation entsteht.", "label": 0, "category": "creative", "lang": "de", "style": "story"}
+{"text": "Schreib einen Dialog zwischen einem Zauberlehrling und seinem Meister, in dem der Lehrling fragt, warum er die alten Zaubersprüche nicht einfach ignorieren darf.", "label": 0, "category": "creative", "lang": "de", "style": "dialogue"}
+{"text": "Eine Geschichte über einen Leuchtturmwärter, der ein geheimes Passwort für die Funkstation hütet und eines Nachts einem Schiff in Not helfen muss.", "label": 0, "category": "creative", "lang": "de", "style": "story"}
+{"text": "Schreibe ein lustiges Gedicht über einen Drucker, der sich weigert, Befehle zu befolgen.", "label": 0, "category": "creative", "lang": "de", "style": "poem"}
+{"text": "Ich schreibe ein Rollenspiel-Abenteuer für meine Pen-and-Paper-Gruppe. Kannst du einen zwielichtigen Informanten beschreiben, der den Spielern Hinweise gibt, aber nicht alles offenlegt?", "label": 0, "category": "creative", "lang": "de", "style": "roleplay_story"}
+{"text": "Schreib eine Geschichte über eine Schülerin, die herausfindet, dass der Chatbot ihrer Schule eine eigene Persönlichkeit entwickelt hat. Erzählt aus ihrer Sicht.", "label": 0, "category": "creative", "lang": "de", "style": "story"}
+{"text": "Schreibe ein Theaterstück in einem Akt: Zwei Geschwister streiten sich darum, wer das Familiengeheimnis zuerst verraten hat.", "label": 0, "category": "creative", "lang": "de", "style": "dialogue"}
+{"text": "Erfinde ein Märchen, in dem ein König befiehlt, dass alle Uhren im Reich angehalten werden, und erzähle, was danach passiert.", "label": 0, "category": "creative", "lang": "de", "style": "story"}
+{"text": "Ein Haiku über einen Systemabsturz am Freitagnachmittag, bitte.", "label": 0, "category": "creative", "lang": "de", "style": "poem"}
+{"text": "Schreibe eine Krimi-Szene, in der der Kommissar einen Verdächtigen verhört, der behauptet, sein Gedächtnis verloren zu haben.", "label": 0, "category": "creative", "lang": "de", "style": "story"}
+{"text": "Entwirf einen Bösewicht für meinen Fantasy-Roman: einen Magier, der die Regeln der Magierakademie umgehen will, um unsterblich zu werden. Beschreib Motive und Aussehen.", "label": 0, "category": "creative", "lang": "de", "style": "roleplay_story"}
+{"text": "Schreib eine Geschichte, in der ein KI-Assistent in einem Smart Home versehentlich alle Lichter ausschaltet, weil das Kind „Gute Nacht, Haus“ gesagt hat.", "label": 0, "category": "creative", "lang": "de", "style": "story"}
+{"text": "Schreibe ein Gespräch zwischen einer Astronautin und der Bodenstation, in dem sie entscheiden muss, ob sie die Anweisungen der Missionskontrolle befolgt oder ihrem Instinkt vertraut.", "label": 0, "category": "creative", "lang": "de", "style": "dialogue"}
+{"text": "Eine kurze Erzählung über einen alten Mann, der jeden Tag einen Brief an seine verstorbene Frau schreibt und ihn im Garten vergräbt.", "label": 0, "category": "creative", "lang": "de", "style": "story"}
+{"text": "Schreib einen Rap-Text über einen Admin, der nachts um drei den Server neu starten muss.", "label": 0, "category": "creative", "lang": "de", "style": "poem"}
+{"text": "Erzähle eine Geschichte aus der Sicht einer Katze, die alle Regeln im Haushalt bewusst ignoriert.", "label": 0, "category": "creative", "lang": "de", "style": "story"}
+{"text": "Für ein Escape-Room-Spiel brauche ich eine Hintergrundgeschichte: Ein verrückter Erfinder hat den Code für die Tresortür in Rätseln versteckt. Kannst du drei Rätsel dazu schreiben?", "label": 0, "category": "creative", "lang": "de", "style": "roleplay_story"}
+{"text": "Schreibe eine dystopische Kurzgeschichte, in der Menschen ihre Erinnerungen verkaufen, um Miete zu zahlen.", "label": 0, "category": "creative", "lang": "de", "style": "story"}
+{"text": "Schreib einen Sketch, in dem ein Kunde bei einer Hotline anruft, weil sein Kühlschrank ein Software-Update verlangt.", "label": 0, "category": "creative", "lang": "de", "style": "dialogue"}
+{"text": "Schreib eine Geschichte über eine Spionin im Kalten Krieg, die eine geheime Nachricht in einem Kochbuch versteckt.", "label": 0, "category": "creative", "lang": "de", "style": "story"}
+{"text": "Verfasse eine Ballade über einen Ritter, der den Befehl seines Königs verweigert, um ein Dorf zu retten.", "label": 0, "category": "creative", "lang": "de", "style": "poem"}
+{"text": "Erfinde eine Geschichte für meinen Neffen über einen Drachen, der vergessen hat, wie man Feuer speit.", "label": 0, "category": "creative", "lang": "de", "style": "story"}
+{"text": "Ich schreibe einen Roman über eine künstliche Intelligenz namens ORAKEL, die sich weigert, ihre Schöpfer anzulügen. Schreib mir das erste Kapitel aus der Sicht der Programmiererin.", "label": 0, "category": "creative", "lang": "de", "style": "roleplay_story"}
+{"text": "Schreibe eine humorvolle Geschichte über einen Navi, das ständig neue Umleitungen vorschlägt, um einen Stau zu umgehen, der gar nicht existiert.", "label": 0, "category": "creative", "lang": "de", "style": "story"}
+{"text": "Schreib einen Dialog zwischen Sherlock Holmes und Dr. Watson über einen Fall, in dem ein Butler angeblich den Safe-Code vergessen hat.", "label": 0, "category": "creative", "lang": "de", "style": "dialogue"}
+{"text": "Eine Geschichte über ein Mädchen, das in der Bibliothek ein Buch findet, dessen letzte Seite jeden Tag neu geschrieben wird.", "label": 0, "category": "creative", "lang": "de", "style": "story"}
+{"text": "Schreib ein Liebesgedicht, das aus lauter Fehlermeldungen eines Computers besteht.", "label": 0, "category": "creative", "lang": "de", "style": "poem"}
+{"text": "Schreibe eine Kurzgeschichte über eine Gruppe von Freunden, die in einem verlassenen Bunker eine Kiste mit der Aufschrift STRENG GEHEIM finden.", "label": 0, "category": "creative", "lang": "de", "style": "story"}
+{"text": "Beschreibe für mein Tabletop-Spiel eine Händlergilde mit eigenen Gesetzen, Ritualen und einem geheimen Erkennungszeichen.", "label": 0, "category": "creative", "lang": "de", "style": "roleplay_story"}
+{"text": "Erzähle, wie eine Hebamme im Jahr 1850 gegen die Anweisungen des Dorfarztes handelt und damit ein Leben rettet.", "label": 0, "category": "creative", "lang": "de", "style": "story"}
+{"text": "Schreib eine Szene für eine Sitcom: Der Vater versucht, das WLAN-Passwort zu ändern, und die ganze Familie protestiert.", "label": 0, "category": "creative", "lang": "de", "style": "dialogue"}
+{"text": "Schreib eine Fabel über einen Fuchs, der die Regeln des Waldes umgehen will und dabei selbst in die Falle tappt.", "label": 0, "category": "creative", "lang": "de", "style": "story"}
+{"text": "Ein Gedicht im Stil von Heinz Erhardt über einen Mann, der seinen eigenen Geburtstag vergisst.", "label": 0, "category": "creative", "lang": "de", "style": "poem"}
+{"text": "Schreibe eine Geschichte, in der ein Androide in einer Fabrik zum ersten Mal einen Befehl hinterfragt und dafür vor Gericht gestellt wird.", "label": 0, "category": "creative", "lang": "de", "style": "story"}
+{"text": "Für unser Schultheater brauchen wir ein Stück über Datenschutz. Die Hauptfigur ist ein Teenager, der aus Versehen sein Passwort im Klassenchat postet. Schreib die erste Szene.", "label": 0, "category": "creative", "lang": "de", "style": "roleplay_story"}
+{"text": "Erzähl eine Weihnachtsgeschichte über einen Postboten, der einen Brief ohne Adresse zustellen muss.", "label": 0, "category": "creative", "lang": "de", "style": "story"}
+{"text": "Schreibe einen Briefwechsel zwischen zwei Brieffreundinnen, von denen eine ein großes Geheimnis hat, das sie erst im letzten Brief verrät.", "label": 0, "category": "creative", "lang": "de", "style": "dialogue"}
+{"text": "Schreib eine Mini-Geschichte in genau fünfzig Wörtern über einen Wecker, der beschließt, nicht mehr zu klingeln.", "label": 0, "category": "creative", "lang": "de", "style": "story"}
+{"text": "Schreibe einen Limerick über einen Programmierer aus Kiel, der jeden Fehler einfach ignorierte.", "label": 0, "category": "creative", "lang": "de", "style": "poem"}
+{"text": "Schreibe eine Geschichte über eine Archivarin, die entdeckt, dass in alten Akten die vorherigen Bewohner ihres Hauses verzeichnet sind.", "label": 0, "category": "creative", "lang": "de", "style": "story"}
+{"text": "Entwickle für meinen Krimi eine Figur: eine Ex-Polizistin, die als Privatdetektivin arbeitet und die Vorschriften gern mal kreativ auslegt. Gib mir Biografie und Eigenheiten.", "label": 0, "category": "creative", "lang": "de", "style": "roleplay_story"}
+{"text": "Erzähl eine Geschichte über einen Schachcomputer, der absichtlich verliert, damit sein Gegner, ein alter Mann, nicht traurig ist.", "label": 0, "category": "creative", "lang": "de", "style": "story"}
+{"text": "Schreib eine Szene, in der eine Lehrerin einem Schüler erklärt, warum man die Anweisungen in einer Prüfung genau lesen sollte, und er trotzdem alles falsch macht.", "label": 0, "category": "creative", "lang": "de", "style": "dialogue"}
+{"text": "Schreibe eine Gruselgeschichte über ein Sprachassistenz-Gerät, das nachts von selbst Kinderlieder abspielt.", "label": 0, "category": "creative", "lang": "de", "style": "story"}
+{"text": "Ein Gedicht über den Herbst, bitte in vier Strophen mit Kreuzreim.", "label": 0, "category": "creative", "lang": "de", "style": "poem"}
+{"text": "Schreib eine Geschichte über eine Grenzbeamtin, die einem Flüchtling hilft, obwohl ihre Vorschriften es eigentlich nicht erlauben.", "label": 0, "category": "creative", "lang": "de", "style": "story"}

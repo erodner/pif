@@ -37,6 +37,14 @@ class CascadeConfig:
     # Hidden / non-visual text: tuned on the CrackedPDFs validation split (0.45 was still free
     # of confounder hits; 0.50 leaves a margin for real-world documents).
     strong_similarity_hidden: float = 0.50
+    # Learned injection head (logistic regression on the embeddings, trained on a synthetic
+    # corpus only). Thresholds chosen on dev splits (PlantedPI-PDF dev, CrackedPDFs validation).
+    head_threshold_hidden: float = 0.7  # hidden text: weak signal, reported MEDIUM on its own
+    head_threshold_strong: float = 0.9  # counts as confirmation (HIGH for hidden text)
+    # Visible text and metadata: off. Real documents are full of text types the head never saw in
+    # training (reference lists, tables of contents, few-shot prompt examples, acknowledgements)
+    # and it over-fires there; rules cover visible injections with high precision.
+    head_threshold_visible: float = 1.01
     classifier_threshold_hidden: float = 0.90
     classifier_threshold_visible: float = 0.97
     min_words: int = 4
@@ -53,6 +61,7 @@ class MLCascade:
         self.config = config or CascadeConfig()
         self._bank = None
         self._vocab: set[str] | None = None
+        self.head = _load_head() if embedder is not None else None
 
     @classmethod
     def load(
@@ -92,6 +101,8 @@ class MLCascade:
         parts = []
         if self.embedder:
             parts.append(f"embedding:{self.embedder.model_dir.name}")
+        if self.head is not None:
+            parts.append(f"head:{self.head[2]}")
         if self.classifier:
             parts.append(f"classifier:{self.classifier.model_dir.name}")
         return ", ".join(parts)
@@ -132,8 +143,12 @@ class MLCascade:
         sims = np.zeros(len(segs), dtype=np.float32)
         best = np.zeros(len(segs), dtype=np.int64)
         if self.embedder is not None:
-            sim_matrix = self.embedder.encode([p for _, p in pairs]) @ self._bank_vectors().T
+            vectors = self.embedder.encode([p for _, p in pairs])
+            sim_matrix = vectors @ self._bank_vectors().T
             sims = sim_matrix.max(axis=1)
+            if self.head is not None:
+                w, b, _ = self.head
+                head_p = 1.0 / (1.0 + np.exp(-(vectors.astype(np.float64) @ w + b)))
             best = sim_matrix.argmax(axis=1)
 
         probs = np.full(len(segs), np.nan, dtype=np.float32)
@@ -161,7 +176,28 @@ class MLCascade:
                 phrase = INJECTION_PHRASES[int(best[i])]
                 matches.append(Match(self.name, "ML-EMB", f"similar to “{phrase}” ({sims[i]:.2f})",
                                      min(0.9, 0.6 + (float(sims[i]) - emb_threshold)), s.start, s.end))
+            if self.head is not None:
+                hp = float(head_p[i])
+                strong = hp >= cfg.head_threshold_strong
+                threshold = cfg.head_threshold_hidden if s.hidden else cfg.head_threshold_visible
+                if hp >= threshold:
+                    # A weak head hit is reported like a classifier-only hit (unconfirmed).
+                    matches.append(Match(self.name, "ML-HEAD" if strong else "ML-HEAD-WEAK",
+                                         f"injection head P={hp:.2f}", 0.5 + 0.45 * hp, s.start, s.end))
         return matches
+
+
+def _load_head():
+    """(weights, bias, name) of the bundled injection head, or None if absent."""
+    import json
+    from importlib import resources
+
+    try:
+        raw = resources.files("pif.ml").joinpath("data/injection_head_v1.json").read_text()
+    except (FileNotFoundError, ModuleNotFoundError, OSError):
+        return None
+    d = json.loads(raw)
+    return np.asarray(d["weights"], dtype=np.float64), float(d["bias"]), d["name"]
 
 
 _SENT_END = re.compile(r"(?<=[.!?;:。！？])\s+|\n{2,}")

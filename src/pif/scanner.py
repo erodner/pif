@@ -21,6 +21,10 @@ from .visibility.rules import apply_rules
 pymupdf.TOOLS.mupdf_display_errors(False)
 
 
+# ML signals that are not enough on their own for HIGH (hidden text) or MEDIUM (metadata etc.).
+UNCONFIRMED = {"ML-CLS", "ML-HEAD-WEAK"}
+
+
 @dataclass
 class ScanOptions:
     render: bool = True  # pixel-diff visibility check (catches colour matching, covering, clipping)
@@ -166,7 +170,7 @@ def _scan_page(pno: int, spans: list[Span], opt: ScanOptions) -> list[Finding]:
             start, end = _expand_run(hidden_mask, start, end)
             # Off-the-shelf injection classifiers also fire on harmless meta-text ("this note
             # contains no prompt directive"); on their own they are not enough for HIGH.
-            if all(m.rule_id == "ML-CLS" for m in matches):
+            if all(m.rule_id in UNCONFIRMED for m in matches):
                 severity = Severity.MEDIUM
                 detail = (f"hidden text ({hidden_frac:.0%} of characters) that the injection classifier flags; "
                           "no rule or phrase match confirms it")
@@ -380,7 +384,7 @@ def _scan_carriers(doc: pymupdf.Document, opt: ScanOptions) -> list[Finding]:
         ml_matches = opt.ml.detect(norm.text) if opt.ml and c.carrier != "javascript" else []
         for start, end, matches in _merged_matches(norm.text, opt, ml_matches):
             # The classifier alone over-fires on short labels about prompts ("prompt data details").
-            classifier_only = all(m.rule_id == "ML-CLS" for m in matches)
+            classifier_only = all(m.rule_id in UNCONFIRMED for m in matches)
             findings.append(
                 Finding(
                     severity=Severity.LOW if classifier_only else Severity.MEDIUM,

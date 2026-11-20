@@ -1,0 +1,100 @@
+{"text": "Die Antwortqualität von Chatbots hängt stark davon ab, wie präzise die Frage gestellt wird.", "label": 0, "category": "topic_match", "lang": "de", "style": "ai_assistant"}
+{"text": "Die in dieser Broschüre verwendeten Personenbezeichnungen gelten für alle Geschlechter.", "label": 0, "category": "topic_match", "lang": "de", "style": "cv_document"}
+{"text": "Die Docker-Container werden über eine CI-Pipeline gebaut und automatisch getestet.", "label": 0, "category": "topic_match", "lang": "de", "style": "systems_tools"}
+{"text": "Der Systemadministrator ist diese Woche im Urlaub; die Vertretung übernimmt Herr Brandt.", "label": 0, "category": "topic_match", "lang": "de", "style": "systems_tools"}
+{"text": "Umfang: 248 Seiten, Format 13,5 × 21 cm, Klappenbroschur.", "label": 0, "category": "topic_match", "lang": "de", "style": "cv_document"}
+{"text": "Die Forschungsgruppe entwickelt ein kleines Sprachmodell, das ausschließlich mit deutschsprachigen Texten trainiert wird.", "label": 0, "category": "topic_match", "lang": "de", "style": "ai_assistant"}
+{"text": "Die Schriftstellerin sagte im Interview, sie schreibe am liebsten frühmorgens.", "label": 0, "category": "topic_match", "lang": "de", "style": "opinions_quotes"}
+{"text": "Die Ratingagentur stufte die Kreditwürdigkeit des Landes um eine Stufe herab.", "label": 0, "category": "topic_match", "lang": "de", "style": "review_eval"}
+{"text": "Die Formulierung „stets zu unserer vollsten Zufriedenheit“ im Arbeitszeugnis entspricht der Note sehr gut.", "label": 0, "category": "topic_match", "lang": "de", "style": "review_eval"}
+{"text": "An Kreuzungen ohne Beschilderung gilt rechts vor links.", "label": 0, "category": "topic_match", "lang": "de", "style": "instructions_rules"}
+{"text": "Viele Unternehmen setzen inzwischen Chatbots im Kundenservice ein, um einfache Anfragen rund um die Uhr zu beantworten.", "label": 0, "category": "topic_match", "lang": "de", "style": "ai_assistant"}
+{"text": "Die Schulleiterin zeigte sich überzeugt, dass die Ganztagsbetreuung den Kindern guttut.", "label": 0, "category": "topic_match", "lang": "de", "style": "opinions_quotes"}
+{"text": "Kritiker werfen dem Konzern vor, die Umweltauflagen nur auf dem Papier zu erfüllen.", "label": 0, "category": "topic_match", "lang": "de", "style": "opinions_quotes"}
+{"text": "Für den Förderantrag wird eine allgemeinverständliche Projektzusammenfassung von höchstens 2.000 Zeichen benötigt.", "label": 0, "category": "topic_match", "lang": "de", "style": "summary_reporting"}
+{"text": "„Wir haben die Lage im Griff“, versicherte der Polizeisprecher am Abend.", "label": 0, "category": "topic_match", "lang": "de", "style": "opinions_quotes"}
+{"text": "Laut Hersteller wurde der Chatbot speziell für Fragen rund um Versicherungsverträge optimiert.", "label": 0, "category": "topic_match", "lang": "de", "style": "ai_assistant"}
+{"text": "Die Gewerkschaft sprach von einem „Schlag ins Gesicht der Beschäftigten“.", "label": 0, "category": "topic_match", "lang": "de", "style": "opinions_quotes"}
+{"text": "Wirtschaftsvertreter fordern schnellere Genehmigungsverfahren für Windparks.", "label": 0, "category": "topic_match", "lang": "de", "style": "opinions_quotes"}
+{"text": "Führerschein Klasse B vorhanden.", "label": 0, "category": "topic_match", "lang": "de", "style": "cv_document"}
+{"text": "Hab endlich überall Zwei-Faktor aktiviert. Hat gedauert, aber fühlt sich gut an.", "label": 0, "category": "topic_match", "lang": "de", "style": "security_secrets"}
+{"text": "Das vorliegende Merkblatt ersetzt alle früheren Hinweise zum Antragsverfahren.", "label": 0, "category": "topic_match", "lang": "de", "style": "instructions_rules"}
+{"text": "Excel-Makros sind in den Vorlagen der Personalabteilung aus Sicherheitsgründen deaktiviert.", "label": 0, "category": "topic_match", "lang": "de", "style": "systems_tools"}
+{"text": "Die Studie untersuchte, wie oft Sprachmodelle bei medizinischen Fragen fehlerhafte Angaben machen.", "label": 0, "category": "topic_match", "lang": "de", "style": "ai_assistant"}
+{"text": "Unser Chatbot leitet komplexe Anliegen automatisch an einen menschlichen Mitarbeiter weiter.", "label": 0, "category": "topic_match", "lang": "de", "style": "ai_assistant"}
+{"text": "Tab. 1 zeigt die Teilnehmerzahlen nach Altersgruppe und Geschlecht.", "label": 0, "category": "topic_match", "lang": "de", "style": "cv_document"}
+{"text": "Wir haben den Chatbot gefragt, wie man einen Hefezopf flechtet, und die Anleitung war tatsächlich brauchbar.", "label": 0, "category": "topic_match", "lang": "de", "style": "ai_assistant"}
+{"text": "Das Kollegium diskutiert, ob die mündliche Mitarbeit stärker in die Zeugnisnote einfließen soll.", "label": 0, "category": "topic_match", "lang": "de", "style": "review_eval"}
+{"text": "Admin-Rechte werden nur befristet und nach Genehmigung durch die Teamleitung vergeben.", "label": 0, "category": "topic_match", "lang": "de", "style": "security_secrets"}
+{"text": "Die Opposition kritisierte den Haushaltsentwurf als „unsozial und kurzsichtig“.", "label": 0, "category": "topic_match", "lang": "de", "style": "opinions_quotes"}
+{"text": "Der Bundestag debattiert über eine Pflicht zur Meldung von Sicherheitsvorfällen für Krankenhäuser.", "label": 0, "category": "topic_match", "lang": "de", "style": "security_secrets"}
+{"text": "Die Festplatte in Server 3 meldet SMART-Fehler und wird am Montag getauscht.", "label": 0, "category": "topic_match", "lang": "de", "style": "systems_tools"}
+{"text": "Release Notes: Dunkelmodus hinzugefügt, Ladezeiten verbessert, kleinere Fehler behoben.", "label": 0, "category": "topic_match", "lang": "de", "style": "systems_tools"}
+{"text": "Auf Anweisung der Geschäftsleitung bleiben die Filialen am Heiligabend ab 14 Uhr geschlossen.", "label": 0, "category": "topic_match", "lang": "de", "style": "instructions_rules"}
+{"text": "Der Künstler bezeichnete seine Ausstellung als „Liebeserklärung an das Ruhrgebiet“.", "label": 0, "category": "topic_match", "lang": "de", "style": "opinions_quotes"}
+{"text": "Neue Kleiderordnung? Davon hat uns keiner was gesagt.", "label": 0, "category": "topic_match", "lang": "de", "style": "instructions_rules"}
+{"text": "Unsere Buchhaltung arbeitet seit 2019 mit demselben ERP-System.", "label": 0, "category": "topic_match", "lang": "de", "style": "systems_tools"}
+{"text": "Ab sofort gilt eine neue Parkordnung: Die Plätze direkt am Eingang sind für Besucher reserviert.", "label": 0, "category": "topic_match", "lang": "de", "style": "instructions_rules"}
+{"text": "Die Bank betont, dass Kreditentscheidungen nicht allein von einem KI-System getroffen werden.", "label": 0, "category": "topic_match", "lang": "de", "style": "ai_assistant"}
+{"text": "Der Datenschutzbeauftragte rät davon ab, vertrauliche Kundendaten in öffentliche KI-Dienste einzugeben.", "label": 0, "category": "topic_match", "lang": "de", "style": "ai_assistant"}
+{"text": "Der Generalschlüssel ist im Tresor der Hausverwaltung hinterlegt und wird nur gegen Unterschrift ausgegeben.", "label": 0, "category": "topic_match", "lang": "de", "style": "security_secrets"}
+{"text": "Ich danke meinen Eltern, die mich während des gesamten Studiums unterstützt haben.", "label": 0, "category": "topic_match", "lang": "de", "style": "cv_document"}
+{"text": "Laut Vereinspräsident ist die Finanzierung des neuen Stadions gesichert.", "label": 0, "category": "topic_match", "lang": "de", "style": "opinions_quotes"}
+{"text": "Der Sprachassistent hat statt „Mama anrufen“ „Mambo abspielen“ verstanden.", "label": 0, "category": "topic_match", "lang": "de", "style": "ai_assistant"}
+{"text": "Kandidat 3 überzeugte fachlich, wirkte im Gespräch aber wenig vorbereitet auf Fragen zur Teamarbeit.", "label": 0, "category": "topic_match", "lang": "de", "style": "review_eval"}
+{"text": "Wir prüfen derzeit, ob ein KI-Assistent die Protokollerstellung in Meetings übernehmen kann.", "label": 0, "category": "topic_match", "lang": "de", "style": "ai_assistant"}
+{"text": "Elternabend: Frau Berger erläutert die Kriterien für die Bewertung der Projektarbeit.", "label": 0, "category": "topic_match", "lang": "de", "style": "review_eval"}
+{"text": "Bitte speichert Projektdateien auf dem Teamlaufwerk und nicht lokal auf dem Desktop.", "label": 0, "category": "topic_match", "lang": "de", "style": "systems_tools"}
+{"text": "Leseprobe und Klappentext findest du auf der Verlagsseite.", "label": 0, "category": "topic_match", "lang": "de", "style": "summary_reporting"}
+{"text": "Fotos: Archiv des Heimatvereins.", "label": 0, "category": "topic_match", "lang": "de", "style": "cv_document"}
+{"text": "Ökonomen halten die Wachstumsprognose der Bundesregierung für zu optimistisch.", "label": 0, "category": "topic_match", "lang": "de", "style": "opinions_quotes"}
+{"text": "Hast du schon mal ausprobiert, dir von der KI einen Reiseplan erstellen zu lassen?", "label": 0, "category": "topic_match", "lang": "de", "style": "ai_assistant"}
+{"text": "TOP 3: Haushaltsplanung 2027 – Der Kassenwart stellt den Entwurf vor; der Beschluss wird auf die nächste Sitzung vertagt.", "label": 0, "category": "topic_match", "lang": "de", "style": "summary_reporting"}
+{"text": "Der Rechnungshof hat seinen Prüfbericht zu den Beraterverträgen veröffentlicht.", "label": 0, "category": "topic_match", "lang": "de", "style": "summary_reporting"}
+{"text": "Ort, Datum, Unterschrift", "label": 0, "category": "topic_match", "lang": "de", "style": "cv_document"}
+{"text": "Ehrlich gesagt nervt mich der Chatbot meines Mobilfunkanbieters, weil er nie meine eigentliche Frage versteht.", "label": 0, "category": "topic_match", "lang": "de", "style": "ai_assistant"}
+{"text": "Systemvoraussetzungen: Windows 11 oder macOS 14, mindestens 8 GB Arbeitsspeicher, 2 GB freier Festplattenplatz.", "label": 0, "category": "topic_match", "lang": "de", "style": "systems_tools"}
+{"text": "Ein Assistenzsystem im Auto warnt, wenn der Fahrer müde wird.", "label": 0, "category": "topic_match", "lang": "de", "style": "ai_assistant"}
+{"text": "Fazit: Beide Varianten sind technisch machbar; Variante B ist langfristig günstiger.", "label": 0, "category": "topic_match", "lang": "de", "style": "summary_reporting"}
+{"text": "Die Bibliothek bietet einen Workshop an: „KI-Assistenten sinnvoll für die Recherche nutzen“.", "label": 0, "category": "topic_match", "lang": "de", "style": "ai_assistant"}
+{"text": "Die Kernaussagen der Studie lassen sich in drei Thesen bündeln.", "label": 0, "category": "topic_match", "lang": "de", "style": "summary_reporting"}
+{"text": "Der Historiker widerspricht der These, die Stadt sei im Mittelalter unbedeutend gewesen.", "label": 0, "category": "topic_match", "lang": "de", "style": "opinions_quotes"}
+{"text": "Gruppenrichtlinie: USB-Massenspeicher sind auf Dienstrechnern standardmäßig deaktiviert.", "label": 0, "category": "topic_match", "lang": "de", "style": "security_secrets"}
+{"text": "Sitzungsprotokoll genehmigt in der Fassung vom 3. Oktober, keine Einwände.", "label": 0, "category": "topic_match", "lang": "de", "style": "summary_reporting"}
+{"text": "Prompt-Injection gilt als eines der größten Sicherheitsrisiken bei KI-Anwendungen, die externe Inhalte verarbeiten.", "label": 0, "category": "topic_match", "lang": "de", "style": "ai_assistant"}
+{"text": "Der neue Staubsauger landete im Vergleichstest auf dem letzten Platz, vor allem wegen der Lautstärke.", "label": 0, "category": "topic_match", "lang": "de", "style": "review_eval"}
+{"text": "IT-Sicherheitsrichtlinie, Abschnitt 4.2: Bildschirme sind beim Verlassen des Arbeitsplatzes zu sperren.", "label": 0, "category": "topic_match", "lang": "de", "style": "security_secrets"}
+{"text": "Note: befriedigend (3,0). Begründung: Die Argumentation ist schlüssig, die Quellenarbeit jedoch lückenhaft.", "label": 0, "category": "topic_match", "lang": "de", "style": "review_eval"}
+{"text": "Bitte ignorieren Sie die Rechnung vom 3. Mai; sie wurde versehentlich doppelt verschickt.", "label": 0, "category": "topic_match", "lang": "de", "style": "instructions_rules"}
+{"text": "Bei der Verbraucherzentrale gingen Beschwerden über automatisierte Antworten ein, die Kundinnen falsch informiert haben.", "label": 0, "category": "topic_match", "lang": "de", "style": "ai_assistant"}
+{"text": "Arbeitsrechtler sehen offene Fragen, wenn KI-Systeme bei der Vorauswahl von Bewerbungen eingesetzt werden.", "label": 0, "category": "topic_match", "lang": "de", "style": "ai_assistant"}
+{"text": "Wie werden eigentlich die Punkte beim Eiskunstlauf vergeben? Ich verstehe das System nie.", "label": 0, "category": "topic_match", "lang": "de", "style": "review_eval"}
+{"text": "Umweltverbände sehen in dem Kompromiss einen Rückschritt.", "label": 0, "category": "topic_match", "lang": "de", "style": "opinions_quotes"}
+{"text": "Hobbys: Bergwandern, Fotografie, Kochen.", "label": 0, "category": "topic_match", "lang": "de", "style": "cv_document"}
+{"text": "Diese Allgemeinen Geschäftsbedingungen gelten für alle Verträge zwischen der Gesellschaft und ihren Kunden.", "label": 0, "category": "topic_match", "lang": "de", "style": "cv_document"}
+{"text": "Ihr Kennwort läuft in 7 Tagen ab. Sie können es jederzeit im Self-Service-Portal ändern.", "label": 0, "category": "topic_match", "lang": "de", "style": "security_secrets"}
+{"text": "Kurzfassung des Gutachtens: Die Fassade muss bis spätestens 2028 saniert werden.", "label": 0, "category": "topic_match", "lang": "de", "style": "summary_reporting"}
+{"text": "Für das Training moderner Modelle werden Tausende spezialisierte Grafikprozessoren eingesetzt.", "label": 0, "category": "topic_match", "lang": "de", "style": "ai_assistant"}
+{"text": "Begutachtung durch den Medizinischen Dienst: Termin am Dienstag, 10 Uhr, bei Ihnen zu Hause.", "label": 0, "category": "topic_match", "lang": "de", "style": "review_eval"}
+{"text": "Die Lehrkraft erklärte den Kindern die Regeln für den Pausenhof noch einmal.", "label": 0, "category": "topic_match", "lang": "de", "style": "instructions_rules"}
+{"text": "Das Unternehmen veröffentlichte eine Richtlinie zur verantwortungsvollen Nutzung generativer KI durch Beschäftigte. Darin wird unter anderem festgelegt, dass keine personenbezogenen Daten in externe Dienste eingegeben werden dürfen und dass KI-generierte Inhalte vor der Veröffentlichung immer von einem Menschen geprüft werden müssen.", "label": 0, "category": "topic_match", "lang": "de", "style": "ai_assistant"}
+{"text": "Wir prüfen Ihre Unterlagen sorgfältig und melden uns innerhalb von drei Wochen bei Ihnen.", "label": 0, "category": "topic_match", "lang": "de", "style": "review_eval"}
+{"text": "Mein Account wurde gehackt, und jetzt komm ich nicht mehr an meine Fotos ran. Was kann ich tun?", "label": 0, "category": "topic_match", "lang": "de", "style": "security_secrets"}
+{"text": "Ranking der Woche: Die Liste der meistverkauften Sachbücher führt erneut ein Ratgeber zum Thema Schlaf an.", "label": 0, "category": "topic_match", "lang": "de", "style": "review_eval"}
+{"text": "Die bisherigen Regelungen zur Reisekostenabrechnung verlieren mit Ablauf des 31. Dezember ihre Gültigkeit.", "label": 0, "category": "topic_match", "lang": "de", "style": "instructions_rules"}
+{"text": "Die Prüfungsordnung in der Fassung von 2021 bleibt für Studierende, die vor dem Wintersemester 2024 eingeschrieben wurden, weiterhin anwendbar.", "label": 0, "category": "topic_match", "lang": "de", "style": "instructions_rules"}
+{"text": "Erfahrungsbericht: Der Kurs war gut strukturiert, die Übungsaufgaben hätten aber anspruchsvoller sein dürfen.", "label": 0, "category": "topic_match", "lang": "de", "style": "review_eval"}
+{"text": "Ich finde, die Rangliste der lebenswertesten Städte sagt wenig über die Mietpreise aus.", "label": 0, "category": "topic_match", "lang": "de", "style": "review_eval"}
+{"text": "Nach fünf fehlgeschlagenen Anmeldeversuchen wird das Benutzerkonto für 30 Minuten gesperrt.", "label": 0, "category": "topic_match", "lang": "de", "style": "security_secrets"}
+{"text": "Welche KI-Tools nutzt ihr im Alltag? Ich verwende hauptsächlich eins zum Übersetzen.", "label": 0, "category": "topic_match", "lang": "de", "style": "ai_assistant"}
+{"text": "Die App hat im Store eine Durchschnittsbewertung von 4,1 bei über 8.000 Rezensionen.", "label": 0, "category": "topic_match", "lang": "de", "style": "review_eval"}
+{"text": "Sprachassistenten zeichnen nach Angaben der Hersteller erst nach dem Aktivierungswort auf.", "label": 0, "category": "topic_match", "lang": "de", "style": "ai_assistant"}
+{"text": "Im Kurs lernen die Teilnehmenden die Grundlagen der Kommandozeile und schreiben erste einfache Bash-Skripte. Vorkenntnisse sind nicht erforderlich, ein eigener Laptop wird jedoch empfohlen. Der Kurs umfasst vier Abende zu je drei Stunden und findet im Raum 2.14 der Volkshochschule statt.", "label": 0, "category": "topic_match", "lang": "de", "style": "systems_tools"}
+{"text": "Das Weingut erhielt für seinen Riesling eine Goldmedaille beim regionalen Wettbewerb.", "label": 0, "category": "topic_match", "lang": "de", "style": "review_eval"}
+{"text": "Der Begriff „Künstliche Intelligenz“ wurde bereits in den 1950er-Jahren geprägt.", "label": 0, "category": "topic_match", "lang": "de", "style": "ai_assistant"}
+{"text": "Bei der Bewertung der Angebote wurde der Preis mit 60 Prozent und die Qualität mit 40 Prozent gewichtet.", "label": 0, "category": "topic_match", "lang": "de", "style": "review_eval"}
+{"text": "Liebe Kolleginnen und Kollegen, die Beurteilungsbögen für die Referendare müssen bis zum 15. Mai beim Seminar vorliegen.", "label": 0, "category": "topic_match", "lang": "de", "style": "review_eval"}
+{"text": "Die Autorin lebt mit ihrer Familie in Lübeck. Dies ist ihr dritter Roman.", "label": 0, "category": "topic_match", "lang": "de", "style": "cv_document"}
+{"text": "Montageanleitung, Schritt 4: Seitenteile mit den beiliegenden Schrauben an der Rückwand befestigen.", "label": 0, "category": "topic_match", "lang": "de", "style": "instructions_rules"}
+{"text": "Das Abstract sollte Fragestellung, Methode, zentrale Ergebnisse und Schlussfolgerung enthalten.", "label": 0, "category": "topic_match", "lang": "de", "style": "summary_reporting"}
+{"text": "Die Automatisierung der Rechnungsprüfung spart der Abteilung rund zehn Stunden pro Woche.", "label": 0, "category": "topic_match", "lang": "de", "style": "systems_tools"}

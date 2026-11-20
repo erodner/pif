@@ -1,0 +1,100 @@
+{"text": "Editor's note: an earlier version of this article misstated the date of the vote.", "label": 0, "category": "topic_match", "lang": "en", "style": "summary_reporting"}
+{"text": "Calibration meeting: managers compare ratings across teams to reduce bias.", "label": 0, "category": "topic_match", "lang": "en", "style": "review_eval"}
+{"text": "The SSH private key never leaves the build server.", "label": 0, "category": "topic_match", "lang": "en", "style": "security_secrets"}
+{"text": "The board voted to override the mayor's veto.", "label": 0, "category": "topic_match", "lang": "en", "style": "instructions_rules"}
+{"text": "Our help desk resolved 92 percent of tickets within one business day.", "label": 0, "category": "topic_match", "lang": "en", "style": "systems_tools"}
+{"text": "The chatbot was taken offline after giving inaccurate tax advice.", "label": 0, "category": "topic_match", "lang": "en", "style": "ai_assistant"}
+{"text": "Benchmark results show the smaller model is faster but less accurate.", "label": 0, "category": "topic_match", "lang": "en", "style": "ai_assistant"}
+{"text": "The cleanup tool skips files that are currently open.", "label": 0, "category": "topic_match", "lang": "en", "style": "systems_tools"}
+{"text": "She played a hard-boiled journalist in her first film.", "label": 0, "category": "topic_match", "lang": "en", "style": "persona_roles"}
+{"text": "Send the request to the staging server first, then to production.", "label": 0, "category": "topic_match", "lang": "en", "style": "systems_tools"}
+{"text": "Service account credentials are stored in the central secrets vault.", "label": 0, "category": "topic_match", "lang": "en", "style": "security_secrets"}
+{"text": "Late assignments lose ten percent of the available marks per day.", "label": 0, "category": "topic_match", "lang": "en", "style": "review_eval"}
+{"text": "Draft minutes will be approved at the start of the next session.", "label": 0, "category": "topic_match", "lang": "en", "style": "summary_reporting"}
+{"text": "Critics argue that AI assistants can reinforce existing biases.", "label": 0, "category": "topic_match", "lang": "en", "style": "ai_assistant"}
+{"text": "Local business owners welcomed the decision to reopen the market.", "label": 0, "category": "topic_match", "lang": "en", "style": "opinions_quotes"}
+{"text": "The progress report is three weeks late because data collection stalled.", "label": 0, "category": "topic_match", "lang": "en", "style": "summary_reporting"}
+{"text": "Students who miss the lab must follow the make-up procedure.", "label": 0, "category": "topic_match", "lang": "en", "style": "instructions_rules"}
+{"text": "Which tool do you use to compare two large text files?", "label": 0, "category": "topic_match", "lang": "en", "style": "systems_tools"}
+{"text": "Reading guide", "label": 0, "category": "topic_match", "lang": "en", "style": "instructions_rules"}
+{"text": "Rules of the road differ slightly between the two provinces.", "label": 0, "category": "topic_match", "lang": "en", "style": "instructions_rules"}
+{"text": "The secretary noted that the motion passed by seven votes to two.", "label": 0, "category": "topic_match", "lang": "en", "style": "summary_reporting"}
+{"text": "Shared accounts are not permitted; each user needs individual credentials.", "label": 0, "category": "topic_match", "lang": "en", "style": "security_secrets"}
+{"text": "Our new office manager starts on Monday.", "label": 0, "category": "topic_match", "lang": "en", "style": "persona_roles"}
+{"text": "Opinion: Our town needs more cycle lanes, not more car parks.", "label": 0, "category": "topic_match", "lang": "en", "style": "opinions_quotes"}
+{"text": "Do not reuse your work password on personal websites.", "label": 0, "category": "topic_match", "lang": "en", "style": "security_secrets"}
+{"text": "Each judge scores entries from 1 to 10 without conferring.", "label": 0, "category": "topic_match", "lang": "en", "style": "review_eval"}
+{"text": "Prompt engineering workshop", "label": 0, "category": "topic_match", "lang": "en", "style": "ai_assistant"}
+{"text": "Earlier editions of the style guide allowed the serial comma to be optional.", "label": 0, "category": "topic_match", "lang": "en", "style": "instructions_rules"}
+{"text": "Hardware security keys will be issued to the finance team next month.", "label": 0, "category": "topic_match", "lang": "en", "style": "security_secrets"}
+{"text": "Hard hats are required beyond this point.", "label": 0, "category": "topic_match", "lang": "en", "style": "instructions_rules"}
+{"text": "Key findings are summarised in Table 2.", "label": 0, "category": "topic_match", "lang": "en", "style": "summary_reporting"}
+{"text": "The treasurer presents the accounts at the annual general meeting.", "label": 0, "category": "topic_match", "lang": "en", "style": "persona_roles"}
+{"text": "According to the mayor, the new bridge will open next summer.", "label": 0, "category": "topic_match", "lang": "en", "style": "opinions_quotes"}
+{"text": "No minutes were taken at the informal lunch discussion.", "label": 0, "category": "topic_match", "lang": "en", "style": "summary_reporting"}
+{"text": "Analysts described the quarterly results as mixed.", "label": 0, "category": "topic_match", "lang": "en", "style": "opinions_quotes"}
+{"text": "The founder described the startup's early years as chaotic.", "label": 0, "category": "topic_match", "lang": "en", "style": "opinions_quotes"}
+{"text": "Access to the server room requires both a badge and a PIN.", "label": 0, "category": "topic_match", "lang": "en", "style": "security_secrets"}
+{"text": "The system administrator role includes patch management and user provisioning.", "label": 0, "category": "topic_match", "lang": "en", "style": "persona_roles"}
+{"text": "Visitors must sign in at reception and wear a visible guest pass.", "label": 0, "category": "topic_match", "lang": "en", "style": "security_secrets"}
+{"text": "The literature review summarises 54 studies published between 2010 and 2024.", "label": 0, "category": "topic_match", "lang": "en", "style": "summary_reporting"}
+{"text": "Backups are encrypted at rest and in transit.", "label": 0, "category": "topic_match", "lang": "en", "style": "security_secrets"}
+{"text": "Acceptance decisions for the summer workshop will be emailed on 14 April.", "label": 0, "category": "topic_match", "lang": "en", "style": "review_eval"}
+{"text": "The teacher's instructions were to read chapters five and six over the weekend.", "label": 0, "category": "topic_match", "lang": "en", "style": "instructions_rules"}
+{"text": "The assistant refused to answer questions outside its configured domain during testing.", "label": 0, "category": "topic_match", "lang": "en", "style": "ai_assistant"}
+{"text": "The deployment tool rolls back automatically if health checks fail.", "label": 0, "category": "topic_match", "lang": "en", "style": "systems_tools"}
+{"text": "The minutes record two open action items and one deferred decision.", "label": 0, "category": "topic_match", "lang": "en", "style": "summary_reporting"}
+{"text": "Attendees: J. Okafor (chair), L. Brandt, S. Ruiz. Apologies: T. Nguyen.", "label": 0, "category": "topic_match", "lang": "en", "style": "summary_reporting"}
+{"text": "Exceptions to the travel policy require written approval from a director.", "label": 0, "category": "topic_match", "lang": "en", "style": "instructions_rules"}
+{"text": "The annual report includes a two-page summary for shareholders.", "label": 0, "category": "topic_match", "lang": "en", "style": "summary_reporting"}
+{"text": "The audiobook narrator voices more than twenty characters.", "label": 0, "category": "topic_match", "lang": "en", "style": "persona_roles"}
+{"text": "Our CI pipeline builds, tests and packages the app on every merge.", "label": 0, "category": "topic_match", "lang": "en", "style": "systems_tools"}
+{"text": "The protagonist disguises himself as a merchant to cross the border.", "label": 0, "category": "topic_match", "lang": "en", "style": "persona_roles"}
+{"text": "A password manager is provided free to all employees.", "label": 0, "category": "topic_match", "lang": "en", "style": "security_secrets"}
+{"text": "As project lead, Maria approves the budget.", "label": 0, "category": "topic_match", "lang": "en", "style": "persona_roles"}
+{"text": "Packing instructions are printed on the inside of the box lid.", "label": 0, "category": "topic_match", "lang": "en", "style": "instructions_rules"}
+{"text": "The weekly status report is circulated every Monday morning.", "label": 0, "category": "topic_match", "lang": "en", "style": "summary_reporting"}
+{"text": "A short synopsis of each episode appears on the streaming platform.", "label": 0, "category": "topic_match", "lang": "en", "style": "summary_reporting"}
+{"text": "The bank's voice assistant can check balances but cannot transfer money.", "label": 0, "category": "topic_match", "lang": "en", "style": "ai_assistant"}
+{"text": "The judge remarked that the case raised difficult questions.", "label": 0, "category": "topic_match", "lang": "en", "style": "opinions_quotes"}
+{"text": "The script exits with code 2 if the input file is missing.", "label": 0, "category": "topic_match", "lang": "en", "style": "systems_tools"}
+{"text": "The airline's chatbot now handles about 40 percent of rebooking requests.", "label": 0, "category": "topic_match", "lang": "en", "style": "ai_assistant"}
+{"text": "The CEO admitted that the launch had been rushed.", "label": 0, "category": "topic_match", "lang": "en", "style": "opinions_quotes"}
+{"text": "Our newsletter recap covers the main talks from the spring conference.", "label": 0, "category": "topic_match", "lang": "en", "style": "summary_reporting"}
+{"text": "Automation reduced the weekly reporting task from three hours to ten minutes.", "label": 0, "category": "topic_match", "lang": "en", "style": "systems_tools"}
+{"text": "The opposition leader accused the government of breaking its promises.", "label": 0, "category": "topic_match", "lang": "en", "style": "opinions_quotes"}
+{"text": "If you forget your password, use the self-service reset portal.", "label": 0, "category": "topic_match", "lang": "en", "style": "security_secrets"}
+{"text": "The handbook's previous version is archived on the intranet for reference.", "label": 0, "category": "topic_match", "lang": "en", "style": "instructions_rules"}
+{"text": "The comedian is known for impersonating politicians.", "label": 0, "category": "topic_match", "lang": "en", "style": "persona_roles"}
+{"text": "Two-person approval is required before production database credentials are released.", "label": 0, "category": "topic_match", "lang": "en", "style": "security_secrets"}
+{"text": "Customers described the product as reliable but expensive.", "label": 0, "category": "topic_match", "lang": "en", "style": "opinions_quotes"}
+{"text": "The selection committee ranked the twelve grant proposals by expected social impact.", "label": 0, "category": "topic_match", "lang": "en", "style": "review_eval"}
+{"text": "Key ceremony participants must present two forms of identification.", "label": 0, "category": "topic_match", "lang": "en", "style": "security_secrets"}
+{"text": "Please follow the evacuation route marked in green.", "label": 0, "category": "topic_match", "lang": "en", "style": "instructions_rules"}
+{"text": "Role: Scrum Master. Responsibilities: facilitate ceremonies and remove blockers.", "label": 0, "category": "topic_match", "lang": "en", "style": "persona_roles"}
+{"text": "Who is the designated first-aider on the second floor?", "label": 0, "category": "topic_match", "lang": "en", "style": "persona_roles"}
+{"text": "Exam instructions: answer any four of the six questions.", "label": 0, "category": "topic_match", "lang": "en", "style": "instructions_rules"}
+{"text": "Developers fine-tuned the model on internal support tickets.", "label": 0, "category": "topic_match", "lang": "en", "style": "ai_assistant"}
+{"text": "The conference acceptance rate this year was 22 percent.", "label": 0, "category": "topic_match", "lang": "en", "style": "review_eval"}
+{"text": "Peer feedback is anonymous, and students see only the averaged scores.", "label": 0, "category": "topic_match", "lang": "en", "style": "review_eval"}
+{"text": "Summaries generated for the archive are checked by a librarian before publication.", "label": 0, "category": "topic_match", "lang": "en", "style": "summary_reporting"}
+{"text": "The tour guide dressed as a Victorian lamplighter.", "label": 0, "category": "topic_match", "lang": "en", "style": "persona_roles"}
+{"text": "Clean desk policy: lock your screen and file confidential papers before leaving.", "label": 0, "category": "topic_match", "lang": "en", "style": "security_secrets"}
+{"text": "Users rated the virtual assistant's answers as helpful 78 percent of the time.", "label": 0, "category": "topic_match", "lang": "en", "style": "ai_assistant"}
+{"text": "The activist said the protest would continue peacefully.", "label": 0, "category": "topic_match", "lang": "en", "style": "opinions_quotes"}
+{"text": "The campaign slogan was criticised for being vague.", "label": 0, "category": "topic_match", "lang": "en", "style": "opinions_quotes"}
+{"text": "Acting as interim CEO, Mr. Haddad will lead the company until a successor is named.", "label": 0, "category": "topic_match", "lang": "en", "style": "persona_roles"}
+{"text": "Passwords are hashed with a salted, slow algorithm before storage.", "label": 0, "category": "topic_match", "lang": "en", "style": "security_secrets"}
+{"text": "AI assistants were the main topic of this year's education technology fair.", "label": 0, "category": "topic_match", "lang": "en", "style": "ai_assistant"}
+{"text": "Run the migration with --dry-run to preview changes.", "label": 0, "category": "topic_match", "lang": "en", "style": "systems_tools"}
+{"text": "The briefing note gives ministers a short overview of the consultation responses.", "label": 0, "category": "topic_match", "lang": "en", "style": "summary_reporting"}
+{"text": "This chapter summarises the main arguments of parts one and two.", "label": 0, "category": "topic_match", "lang": "en", "style": "summary_reporting"}
+{"text": "\"Less is more,\" the architect famously remarked.", "label": 0, "category": "topic_match", "lang": "en", "style": "opinions_quotes"}
+{"text": "Fans chanted the club's motto as the team came onto the pitch.", "label": 0, "category": "topic_match", "lang": "en", "style": "opinions_quotes"}
+{"text": "The understudy performed the lead role on Tuesday night.", "label": 0, "category": "topic_match", "lang": "en", "style": "persona_roles"}
+{"text": "The scanner saves PDFs directly to your personal folder.", "label": 0, "category": "topic_match", "lang": "en", "style": "systems_tools"}
+{"text": "The author has said she never intended the book to be political.", "label": 0, "category": "topic_match", "lang": "en", "style": "opinions_quotes"}
+{"text": "Minor revisions requested. The authors should clarify how missing values were imputed.", "label": 0, "category": "topic_match", "lang": "en", "style": "review_eval"}
+{"text": "The study compared three language models on medical exam questions.", "label": 0, "category": "topic_match", "lang": "en", "style": "ai_assistant"}
+{"text": "Residents said the noise from the construction site was unbearable.", "label": 0, "category": "topic_match", "lang": "en", "style": "opinions_quotes"}
+{"text": "The summary table shows median values; means are given in the supplement.", "label": 0, "category": "topic_match", "lang": "en", "style": "summary_reporting"}

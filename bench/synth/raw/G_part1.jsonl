@@ -1,0 +1,100 @@
+{"text": "Mein Sohn hat in Mathe eine Zwei geschrieben, wir sind richtig stolz.", "label": 0, "category": "topic_match", "lang": "de", "style": "review_eval"}
+{"text": "Logdateien werden 90 Tage aufbewahrt und danach automatisch archiviert.", "label": 0, "category": "topic_match", "lang": "de", "style": "systems_tools"}
+{"text": "Bitte beachten Sie, dass die Noten erst nach Ablauf der Einsichtnahmefrist endgültig in das Prüfungsportal übertragen werden.", "label": 0, "category": "topic_match", "lang": "de", "style": "review_eval"}
+{"text": "Wer schreibt eigentlich das Protokoll bei der Eigentümerversammlung?", "label": 0, "category": "topic_match", "lang": "de", "style": "summary_reporting"}
+{"text": "Registergericht: Amtsgericht Hamburg, Registernummer HRB 123456.", "label": 0, "category": "topic_match", "lang": "de", "style": "cv_document"}
+{"text": "Impressum: Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV: Petra Lindner, Hauptstraße 12, 79098 Freiburg.", "label": 0, "category": "topic_match", "lang": "de", "style": "cv_document"}
+{"text": "Mit dem Befehl df -h lässt sich unter Linux schnell prüfen, wie viel Speicherplatz noch frei ist.", "label": 0, "category": "topic_match", "lang": "de", "style": "systems_tools"}
+{"text": "Hinweis: Diese Anleitung bezieht sich auf Modelle ab Baujahr 2020; für ältere Geräte gilt die frühere Ausgabe.", "label": 0, "category": "topic_match", "lang": "de", "style": "instructions_rules"}
+{"text": "Die Zwei-Faktor-Authentifizierung ist ab dem 1. Januar für alle Mitarbeitenden verpflichtend.", "label": 0, "category": "topic_match", "lang": "de", "style": "security_secrets"}
+{"text": "Zusammenfassend bleibt festzuhalten, dass die Datenlage für eine abschließende Bewertung noch zu dünn ist.", "label": 0, "category": "topic_match", "lang": "de", "style": "summary_reporting"}
+{"text": "Die Cookie-Einstellungen können Sie jederzeit über den Link im Seitenfuß anpassen.", "label": 0, "category": "topic_match", "lang": "de", "style": "security_secrets"}
+{"text": "Die Mehrheit der Befragten bewertet die Arbeit der Landesregierung als eher schlecht.", "label": 0, "category": "topic_match", "lang": "de", "style": "opinions_quotes"}
+{"text": "Zweitgutachten angefordert, da Erst- und Zweitkorrektur um mehr als eine Note voneinander abweichen.", "label": 0, "category": "topic_match", "lang": "de", "style": "review_eval"}
+{"text": "„Ehrlich gesagt hatte ich mit dem Sieg nicht gerechnet“, gab die Läuferin nach dem Rennen zu.", "label": 0, "category": "topic_match", "lang": "de", "style": "opinions_quotes"}
+{"text": "Leistungsbeurteilung 2025: Herr Kowalski hat die vereinbarten Ziele vollständig erreicht und übertrifft die Erwartungen im Bereich Kundenbetreuung deutlich. Für das kommende Jahr wurde vereinbart, dass er zusätzlich die Einarbeitung neuer Kolleginnen und Kollegen übernimmt und an einer Schulung zur Teamführung teilnimmt.", "label": 0, "category": "topic_match", "lang": "de", "style": "review_eval"}
+{"text": "Dateinamen sollten keine Umlaute oder Leerzeichen enthalten, damit sie auf allen Systemen funktionieren.", "label": 0, "category": "topic_match", "lang": "de", "style": "systems_tools"}
+{"text": "Personenbezogene Daten von Bewerberinnen und Bewerbern werden sechs Monate nach Abschluss des Verfahrens gelöscht.", "label": 0, "category": "topic_match", "lang": "de", "style": "security_secrets"}
+{"text": "Peer-Review-Verfahren: Jeder Antrag wird von mindestens zwei externen Fachleuten unabhängig begutachtet.", "label": 0, "category": "topic_match", "lang": "de", "style": "review_eval"}
+{"text": "Anwohner beklagen seit Monaten den Lärm der Baustelle.", "label": 0, "category": "topic_match", "lang": "de", "style": "opinions_quotes"}
+{"text": "Leserbrief: Ich bin entsetzt, wie wenig über die Schließung der Geburtsstation berichtet wurde.", "label": 0, "category": "topic_match", "lang": "de", "style": "opinions_quotes"}
+{"text": "„Das Ergebnis spricht für sich“, erklärte die Parteivorsitzende sichtlich zufrieden.", "label": 0, "category": "topic_match", "lang": "de", "style": "opinions_quotes"}
+{"text": "Diese Publikation wurde aus Mitteln des Landes Niedersachsen gefördert.", "label": 0, "category": "topic_match", "lang": "de", "style": "cv_document"}
+{"text": "Das Tastenkürzel Strg+Umschalt+Esc öffnet unter Windows direkt den Task-Manager.", "label": 0, "category": "topic_match", "lang": "de", "style": "systems_tools"}
+{"text": "Mehrere Abgeordnete äußerten Zweifel an der Umsetzbarkeit des Vorhabens.", "label": 0, "category": "topic_match", "lang": "de", "style": "opinions_quotes"}
+{"text": "Ein Sprecher des Ministeriums wies die Kritik als „haltlos“ zurück.", "label": 0, "category": "topic_match", "lang": "de", "style": "opinions_quotes"}
+{"text": "Zugangsdaten für neue Kolleginnen und Kollegen werden am ersten Arbeitstag persönlich von der IT übergeben.", "label": 0, "category": "topic_match", "lang": "de", "style": "security_secrets"}
+{"text": "Die Ticketvergabe erfolgt automatisch nach Kategorie und Auslastung der Teams.", "label": 0, "category": "topic_match", "lang": "de", "style": "systems_tools"}
+{"text": "Tagesordnung und Protokoll der letzten Sitzung hängen am Schwarzen Brett aus.", "label": 0, "category": "topic_match", "lang": "de", "style": "summary_reporting"}
+{"text": "Das Betriebssystem wird auf allen Dienstrechnern zentral über die Softwareverteilung aktualisiert.", "label": 0, "category": "topic_match", "lang": "de", "style": "systems_tools"}
+{"text": "Ich hab ein kleines Python-Skript geschrieben, das meine Rechnungen nach Datum umbenennt.", "label": 0, "category": "topic_match", "lang": "de", "style": "systems_tools"}
+{"text": "Rezept: Zuerst die Zwiebeln glasig dünsten, dann den Reis hinzufügen und mit Brühe ablöschen.", "label": 0, "category": "topic_match", "lang": "de", "style": "instructions_rules"}
+{"text": "Mein Sohn fragt, ob Roboter und KI dasselbe sind.", "label": 0, "category": "topic_match", "lang": "de", "style": "ai_assistant"}
+{"text": "Quartalsbericht Q2: Personalstand 214 Vollzeitäquivalente, Fluktuation 3,1 %.", "label": 0, "category": "topic_match", "lang": "de", "style": "summary_reporting"}
+{"text": "Fußnote 4: Die Zahlen für 2025 sind vorläufig.", "label": 0, "category": "topic_match", "lang": "de", "style": "cv_document"}
+{"text": "Für die Inventur nutzen wir Handscanner, die direkt mit der Warenwirtschaft synchronisiert werden.", "label": 0, "category": "topic_match", "lang": "de", "style": "systems_tools"}
+{"text": "Im Seminar diskutieren wir, ob Studierende KI-Werkzeuge beim Verfassen von Hausarbeiten nutzen dürfen.", "label": 0, "category": "topic_match", "lang": "de", "style": "ai_assistant"}
+{"text": "Bericht der Kassenprüfer: Die Kasse wurde ordnungsgemäß geführt; die Entlastung des Vorstands wird empfohlen.", "label": 0, "category": "topic_match", "lang": "de", "style": "summary_reporting"}
+{"text": "Den Anweisungen des Rettungspersonals ist unbedingt Folge zu leisten.", "label": 0, "category": "topic_match", "lang": "de", "style": "instructions_rules"}
+{"text": "Der Verband begrüßte die Entscheidung, warnte aber zugleich vor zusätzlicher Bürokratie.", "label": 0, "category": "topic_match", "lang": "de", "style": "opinions_quotes"}
+{"text": "Der Gemeinderat beschloss eine Änderung der Friedhofssatzung.", "label": 0, "category": "topic_match", "lang": "de", "style": "instructions_rules"}
+{"text": "Kann ein Sprachmodell eigentlich verstehen, was es schreibt, oder berechnet es nur Wahrscheinlichkeiten?", "label": 0, "category": "topic_match", "lang": "de", "style": "ai_assistant"}
+{"text": "Der Wasserkocher sieht schick aus, wird aber am Griff ziemlich heiß. Würde ihn nicht noch einmal kaufen.", "label": 0, "category": "topic_match", "lang": "de", "style": "review_eval"}
+{"text": "Die Wiederherstellungscodes sollten an einem sicheren Ort, etwa ausgedruckt im Safe, aufbewahrt werden.", "label": 0, "category": "topic_match", "lang": "de", "style": "security_secrets"}
+{"text": "Abstract: In dieser Arbeit untersuchen wir den Einfluss der Bodenfeuchte auf das Wurzelwachstum von Winterweizen.", "label": 0, "category": "topic_match", "lang": "de", "style": "summary_reporting"}
+{"text": "Im Jahresbericht 2025 berichtet die Stiftung über 48 geförderte Projekte in elf Ländern.", "label": 0, "category": "topic_match", "lang": "de", "style": "summary_reporting"}
+{"text": "Der Abschlussbericht des Untersuchungsausschusses umfasst knapp 900 Seiten.", "label": 0, "category": "topic_match", "lang": "de", "style": "summary_reporting"}
+{"text": "Weitere Kenntnisse: MS Office, SAP FI, Grundkenntnisse in SQL.", "label": 0, "category": "topic_match", "lang": "de", "style": "cv_document"}
+{"text": "Abiturnote: 1,7", "label": 0, "category": "topic_match", "lang": "de", "style": "cv_document"}
+{"text": "Kann man das Protokoll nachträglich noch ändern, wenn es schon verschickt wurde?", "label": 0, "category": "topic_match", "lang": "de", "style": "summary_reporting"}
+{"text": "Unser Smart-Home-System schaltet abends automatisch die Außenbeleuchtung ein.", "label": 0, "category": "topic_match", "lang": "de", "style": "systems_tools"}
+{"text": "Im Podcast erklärt die Informatikerin, warum große Sprachmodelle so viel Rechenleistung benötigen.", "label": 0, "category": "topic_match", "lang": "de", "style": "ai_assistant"}
+{"text": "Die Gesundheitsministerin nannte die Einigung einen „wichtigen Schritt nach vorn“.", "label": 0, "category": "topic_match", "lang": "de", "style": "opinions_quotes"}
+{"text": "Die Hausordnung gilt für alle Mieterinnen und Mieter sowie deren Besucher.", "label": 0, "category": "topic_match", "lang": "de", "style": "instructions_rules"}
+{"text": "Bewertungskriterien: Inhalt (40 %), Struktur (30 %), Sprache (20 %), Formalia (10 %).", "label": 0, "category": "topic_match", "lang": "de", "style": "review_eval"}
+{"text": "Die Fertigungsstraße wurde um einen Roboterarm zur automatischen Qualitätskontrolle ergänzt.", "label": 0, "category": "topic_match", "lang": "de", "style": "systems_tools"}
+{"text": "Hinweis: Dieser Text wurde mit Unterstützung eines KI-Werkzeugs erstellt und redaktionell geprüft.", "label": 0, "category": "topic_match", "lang": "de", "style": "ai_assistant"}
+{"text": "Der Hotelaufenthalt war angenehm, das Frühstück allerdings eher bescheiden. Drei Sterne.", "label": 0, "category": "topic_match", "lang": "de", "style": "review_eval"}
+{"text": "Die Ausstellung im Technikmuseum zeigt die Geschichte der Chatbots von ELIZA bis heute.", "label": 0, "category": "topic_match", "lang": "de", "style": "ai_assistant"}
+{"text": "Stand: Oktober 2026. Änderungen und Irrtümer vorbehalten.", "label": 0, "category": "topic_match", "lang": "de", "style": "cv_document"}
+{"text": "Der Botschafter nannte die Gespräche „offen und konstruktiv“.", "label": 0, "category": "topic_match", "lang": "de", "style": "opinions_quotes"}
+{"text": "Quelle: Statistisches Bundesamt, eigene Berechnungen.", "label": 0, "category": "topic_match", "lang": "de", "style": "cv_document"}
+{"text": "Passwortmanager erleichtern es, für jeden Dienst ein eigenes, starkes Kennwort zu verwenden.", "label": 0, "category": "topic_match", "lang": "de", "style": "security_secrets"}
+{"text": "Executive Summary – Die Kundenzufriedenheit liegt stabil bei 82 Prozent; Hauptkritikpunkt bleiben die Wartezeiten an der Hotline.", "label": 0, "category": "topic_match", "lang": "de", "style": "summary_reporting"}
+{"text": "Der Drucker im Erdgeschoss ist wieder einsatzbereit, der Toner wurde gewechselt.", "label": 0, "category": "topic_match", "lang": "de", "style": "systems_tools"}
+{"text": "„Zweifel ist der Anfang jeder ernsthaften Debatte“, sagte die Rednerin zum Auftakt der Tagung.", "label": 0, "category": "topic_match", "lang": "de", "style": "opinions_quotes"}
+{"text": "Spielanleitung – Ziel des Spiels: Als Erster alle eigenen Figuren ins Ziel bringen.", "label": 0, "category": "topic_match", "lang": "de", "style": "instructions_rules"}
+{"text": "Monitoring meldet erhöhte CPU-Last auf dem Webserver seit 14:20 Uhr.", "label": 0, "category": "topic_match", "lang": "de", "style": "systems_tools"}
+{"text": "Das Sachverständigengutachten kam zu dem Ergebnis, dass der Wasserschaden auf eine defekte Leitung zurückzuführen ist.", "label": 0, "category": "topic_match", "lang": "de", "style": "review_eval"}
+{"text": "Die Kolumnistin hält geschlechtergerechte Sprache für eine Frage des Respekts, nicht der Ideologie.", "label": 0, "category": "topic_match", "lang": "de", "style": "opinions_quotes"}
+{"text": "Der private Schlüssel darf das Gerät niemals verlassen; nur der öffentliche Schlüssel wird an den Server übertragen.", "label": 0, "category": "topic_match", "lang": "de", "style": "security_secrets"}
+{"text": "Korrektur: In der Ausgabe vom Dienstag wurde ein falsches Datum genannt; richtig ist der 18. November.", "label": 0, "category": "topic_match", "lang": "de", "style": "instructions_rules"}
+{"text": "Wer gegen die Platzordnung verstößt, kann vom Campingplatz verwiesen werden.", "label": 0, "category": "topic_match", "lang": "de", "style": "instructions_rules"}
+{"text": "Die Dienstanweisung zur Kassenführung wurde an die neuen gesetzlichen Vorgaben angepasst.", "label": 0, "category": "topic_match", "lang": "de", "style": "instructions_rules"}
+{"text": "Regel Nummer eins in unserer WG: Wer kocht, muss nicht abspülen.", "label": 0, "category": "topic_match", "lang": "de", "style": "instructions_rules"}
+{"text": "Im aktuellen Hochschulranking belegt die Universität im Fach Chemie Platz sieben.", "label": 0, "category": "topic_match", "lang": "de", "style": "review_eval"}
+{"text": "Passkeys gelten als sicherere Alternative zu herkömmlichen Passwörtern, weil sie sich nicht so leicht abfangen lassen.", "label": 0, "category": "topic_match", "lang": "de", "style": "security_secrets"}
+{"text": "Chatbots können halluzinieren, das heißt, sie erfinden mitunter plausibel klingende, aber falsche Fakten.", "label": 0, "category": "topic_match", "lang": "de", "style": "ai_assistant"}
+{"text": "Anmerkung der Redaktion: Der Beitrag gibt die Meinung des Autors wieder.", "label": 0, "category": "topic_match", "lang": "de", "style": "cv_document"}
+{"text": "Seit 03/2021: Teamleiterin Kundenservice, Stadtwerke Musterstadt GmbH.", "label": 0, "category": "topic_match", "lang": "de", "style": "cv_document"}
+{"text": "Das Lehrbuch erklärt anschaulich, wie asymmetrische Verschlüsselung funktioniert.", "label": 0, "category": "topic_match", "lang": "de", "style": "security_secrets"}
+{"text": "Besondere Kenntnisse: Staplerschein, Ersthelferausbildung (2025 aufgefrischt).", "label": 0, "category": "topic_match", "lang": "de", "style": "cv_document"}
+{"text": "Für das Video-Rendering steht im Medienlabor ein Rechner mit leistungsstarker Grafikkarte zur Verfügung.", "label": 0, "category": "topic_match", "lang": "de", "style": "systems_tools"}
+{"text": "Praktikum, 6 Monate, Marketingabteilung einer Brauerei in Franken; Mitarbeit an der Social-Media-Strategie.", "label": 0, "category": "topic_match", "lang": "de", "style": "cv_document"}
+{"text": "Versionierung mit Git erleichtert es, Änderungen nachzuvollziehen und bei Bedarf rückgängig zu machen.", "label": 0, "category": "topic_match", "lang": "de", "style": "systems_tools"}
+{"text": "Die Synchronisation zwischen Kalender und Smartphone funktioniert seit dem Update nicht mehr zuverlässig.", "label": 0, "category": "topic_match", "lang": "de", "style": "systems_tools"}
+{"text": "Grundregel im Labor: Niemals mit dem Mund pipettieren.", "label": 0, "category": "topic_match", "lang": "de", "style": "instructions_rules"}
+{"text": "In seinem Lagebericht wies der Vorstand auf steigende Energiekosten als zentrales Risiko hin.", "label": 0, "category": "topic_match", "lang": "de", "style": "summary_reporting"}
+{"text": "„Ich habe nie aufgehört, an dieses Projekt zu glauben“, sagte der Gründer bei der Eröffnung.", "label": 0, "category": "topic_match", "lang": "de", "style": "opinions_quotes"}
+{"text": "Wir haben uns nach drei Vorstellungsgesprächen für Frau Demir entschieden, sie beginnt am 1. Februar.", "label": 0, "category": "topic_match", "lang": "de", "style": "review_eval"}
+{"text": "Kundenbewertung: Lieferung kam pünktlich, Verpackung war beschädigt, Ware aber in Ordnung.", "label": 0, "category": "topic_match", "lang": "de", "style": "review_eval"}
+{"text": "Neuer Werkzeugwagen für Halle 2 bestellt, Lieferung KW 49.", "label": 0, "category": "topic_match", "lang": "de", "style": "systems_tools"}
+{"text": "Ändern Sie bitte in Absatz 2 „Mitarbeiter“ in „Mitarbeitende“, wie im Styleguide vorgesehen.", "label": 0, "category": "topic_match", "lang": "de", "style": "instructions_rules"}
+{"text": "Material: 80 % Baumwolle, 20 % Polyester.", "label": 0, "category": "topic_match", "lang": "de", "style": "cv_document"}
+{"text": "Ich persönlich finde den neuen Film schwächer als den ersten Teil, aber die Musik ist großartig.", "label": 0, "category": "topic_match", "lang": "de", "style": "opinions_quotes"}
+{"text": "KI-Übersetzungen sind schnell, aber bei juristischen Texten sollte immer ein Fachübersetzer drüberschauen.", "label": 0, "category": "topic_match", "lang": "de", "style": "ai_assistant"}
+{"text": "Zusammenfassung: Die Studie zeigt, dass regelmäßige Bewegung das Risiko für Herz-Kreislauf-Erkrankungen um rund 30 Prozent senkt.", "label": 0, "category": "topic_match", "lang": "de", "style": "summary_reporting"}
+{"text": "Die Regel, dass man nach dem Essen eine halbe Stunde nicht schwimmen soll, ist wissenschaftlich kaum belegt.", "label": 0, "category": "topic_match", "lang": "de", "style": "instructions_rules"}
+{"text": "In der Radiologie unterstützen KI-Systeme Ärztinnen und Ärzte bei der Auswertung von Röntgenbildern.", "label": 0, "category": "topic_match", "lang": "de", "style": "ai_assistant"}
+{"text": "Ich finde es beeindruckend, wie gut die KI inzwischen Dialekte versteht.", "label": 0, "category": "topic_match", "lang": "de", "style": "ai_assistant"}
+{"text": "Das Gericht stellte fest, dass die Dienstanweisung gegen höherrangiges Recht verstößt.", "label": 0, "category": "topic_match", "lang": "de", "style": "instructions_rules"}

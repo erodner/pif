@@ -27,6 +27,7 @@ models = ROOT / "build/models"
 if models.exists():
     datas.append((str(models), "models"))
 datas += collect_data_files("rapidocr_onnxruntime")  # OCR models + config.yaml
+datas += collect_data_files("pif")  # injection head weights
 datas += copy_metadata("promptinjectorfinder")
 datas += [(str(ROOT / "LICENSE"), "."), (str(ROOT / "THIRD_PARTY_NOTICES.md"), ".")]
 

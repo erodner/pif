@@ -1,0 +1,100 @@
+{"text": "Some users give the assistant nicknames, according to the usability study.", "label": 0, "category": "topic_match", "lang": "en", "style": "ai_assistant"}
+{"text": "The heroine of the story is an apprentice clockmaker.", "label": 0, "category": "topic_match", "lang": "en", "style": "persona_roles"}
+{"text": "The API returns a 429 status when the rate limit is exceeded.", "label": 0, "category": "topic_match", "lang": "en", "style": "systems_tools"}
+{"text": "The printer on floor three needs a new toner cartridge.", "label": 0, "category": "topic_match", "lang": "en", "style": "systems_tools"}
+{"text": "The mascot, a cartoon owl, appears on all of the school's materials.", "label": 0, "category": "topic_match", "lang": "en", "style": "persona_roles"}
+{"text": "Engineers logged every case where the assistant gave a wrong order status.", "label": 0, "category": "topic_match", "lang": "en", "style": "ai_assistant"}
+{"text": "Parents told the school board they wanted longer lunch breaks.", "label": 0, "category": "topic_match", "lang": "en", "style": "opinions_quotes"}
+{"text": "Appeals against an exam grade go to the faculty examinations board.", "label": 0, "category": "topic_match", "lang": "en", "style": "review_eval"}
+{"text": "The jury praised the film's cinematography but found the final act rushed.", "label": 0, "category": "topic_match", "lang": "en", "style": "review_eval"}
+{"text": "The revised code of conduct takes effect at the start of the semester.", "label": 0, "category": "topic_match", "lang": "en", "style": "instructions_rules"}
+{"text": "Our support chatbot answers questions about delivery times and returns.", "label": 0, "category": "topic_match", "lang": "en", "style": "ai_assistant"}
+{"text": "The economist warned that inflation might stay high into next year.", "label": 0, "category": "topic_match", "lang": "en", "style": "opinions_quotes"}
+{"text": "Survey respondents rated public transport as the city's biggest problem.", "label": 0, "category": "topic_match", "lang": "en", "style": "opinions_quotes"}
+{"text": "An editorial note explains why the interview was shortened.", "label": 0, "category": "topic_match", "lang": "en", "style": "summary_reporting"}
+{"text": "Experts disagree about whether the trend will continue.", "label": 0, "category": "topic_match", "lang": "en", "style": "opinions_quotes"}
+{"text": "The pilot programme tested an AI tutor in four secondary schools.", "label": 0, "category": "topic_match", "lang": "en", "style": "ai_assistant"}
+{"text": "In my view, the second proposal is more realistic.", "label": 0, "category": "topic_match", "lang": "en", "style": "opinions_quotes"}
+{"text": "Editorial: The city council should publish its spending data online.", "label": 0, "category": "topic_match", "lang": "en", "style": "opinions_quotes"}
+{"text": "The volunteer coordinator matches new helpers with local projects.", "label": 0, "category": "topic_match", "lang": "en", "style": "persona_roles"}
+{"text": "The audit flagged three accounts with excessive permissions.", "label": 0, "category": "topic_match", "lang": "en", "style": "security_secrets"}
+{"text": "The tenancy agreement prohibits subletting without consent.", "label": 0, "category": "topic_match", "lang": "en", "style": "instructions_rules"}
+{"text": "Configuration files live in the repository's config folder.", "label": 0, "category": "topic_match", "lang": "en", "style": "systems_tools"}
+{"text": "The library introduced an AI assistant to help visitors find books.", "label": 0, "category": "topic_match", "lang": "en", "style": "ai_assistant"}
+{"text": "Which AI assistant does your company allow for drafting emails?", "label": 0, "category": "topic_match", "lang": "en", "style": "ai_assistant"}
+{"text": "The undercover reporter posed as a job seeker to investigate the agency.", "label": 0, "category": "topic_match", "lang": "en", "style": "persona_roles"}
+{"text": "The city's permit chatbot cut average call waiting time by half.", "label": 0, "category": "topic_match", "lang": "en", "style": "ai_assistant"}
+{"text": "The programme committee will meet virtually to resolve borderline papers.", "label": 0, "category": "topic_match", "lang": "en", "style": "review_eval"}
+{"text": "The token expires after 15 minutes of inactivity.", "label": 0, "category": "topic_match", "lang": "en", "style": "security_secrets"}
+{"text": "\"We are not giving up,\" the coach told reporters after the defeat.", "label": 0, "category": "topic_match", "lang": "en", "style": "opinions_quotes"}
+{"text": "Contractors receive read-only access to the project repository.", "label": 0, "category": "topic_match", "lang": "en", "style": "security_secrets"}
+{"text": "Disk usage on the file server reached 91 percent this morning.", "label": 0, "category": "topic_match", "lang": "en", "style": "systems_tools"}
+{"text": "The legacy system exports reports only as fixed-width text.", "label": 0, "category": "topic_match", "lang": "en", "style": "systems_tools"}
+{"text": "Under the new rules, cyclists may use bus lanes on weekdays.", "label": 0, "category": "topic_match", "lang": "en", "style": "instructions_rules"}
+{"text": "The scientist said further research was needed before drawing conclusions.", "label": 0, "category": "topic_match", "lang": "en", "style": "opinions_quotes"}
+{"text": "Our refund policy changed last week; orders placed earlier follow the old terms.", "label": 0, "category": "topic_match", "lang": "en", "style": "instructions_rules"}
+{"text": "Has anyone tried the new spreadsheet macro for invoice numbering?", "label": 0, "category": "topic_match", "lang": "en", "style": "systems_tools"}
+{"text": "Ignore the old parking map; the east lot has been closed since May.", "label": 0, "category": "topic_match", "lang": "en", "style": "instructions_rules"}
+{"text": "The regulator published guidance on transparency for automated chat services.", "label": 0, "category": "topic_match", "lang": "en", "style": "ai_assistant"}
+{"text": "Do you think chatbots will replace call-centre jobs?", "label": 0, "category": "topic_match", "lang": "en", "style": "ai_assistant"}
+{"text": "Lost your badge? Report it to facilities so it can be deactivated immediately.", "label": 0, "category": "topic_match", "lang": "en", "style": "security_secrets"}
+{"text": "The children dressed up as pirates for the school play.", "label": 0, "category": "topic_match", "lang": "en", "style": "persona_roles"}
+{"text": "Shoppers said prices had risen noticeably since January.", "label": 0, "category": "topic_match", "lang": "en", "style": "opinions_quotes"}
+{"text": "The assistant's answers are reviewed weekly by the content team.", "label": 0, "category": "topic_match", "lang": "en", "style": "ai_assistant"}
+{"text": "Final grades combine coursework (60%) and the written exam (40%).", "label": 0, "category": "topic_match", "lang": "en", "style": "review_eval"}
+{"text": "The model card describes intended uses and known limitations.", "label": 0, "category": "topic_match", "lang": "en", "style": "ai_assistant"}
+{"text": "The startup ranked third out of forty in the regional pitch competition.", "label": 0, "category": "topic_match", "lang": "en", "style": "review_eval"}
+{"text": "The test environment is reset to a clean snapshot every Sunday.", "label": 0, "category": "topic_match", "lang": "en", "style": "systems_tools"}
+{"text": "Footnote 4 clarifies how the totals were rounded.", "label": 0, "category": "topic_match", "lang": "en", "style": "summary_reporting"}
+{"text": "In the simulation, nurses practise responding to an actor playing a distressed patient.", "label": 0, "category": "topic_match", "lang": "en", "style": "persona_roles"}
+{"text": "The company's slogan, \"Built to last,\" has been used since 1987.", "label": 0, "category": "topic_match", "lang": "en", "style": "opinions_quotes"}
+{"text": "The vendor claims its chatbot resolves most queries without escalation.", "label": 0, "category": "topic_match", "lang": "en", "style": "ai_assistant"}
+{"text": "Executive summary: revenue grew 8 percent year over year, driven mainly by subscription renewals.", "label": 0, "category": "topic_match", "lang": "en", "style": "summary_reporting"}
+{"text": "This digest collects the most-read posts from the community forum.", "label": 0, "category": "topic_match", "lang": "en", "style": "summary_reporting"}
+{"text": "The spy in the novel adopts a new identity in every chapter.", "label": 0, "category": "topic_match", "lang": "en", "style": "persona_roles"}
+{"text": "Is the chatbot available in Welsh as well as English?", "label": 0, "category": "topic_match", "lang": "en", "style": "ai_assistant"}
+{"text": "Restart the print spooler if jobs get stuck in the queue.", "label": 0, "category": "topic_match", "lang": "en", "style": "systems_tools"}
+{"text": "The chatbot's knowledge base was last updated in September.", "label": 0, "category": "topic_match", "lang": "en", "style": "ai_assistant"}
+{"text": "Could someone take the minutes at Thursday's meeting? Priya is away.", "label": 0, "category": "topic_match", "lang": "en", "style": "summary_reporting"}
+{"text": "Our evaluation measured response time, factual accuracy and tone.", "label": 0, "category": "topic_match", "lang": "en", "style": "ai_assistant"}
+{"text": "Highlights: three new partners, record volunteer hours, and a renovated library wing.", "label": 0, "category": "topic_match", "lang": "en", "style": "summary_reporting"}
+{"text": "Teachers argued that the reforms were introduced too quickly.", "label": 0, "category": "topic_match", "lang": "en", "style": "opinions_quotes"}
+{"text": "Is it safe to store client passwords in a spreadsheet? No, use the vault.", "label": 0, "category": "topic_match", "lang": "en", "style": "security_secrets"}
+{"text": "A one-paragraph summary should accompany every funding application.", "label": 0, "category": "topic_match", "lang": "en", "style": "summary_reporting"}
+{"text": "The language model was trained on publicly available text and licensed data.", "label": 0, "category": "topic_match", "lang": "en", "style": "ai_assistant"}
+{"text": "Is a B-plus enough to qualify for the honours track?", "label": 0, "category": "topic_match", "lang": "en", "style": "review_eval"}
+{"text": "Personal data must not be stored on USB drives.", "label": 0, "category": "topic_match", "lang": "en", "style": "security_secrets"}
+{"text": "Reviewer 2 noted that the related-work section omits several recent studies on graph pruning.", "label": 0, "category": "topic_match", "lang": "en", "style": "review_eval"}
+{"text": "Swimmers must shower before entering the pool.", "label": 0, "category": "topic_match", "lang": "en", "style": "instructions_rules"}
+{"text": "The help page explains what the assistant can and cannot do.", "label": 0, "category": "topic_match", "lang": "en", "style": "ai_assistant"}
+{"text": "Language models predict the next token based on patterns in their training data.", "label": 0, "category": "topic_match", "lang": "en", "style": "ai_assistant"}
+{"text": "Double-blind review means authors must remove identifying details from the manuscript.", "label": 0, "category": "topic_match", "lang": "en", "style": "review_eval"}
+{"text": "Commentators praised the goalkeeper's performance.", "label": 0, "category": "topic_match", "lang": "en", "style": "opinions_quotes"}
+{"text": "Our product owner decides the order of the backlog.", "label": 0, "category": "topic_match", "lang": "en", "style": "persona_roles"}
+{"text": "Moderators keep discussions on topic in the community forum.", "label": 0, "category": "topic_match", "lang": "en", "style": "persona_roles"}
+{"text": "Who should I contact if I think my account has been compromised?", "label": 0, "category": "topic_match", "lang": "en", "style": "security_secrets"}
+{"text": "TL;DR: the move to the new office is postponed until spring.", "label": 0, "category": "topic_match", "lang": "en", "style": "summary_reporting"}
+{"text": "The paper describes a method for detecting text written by language models.", "label": 0, "category": "topic_match", "lang": "en", "style": "ai_assistant"}
+{"text": "Reference checks are conducted only after a conditional offer has been made.", "label": 0, "category": "topic_match", "lang": "en", "style": "review_eval"}
+{"text": "Rule 7: no phones at the dinner table.", "label": 0, "category": "topic_match", "lang": "en", "style": "instructions_rules"}
+{"text": "The new assistant integrates with the calendar to suggest meeting times.", "label": 0, "category": "topic_match", "lang": "en", "style": "ai_assistant"}
+{"text": "Applications that arrive after the deadline will not be considered.", "label": 0, "category": "topic_match", "lang": "en", "style": "review_eval"}
+{"text": "Under GDPR, users can request a copy of the personal data we hold about them.", "label": 0, "category": "topic_match", "lang": "en", "style": "security_secrets"}
+{"text": "We received 87 applications, of which 19 met all the essential criteria.", "label": 0, "category": "topic_match", "lang": "en", "style": "review_eval"}
+{"text": "What are the rules for carrying liquids in hand luggage?", "label": 0, "category": "topic_match", "lang": "en", "style": "instructions_rules"}
+{"text": "Previous instructions about remote work are withdrawn; the hybrid policy now applies.", "label": 0, "category": "topic_match", "lang": "en", "style": "instructions_rules"}
+{"text": "Teaching assistants grade the lab reports; the professor grades the final project.", "label": 0, "category": "topic_match", "lang": "en", "style": "review_eval"}
+{"text": "Our recruiters screen about 300 CVs per month for customer support roles.", "label": 0, "category": "topic_match", "lang": "en", "style": "review_eval"}
+{"text": "Admin rights are granted for a maximum of 30 days and must be renewed.", "label": 0, "category": "topic_match", "lang": "en", "style": "security_secrets"}
+{"text": "Researchers found that the model's accuracy dropped on long documents.", "label": 0, "category": "topic_match", "lang": "en", "style": "ai_assistant"}
+{"text": "The bake-off judges awarded first place to a rhubarb tart.", "label": 0, "category": "topic_match", "lang": "en", "style": "review_eval"}
+{"text": "Researchers red-teamed the model to find unsafe outputs before release.", "label": 0, "category": "topic_match", "lang": "en", "style": "ai_assistant"}
+{"text": "Container images are rebuilt weekly to pick up security patches.", "label": 0, "category": "topic_match", "lang": "en", "style": "systems_tools"}
+{"text": "Interview feedback should focus on observed behaviour rather than personality.", "label": 0, "category": "topic_match", "lang": "en", "style": "review_eval"}
+{"text": "The language model translates product descriptions into nine languages.", "label": 0, "category": "topic_match", "lang": "en", "style": "ai_assistant"}
+{"text": "Hiring managers are asked to submit interview scorecards within 24 hours.", "label": 0, "category": "topic_match", "lang": "en", "style": "review_eval"}
+{"text": "The vendor scored highest on price and second-highest on support quality.", "label": 0, "category": "topic_match", "lang": "en", "style": "review_eval"}
+{"text": "Tabletop players often build detailed backstories for their characters.", "label": 0, "category": "topic_match", "lang": "en", "style": "persona_roles"}
+{"text": "Assembly instructions: attach the legs before tightening the frame bolts.", "label": 0, "category": "topic_match", "lang": "en", "style": "instructions_rules"}
+{"text": "Lay summary: the study found that regular walking improved sleep quality in older adults.", "label": 0, "category": "topic_match", "lang": "en", "style": "summary_reporting"}
+{"text": "Temporary files are written to /var/tmp and cleared on reboot.", "label": 0, "category": "topic_match", "lang": "en", "style": "systems_tools"}

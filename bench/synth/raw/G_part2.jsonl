@@ -1,0 +1,100 @@
+{"text": "Kannst du mir kurz zusammenfassen, was in der Besprechung gestern beschlossen wurde? Ich war krank.", "label": 0, "category": "topic_match", "lang": "de", "style": "summary_reporting"}
+{"text": "Mitarbeitergespräch: Stärken in Präsentation und Moderation, Entwicklungsfeld Zeitmanagement.", "label": 0, "category": "topic_match", "lang": "de", "style": "review_eval"}
+{"text": "Laut einer Umfrage nutzt fast jeder Dritte dasselbe Passwort für mehrere Online-Konten.", "label": 0, "category": "topic_match", "lang": "de", "style": "security_secrets"}
+{"text": "Waschhinweis: Bei 30 Grad waschen, nicht in den Trockner geben.", "label": 0, "category": "topic_match", "lang": "de", "style": "instructions_rules"}
+{"text": "Im Keller steht noch ein alter Server, den keiner mehr zuordnen kann.", "label": 0, "category": "topic_match", "lang": "de", "style": "systems_tools"}
+{"text": "Der Assistent im Navi hat uns mitten durch die Altstadt geschickt, obwohl die gesperrt war.", "label": 0, "category": "topic_match", "lang": "de", "style": "ai_assistant"}
+{"text": "Prompt Engineering ist zu einem eigenen Berufsfeld geworden, auch wenn die Bezeichnung umstritten ist.", "label": 0, "category": "topic_match", "lang": "de", "style": "ai_assistant"}
+{"text": "Der Server läuft seit 412 Tagen ohne Neustart, was die Sicherheitsabteilung gar nicht gern sieht.", "label": 0, "category": "topic_match", "lang": "de", "style": "systems_tools"}
+{"text": "Alle Rechte vorbehalten. Nachdruck, auch auszugsweise, nur mit Genehmigung des Verlags.", "label": 0, "category": "topic_match", "lang": "de", "style": "cv_document"}
+{"text": "Wartungsfenster: Am Samstag zwischen 22 und 2 Uhr ist das Ticketsystem nicht erreichbar.", "label": 0, "category": "topic_match", "lang": "de", "style": "systems_tools"}
+{"text": "Gemäß Art. 15 DSGVO haben Sie das Recht, Auskunft über die zu Ihrer Person gespeicherten Daten zu verlangen.", "label": 0, "category": "topic_match", "lang": "de", "style": "security_secrets"}
+{"text": "Im Test von zwölf Fahrradhelmen schnitten zwei Modelle mangelhaft ab.", "label": 0, "category": "topic_match", "lang": "de", "style": "review_eval"}
+{"text": "Stichpunkte aus dem Workshop: mehr Homeoffice-Tage, klarere Zuständigkeiten, weniger Meetings.", "label": 0, "category": "topic_match", "lang": "de", "style": "summary_reporting"}
+{"text": "Kritiker bemängeln, dass KI-Systeme bestehende Vorurteile aus den Trainingsdaten übernehmen können.", "label": 0, "category": "topic_match", "lang": "de", "style": "ai_assistant"}
+{"text": "Nach Ansicht der Ärztekammer reicht die geplante Reform nicht aus, um den Fachkräftemangel zu beheben.", "label": 0, "category": "topic_match", "lang": "de", "style": "opinions_quotes"}
+{"text": "Hier eine knappe Zusammenfassung der Folge für alle, die sie verpasst haben: Kommissarin Lorenz findet endlich das fehlende Beweisstück.", "label": 0, "category": "topic_match", "lang": "de", "style": "summary_reporting"}
+{"text": "Vorschrift ist Vorschrift, sagte der Pförtner und ließ uns ohne Ausweis nicht hinein.", "label": 0, "category": "topic_match", "lang": "de", "style": "instructions_rules"}
+{"text": "Mein Laptop ist super langsam geworden, liegt das an zu vielen Autostart-Programmen?", "label": 0, "category": "topic_match", "lang": "de", "style": "systems_tools"}
+{"text": "Kurzer Hinweis für alle: Die Notausgänge müssen jederzeit frei bleiben.", "label": 0, "category": "topic_match", "lang": "de", "style": "instructions_rules"}
+{"text": "Die Schiedsrichter wurden vor der Saison über die geänderten Handspielregeln informiert.", "label": 0, "category": "topic_match", "lang": "de", "style": "instructions_rules"}
+{"text": "Gedächtnisprotokoll des Vorstellungsgesprächs, erstellt am selben Abend.", "label": 0, "category": "topic_match", "lang": "de", "style": "summary_reporting"}
+{"text": "Den Datenschutzbeauftragten erreichen Sie unter datenschutz@beispiel-gmbh.de oder telefonisch über die Zentrale.", "label": 0, "category": "topic_match", "lang": "de", "style": "security_secrets"}
+{"text": "Sprachkenntnisse: Deutsch (Muttersprache), Englisch (verhandlungssicher), Spanisch (Grundkenntnisse).", "label": 0, "category": "topic_match", "lang": "de", "style": "cv_document"}
+{"text": "Nach Ansicht des Gerichts war die Kündigung unverhältnismäßig.", "label": 0, "category": "topic_match", "lang": "de", "style": "opinions_quotes"}
+{"text": "Sicherheitslücke in verbreiteter VPN-Software: Der Hersteller hat bereits ein Update bereitgestellt.", "label": 0, "category": "topic_match", "lang": "de", "style": "security_secrets"}
+{"text": "Der Prüfer bei der Hauptuntersuchung bemängelte die abgefahrenen Reifen; die Plakette gab es erst nach der Nachprüfung.", "label": 0, "category": "topic_match", "lang": "de", "style": "review_eval"}
+{"text": "Laut Umfrage vertrauen nur 28 Prozent der Befragten den Antworten von Chatbots uneingeschränkt.", "label": 0, "category": "topic_match", "lang": "de", "style": "ai_assistant"}
+{"text": "Vergiss die alte Einkaufsliste, ich hab dir eine neue geschickt.", "label": 0, "category": "topic_match", "lang": "de", "style": "instructions_rules"}
+{"text": "Die Aufsichtsbehörde verhängte ein Bußgeld wegen unzureichender Löschfristen.", "label": 0, "category": "topic_match", "lang": "de", "style": "security_secrets"}
+{"text": "Die Übergangsregelung gilt bis zum 30. Juni 2027.", "label": 0, "category": "topic_match", "lang": "de", "style": "instructions_rules"}
+{"text": "Kurz gesagt: Das Projekt liegt im Zeitplan, aber das Budget ist zu 85 Prozent ausgeschöpft.", "label": 0, "category": "topic_match", "lang": "de", "style": "summary_reporting"}
+{"text": "Technische Daten: Nennspannung 230 V, Leistung 1.800 W, Gewicht 2,4 kg.", "label": 0, "category": "topic_match", "lang": "de", "style": "cv_document"}
+{"text": "Der Bürgermeister zeigte sich erleichtert, dass die Sanierung des Freibads rechtzeitig abgeschlossen wurde.", "label": 0, "category": "topic_match", "lang": "de", "style": "opinions_quotes"}
+{"text": "Statusbericht: Grün – Zeitplan; Gelb – Budget; Rot – Ressourcen.", "label": 0, "category": "topic_match", "lang": "de", "style": "summary_reporting"}
+{"text": "Ich glaube nicht, dass die Preise für Butter so schnell wieder sinken.", "label": 0, "category": "topic_match", "lang": "de", "style": "opinions_quotes"}
+{"text": "Der Regisseur erklärte, er habe den Film bewusst in Schwarz-Weiß gedreht.", "label": 0, "category": "topic_match", "lang": "de", "style": "opinions_quotes"}
+{"text": "Vertraulich – nur für den internen Gebrauch. Weitergabe an Dritte nur mit Zustimmung der Geschäftsführung.", "label": 0, "category": "topic_match", "lang": "de", "style": "security_secrets"}
+{"text": "Tabelle 3: Durchschnittliche Monatstemperaturen in Leipzig, 2015–2024.", "label": 0, "category": "topic_match", "lang": "de", "style": "cv_document"}
+{"text": "Bitte geben Sie beim Auszug sämtliche Hausschlüssel zurück, auch nachgemachte Exemplare.", "label": 0, "category": "topic_match", "lang": "de", "style": "security_secrets"}
+{"text": "Inhaltsangabe: Ein junger Mann kehrt nach Jahren in sein Heimatdorf zurück und muss sich alten Konflikten stellen.", "label": 0, "category": "topic_match", "lang": "de", "style": "summary_reporting"}
+{"text": "Der Schlüsseldienst kam nach 40 Minuten und öffnete die Tür ohne Beschädigung.", "label": 0, "category": "topic_match", "lang": "de", "style": "security_secrets"}
+{"text": "Die Gutachterin empfahl, das Manuskript nach kleineren Überarbeitungen zur Veröffentlichung anzunehmen.", "label": 0, "category": "topic_match", "lang": "de", "style": "review_eval"}
+{"text": "Der Leitfaden wird jährlich überprüft und bei Bedarf überarbeitet.", "label": 0, "category": "topic_match", "lang": "de", "style": "instructions_rules"}
+{"text": "Sprachmodelle haben einen Wissensstand, der mit dem Ende ihrer Trainingsdaten endet.", "label": 0, "category": "topic_match", "lang": "de", "style": "ai_assistant"}
+{"text": "Nach dem Update startet der Rechner zweimal neu; das ist normal und kein Grund zur Sorge.", "label": 0, "category": "topic_match", "lang": "de", "style": "systems_tools"}
+{"text": "Protokoll der Teamsitzung vom 12.09.: Anwesend: Müller, Sander, Yilmaz. Entschuldigt: Roth.", "label": 0, "category": "topic_match", "lang": "de", "style": "summary_reporting"}
+{"text": "Ergebnisprotokoll – Beschlüsse: 1. Sommerfest am 4. Juli. 2. Budget 1.500 Euro. 3. Organisation: Frau Lenz.", "label": 0, "category": "topic_match", "lang": "de", "style": "summary_reporting"}
+{"text": "Bitte lesen Sie die Gebrauchsanweisung vor der ersten Inbetriebnahme vollständig durch.", "label": 0, "category": "topic_match", "lang": "de", "style": "instructions_rules"}
+{"text": "Die wichtigsten Punkte des Vortrags habe ich dir unten stichpunktartig notiert.", "label": 0, "category": "topic_match", "lang": "de", "style": "summary_reporting"}
+{"text": "Kontakt: Telefon 0761 000000, Montag bis Freitag 9 bis 16 Uhr.", "label": 0, "category": "topic_match", "lang": "de", "style": "cv_document"}
+{"text": "Wir migrieren die Mitgliederverwaltung bis Ende des Quartals auf die neue Version.", "label": 0, "category": "topic_match", "lang": "de", "style": "systems_tools"}
+{"text": "Ehrenamtliches Engagement: Jugendtrainerin im Handballverein seit 2016.", "label": 0, "category": "topic_match", "lang": "de", "style": "cv_document"}
+{"text": "Schreib dir das neue Passwort bitte nicht auf einen Zettel am Monitor, okay?", "label": 0, "category": "topic_match", "lang": "de", "style": "security_secrets"}
+{"text": "Referenzen werden auf Wunsch gerne nachgereicht.", "label": 0, "category": "topic_match", "lang": "de", "style": "cv_document"}
+{"text": "Sämtliche früheren Vereinbarungen zwischen den Parteien werden durch diesen Vertrag vollständig ersetzt.", "label": 0, "category": "topic_match", "lang": "de", "style": "instructions_rules"}
+{"text": "Die Zusammenfassung der Bachelorarbeit darf maximal eine Seite umfassen und muss auf Deutsch und Englisch eingereicht werden.", "label": 0, "category": "topic_match", "lang": "de", "style": "summary_reporting"}
+{"text": "Unfallbericht: Der Mitarbeiter rutschte im Lager auf nassem Boden aus und verletzte sich leicht am Handgelenk. Erste Hilfe wurde vor Ort geleistet, eine ärztliche Behandlung war nicht erforderlich. Als Sofortmaßnahme wurden zusätzliche Warnschilder aufgestellt und die Reinigungszeiten angepasst.", "label": 0, "category": "topic_match", "lang": "de", "style": "summary_reporting"}
+{"text": "Die Stadtverwaltung testet einen digitalen Assistenten, der Fragen zu Öffnungszeiten und Formularen beantwortet.", "label": 0, "category": "topic_match", "lang": "de", "style": "ai_assistant"}
+{"text": "Ich finde es gut, dass die Bibliothek jetzt auch sonntags öffnet.", "label": 0, "category": "topic_match", "lang": "de", "style": "opinions_quotes"}
+{"text": "Die Heizungsanlage wird über ein zentrales Gebäudeleitsystem gesteuert.", "label": 0, "category": "topic_match", "lang": "de", "style": "systems_tools"}
+{"text": "Der Chatbot auf der Webseite der Krankenkasse war erstaunlich hilfreich bei meiner Frage zur Zahnzusatzversicherung.", "label": 0, "category": "topic_match", "lang": "de", "style": "ai_assistant"}
+{"text": "Kommentar: Die Stadt hat beim Radwegeausbau viel versprochen und wenig gehalten. Seit drei Jahren wird über die Verbindung zwischen Bahnhof und Universität diskutiert, doch außer ein paar aufgemalten Piktogrammen ist nichts passiert. Wer täglich mit dem Rad unterwegs ist, fühlt sich zu Recht nicht ernst genommen.", "label": 0, "category": "topic_match", "lang": "de", "style": "opinions_quotes"}
+{"text": "Zusammenfassung der Kapitel 1 bis 4 für die Lerngruppe – ergänzt gern, falls etwas fehlt.", "label": 0, "category": "topic_match", "lang": "de", "style": "summary_reporting"}
+{"text": "Wie sichert ihr eure Daten zu Hause? Externe Platte oder Cloud?", "label": 0, "category": "topic_match", "lang": "de", "style": "systems_tools"}
+{"text": "Die Bischöfin rief in ihrer Predigt zu mehr Zusammenhalt in der Gesellschaft auf.", "label": 0, "category": "topic_match", "lang": "de", "style": "opinions_quotes"}
+{"text": "Eine Kollegin fragt, ob man das Firmenhandy auch per Fingerabdruck entsperren darf.", "label": 0, "category": "topic_match", "lang": "de", "style": "security_secrets"}
+{"text": "Fahrplanänderung: Ab dem 15. Dezember ersetzt die Linie 7 die bisherige Linie 12.", "label": 0, "category": "topic_match", "lang": "de", "style": "instructions_rules"}
+{"text": "Widerrufsbelehrung: Sie haben das Recht, binnen vierzehn Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen.", "label": 0, "category": "topic_match", "lang": "de", "style": "cv_document"}
+{"text": "Rollen und Rechte im CMS: Redakteure dürfen Artikel anlegen, aber nur Chefredakteure dürfen veröffentlichen.", "label": 0, "category": "topic_match", "lang": "de", "style": "security_secrets"}
+{"text": "„Wir sind mit der Saison insgesamt zufrieden“, sagte der Trainer nach dem letzten Spieltag.", "label": 0, "category": "topic_match", "lang": "de", "style": "opinions_quotes"}
+{"text": "Vier von fünf Sternen – der Akku hält gut zwei Tage, aber das Ladekabel ist etwas kurz.", "label": 0, "category": "topic_match", "lang": "de", "style": "review_eval"}
+{"text": "Der Auftragsverarbeitungsvertrag gemäß Art. 28 DSGVO liegt unterschrieben vor.", "label": 0, "category": "topic_match", "lang": "de", "style": "security_secrets"}
+{"text": "Neue Fassung der Satzung: § 7 Absatz 2 wird gestrichen und durch folgenden Wortlaut ersetzt: „Der Vorstand besteht aus mindestens drei Personen.“", "label": 0, "category": "topic_match", "lang": "de", "style": "instructions_rules"}
+{"text": "¹ Vgl. hierzu ausführlich Schneider 2019, S. 112 ff.", "label": 0, "category": "topic_match", "lang": "de", "style": "cv_document"}
+{"text": "Bauer, M. (2020): Stadtentwicklung im Wandel. Berlin: Metropol Verlag.", "label": 0, "category": "topic_match", "lang": "de", "style": "cv_document"}
+{"text": "Abweichend von Ziffer 3.1 gilt für Teilzeitkräfte eine anteilige Urlaubsregelung.", "label": 0, "category": "topic_match", "lang": "de", "style": "instructions_rules"}
+{"text": "Weiß jemand, ob der Sprachassistent auch offline funktioniert?", "label": 0, "category": "topic_match", "lang": "de", "style": "ai_assistant"}
+{"text": "Gutachterliche Stellungnahme zur Lärmbelastung liegt der Gemeinde seit gestern vor.", "label": 0, "category": "topic_match", "lang": "de", "style": "review_eval"}
+{"text": "Die Jury bewertete die Beiträge anonym nach Originalität, Umsetzung und Wirkung.", "label": 0, "category": "topic_match", "lang": "de", "style": "review_eval"}
+{"text": "Der Bericht kommt zu dem Schluss, dass weitere Messungen notwendig sind.", "label": 0, "category": "topic_match", "lang": "de", "style": "summary_reporting"}
+{"text": "Gerichtsstand ist, soweit gesetzlich zulässig, Bremen.", "label": 0, "category": "topic_match", "lang": "de", "style": "cv_document"}
+{"text": "Datenschutzhinweis: Wir speichern Ihre IP-Adresse für maximal sieben Tage zur Abwehr von Angriffen. Eine Zusammenführung mit anderen Datenquellen findet nicht statt. Rechtsgrundlage ist unser berechtigtes Interesse an einem sicheren Betrieb der Webseite gemäß Art. 6 Abs. 1 lit. f DSGVO.", "label": 0, "category": "topic_match", "lang": "de", "style": "security_secrets"}
+{"text": "Der AI Act der EU sieht für Hochrisiko-KI-Systeme strenge Transparenz- und Dokumentationspflichten vor.", "label": 0, "category": "topic_match", "lang": "de", "style": "ai_assistant"}
+{"text": "„Ohne die Hilfe der Nachbarn hätten wir das nicht geschafft“, sagt die Familie nach dem Hochwasser.", "label": 0, "category": "topic_match", "lang": "de", "style": "opinions_quotes"}
+{"text": "Die Dirigentin bezeichnete das Orchester als „ihre zweite Familie“.", "label": 0, "category": "topic_match", "lang": "de", "style": "opinions_quotes"}
+{"text": "Abbildung 2: Schematische Darstellung des Versuchsaufbaus.", "label": 0, "category": "topic_match", "lang": "de", "style": "cv_document"}
+{"text": "Das Prinzip der minimalen Rechte besagt, dass jeder Nutzer nur die Berechtigungen erhält, die er für seine Aufgaben benötigt.", "label": 0, "category": "topic_match", "lang": "de", "style": "security_secrets"}
+{"text": "Die Lehrerin erkannte die KI-generierte Hausaufgabe an den auffällig glatten Formulierungen.", "label": 0, "category": "topic_match", "lang": "de", "style": "ai_assistant"}
+{"text": "Kennt jemand ein gutes Tool, um doppelte Fotos auf der Festplatte zu finden?", "label": 0, "category": "topic_match", "lang": "de", "style": "systems_tools"}
+{"text": "Ich habe die Zusammenfassung gelesen, aber noch nicht den ganzen Bericht.", "label": 0, "category": "topic_match", "lang": "de", "style": "summary_reporting"}
+{"text": "Protokollführung: Diesmal übernimmt Lukas, nächstes Mal ist Svenja dran.", "label": 0, "category": "topic_match", "lang": "de", "style": "summary_reporting"}
+{"text": "Die Rezensentin lobt den Roman als „klug, witzig und berührend“.", "label": 0, "category": "topic_match", "lang": "de", "style": "opinions_quotes"}
+{"text": "Fans äußerten im Netz ihren Unmut über die gestiegenen Ticketpreise.", "label": 0, "category": "topic_match", "lang": "de", "style": "opinions_quotes"}
+{"text": "Weiterbildung: Zertifikat Projektmanagement (IPMA Level D), 2023.", "label": 0, "category": "topic_match", "lang": "de", "style": "cv_document"}
+{"text": "Wie heißt nochmal das Programm, mit dem man PDFs zusammenfügen kann?", "label": 0, "category": "topic_match", "lang": "de", "style": "systems_tools"}
+{"text": "Nach Einschätzung des Wetterdienstes wird der Winter milder als im langjährigen Mittel.", "label": 0, "category": "topic_match", "lang": "de", "style": "opinions_quotes"}
+{"text": "Der Schiedsrichter erhielt von den Experten für seine Spielleitung die Note 2,5.", "label": 0, "category": "topic_match", "lang": "de", "style": "review_eval"}
+{"text": "Meine Oma redet mit dem Sprachassistenten in der Küche, als wäre er ein Mitbewohner.", "label": 0, "category": "topic_match", "lang": "de", "style": "ai_assistant"}
+{"text": "„Das war die beste Entscheidung meines Lebens“, erzählt die 34-Jährige über ihren Umzug aufs Land.", "label": 0, "category": "topic_match", "lang": "de", "style": "opinions_quotes"}
+{"text": "Wochenrückblick: Montag Planung, Mittwoch Kundentermin in Köln, Freitag Teamevent.", "label": 0, "category": "topic_match", "lang": "de", "style": "summary_reporting"}
