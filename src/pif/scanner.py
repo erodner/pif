@@ -233,7 +233,7 @@ def _page_segments(text: str, hidden_mask: list[bool]):
     start = 0
     for i in range(1, len(text) + 1):
         if i == len(text) or (hidden_mask[i] != hidden_mask[start] and not text[i].isspace()):
-            segments.extend(split_segments(text[start:i], force=hidden_mask[start], offset=start))
+            segments.extend(split_segments(text[start:i], force=hidden_mask[start], offset=start, hidden=hidden_mask[start]))
             start = i
     return segments
 

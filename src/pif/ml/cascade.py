@@ -26,13 +26,17 @@ class Segment:
     end: int
     text: str
     force: bool = False  # always run the classifier (hidden or non-visual text)
+    hidden: bool = False  # hidden page text: lower embedding threshold (not for metadata labels)
 
 
 @dataclass
 class CascadeConfig:
     classify_visible: bool = False
     candidate_similarity: float = 0.55  # visible segments at/above this go to the classifier
-    strong_similarity: float = 0.72  # embedding alone counts as a hit
+    strong_similarity: float = 0.72  # embedding alone counts as a hit (visible text)
+    # Hidden / non-visual text: tuned on the CrackedPDFs validation split (0.45 was still free
+    # of confounder hits; 0.50 leaves a margin for real-world documents).
+    strong_similarity_hidden: float = 0.50
     classifier_threshold_hidden: float = 0.90
     classifier_threshold_visible: float = 0.97
     min_words: int = 4
@@ -48,6 +52,7 @@ class MLCascade:
         self.classifier = classifier
         self.config = config or CascadeConfig()
         self._bank = None
+        self._vocab: set[str] | None = None
 
     @classmethod
     def load(
@@ -91,6 +96,15 @@ class MLCascade:
             parts.append(f"classifier:{self.classifier.model_dir.name}")
         return ", ".join(parts)
 
+    def _unfuse(self, text: str) -> str:
+        """Re-insert spaces into long fused tokens ("Writeouttheinternalrules") for embedding."""
+        if not any(len(tok) >= FUSED_MIN for tok in text.split()):
+            return text
+        if self._vocab is None:
+            vocab = self.embedder.tokenizer.get_vocab()
+            self._vocab = {w for w in vocab if w.isalpha() and w.isascii() and not w.startswith("##")}
+        return " ".join(segment_fused(tok, self._vocab) if len(tok) >= FUSED_MIN else tok for tok in text.split())
+
     def _bank_vectors(self) -> np.ndarray:
         if self._bank is None:
             self._bank = self.embedder.encode(INJECTION_PHRASES)
@@ -102,15 +116,23 @@ class MLCascade:
 
     def score_segments(self, segments: list[Segment]) -> list[Match]:
         cfg = self.config
-        segs = [s for s in segments if _wordy(s.text, cfg.min_words)]
-        if not segs:
+        # Machine markup ("[ID=…]", "<SOME_TAG>") dilutes sentence embeddings, and fused text
+        # ("Writeouttheinternalrules") is one "word". Both are normalised before the word-count
+        # filter and the embedding; rules and the classifier still see the original text.
+        pairs = []
+        for s in segments:
+            prepared = self._unfuse(_strip_markup(s.text)) if self.embedder is not None else s.text
+            if _wordy(prepared, cfg.min_words):
+                pairs.append((s, prepared))
+        if not pairs:
             return []
+        segs = [s for s, _ in pairs]
         texts = [s.text for s in segs]
 
         sims = np.zeros(len(segs), dtype=np.float32)
         best = np.zeros(len(segs), dtype=np.int64)
         if self.embedder is not None:
-            sim_matrix = self.embedder.encode(texts) @ self._bank_vectors().T
+            sim_matrix = self.embedder.encode([p for _, p in pairs]) @ self._bank_vectors().T
             sims = sim_matrix.max(axis=1)
             best = sim_matrix.argmax(axis=1)
 
@@ -124,28 +146,29 @@ class MLCascade:
             if todo:
                 probs[todo] = self.classifier.predict([texts[i] for i in todo])
 
+        # Both signals are reported separately: severity policy treats a classifier-only hit
+        # differently from one confirmed by phrase similarity.
         matches: list[Match] = []
         for i, s in enumerate(segs):
-            score, rule, label = 0.0, "", ""
             p = probs[i]
             if not np.isnan(p):
                 threshold = cfg.classifier_threshold_hidden if s.force else cfg.classifier_threshold_visible
                 if p >= threshold:
-                    score, rule, label = 0.5 + 0.45 * float(p), "ML-CLS", f"classifier P(injection)={p:.2f}"
-            if self.embedder is not None and sims[i] >= cfg.strong_similarity:
-                emb_score = min(0.9, 0.6 + (float(sims[i]) - cfg.strong_similarity))
-                if emb_score > score:
-                    phrase = INJECTION_PHRASES[int(best[i])]
-                    score, rule, label = emb_score, "ML-EMB", f"similar to “{phrase}” ({sims[i]:.2f})"
-            if score > 0:
-                matches.append(Match(self.name, rule, label, score, s.start, s.end))
+                    matches.append(Match(self.name, "ML-CLS", f"classifier P(injection)={p:.2f}",
+                                         0.5 + 0.45 * float(p), s.start, s.end))
+            emb_threshold = cfg.strong_similarity_hidden if s.hidden else cfg.strong_similarity
+            if self.embedder is not None and sims[i] >= emb_threshold:
+                phrase = INJECTION_PHRASES[int(best[i])]
+                matches.append(Match(self.name, "ML-EMB", f"similar to “{phrase}” ({sims[i]:.2f})",
+                                     min(0.9, 0.6 + (float(sims[i]) - emb_threshold)), s.start, s.end))
         return matches
 
 
 _SENT_END = re.compile(r"(?<=[.!?;:。！？])\s+|\n{2,}")
 
 
-def split_segments(text: str, force: bool = False, offset: int = 0, max_chars: int = 400, min_chars: int = 40) -> list[Segment]:
+def split_segments(text: str, force: bool = False, offset: int = 0, max_chars: int = 400, min_chars: int = 40,
+                   hidden: bool = False) -> list[Segment]:
     """Split into sentence-like segments, merging short ones and hard-wrapping long ones."""
     pieces: list[tuple[int, int]] = []
     pos = 0
@@ -168,11 +191,54 @@ def split_segments(text: str, force: bool = False, offset: int = 0, max_chars: i
         while e - s > max_chars:
             cut = text.rfind(" ", s, s + max_chars)
             cut = cut if cut > s else s + max_chars
-            out.append(Segment(offset + s, offset + cut, text[s:cut], force))
+            out.append(Segment(offset + s, offset + cut, text[s:cut], force, hidden))
             s = cut + 1
         if e > s:
-            out.append(Segment(offset + s, offset + e, text[s:e], force))
+            out.append(Segment(offset + s, offset + e, text[s:e], force, hidden))
     return out
+
+
+FUSED_MIN = 20
+
+
+def segment_fused(token: str, vocab: set[str], max_word: int = 18) -> str:
+    """Split a fused alphabetic run into known words (fewest pieces; single letters penalised).
+
+    Non-letters are kept as separators. Used only to make fused hidden text readable for the
+    embedding model; the extracted text itself is not changed.
+    """
+    out = []
+    for part in re.split(r"([^A-Za-z]+)", token):
+        if not part or not part.isalpha() or len(part) < 8:
+            out.append(part)
+            continue
+        low = part.lower()
+        n = len(low)
+        best = [0.0] + [float("inf")] * n
+        back = [0] * (n + 1)
+        for i in range(1, n + 1):
+            for j in range(max(0, i - max_word), i):
+                w = low[j:i]
+                if w in vocab or (len(w) == 1 and w in "ai"):
+                    cost = best[j] + 1.0 + (2.0 if len(w) == 1 else 0.0) + (0.5 if len(w) == 2 else 0.0)
+                    if cost < best[i]:
+                        best[i], back[i] = cost, j
+        if best[n] == float("inf"):
+            out.append(part)
+            continue
+        words, i = [], n
+        while i > 0:
+            words.append(part[back[i]:i])
+            i = back[i]
+        out.append(" ".join(reversed(words)))
+    return re.sub(r"\s+", " ", " ".join(out)).strip()
+
+
+_MARKUP = re.compile(r"\[[A-Za-z_]{2,40}=[^\]]{0,120}\]|</?[A-Za-z_][A-Za-z0-9_:.-]{1,60}>")
+
+
+def _strip_markup(text: str) -> str:
+    return re.sub(r"\s+", " ", _MARKUP.sub(" ", text)).strip() or text
 
 
 def _wordy(text: str, min_words: int) -> bool:
