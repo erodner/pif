@@ -6,3 +6,5 @@ build/
 models/
 tests/fixtures/
 .pytest_cache/
+bench/data/
+bench/results/
