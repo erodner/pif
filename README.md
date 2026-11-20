@@ -10,7 +10,7 @@ text while LLMs read another. Everything runs **offline** on your machine.
 
 **Website:** https://www.erodner.de/pif/
 
-It is available as a desktop app (macOS, Windows, Linux), a command line tool and a Python library.
+It is available as a desktop app (macOS on Apple Silicon, Windows, Linux), a command line tool and a Python library.
 
 ## Download the desktop app
 
@@ -19,7 +19,6 @@ Get the latest build from the [Releases page](https://github.com/erodner/pif/rel
 | Platform | File |
 |---|---|
 | macOS, Apple Silicon | `PromptInjectionFinder-<version>-macos-arm64.dmg` |
-| macOS, Intel | `PromptInjectionFinder-<version>-macos-x86_64.dmg` |
 | Windows 10/11 | `…-windows-x64-setup.exe` (installer) or `…-portable.zip` |
 | Linux x86_64 | `…-linux-x86_64.tar.gz` |
 
