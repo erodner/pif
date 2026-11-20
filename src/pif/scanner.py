@@ -43,7 +43,11 @@ def scan(source: str | Path | bytes, options: ScanOptions | None = None) -> Repo
     report = Report(path=name)
     t0 = time.perf_counter()
     try:
-        head = source[:1024] if isinstance(source, bytes) else Path(source).open("rb").read(1024)
+        if isinstance(source, bytes):
+            head = source[:1024]
+        else:
+            with open(source, "rb") as fh:
+                head = fh.read(1024)
         if b"%PDF" not in head:
             report.errors.append("not a PDF file (no %PDF header)")
             report.seconds = time.perf_counter() - t0

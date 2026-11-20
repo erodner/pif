@@ -15,6 +15,7 @@ from rich.progress import BarColumn, MofNCompleteColumn, Progress, TextColumn, T
 from .detect.patterns import PatternDetector
 from .model import Report, Severity
 from .report import html_report, json_report, sarif_report, text_report
+from . import runner
 from .scanner import ScanOptions, scan
 
 app = typer.Typer(add_completion=False, help="Find hidden and visible prompt-injection patterns in PDF documents.")
@@ -81,59 +82,32 @@ def collect_pdfs(paths: list[Path], recursive: bool = True, include_hidden: bool
     return out
 
 
-# ------------------------------------------------------------------------------ workers
-
-_WORKER_ML = None
-
-
-_WORKER_OCR = None
-
-
-def _worker_init(ml_mode: str, ocr_mode: str, threads: int) -> None:
-    global _WORKER_ML, _WORKER_OCR
-    # Share the cores between workers instead of every ONNX session grabbing all of them.
-    os.environ.setdefault("PIF_THREADS", str(threads))
-    os.environ.setdefault("OMP_NUM_THREADS", str(threads))
-    _WORKER_ML = _load_ml(MlMode(ml_mode), quiet=True)
-    _WORKER_OCR = _load_ocr(MlMode(ocr_mode), quiet=True)
-
-
-def _scan_in_worker(path: str, opt: ScanOptions) -> Report:
-    opt.ml = _WORKER_ML
-    opt.glyph_checker = _WORKER_OCR
-    return scan(path, opt)
-
-
-def _load_ocr(mode: MlMode, quiet: bool = False):
-    if mode is MlMode.off:
-        return None
-    from .visibility.ocr import GlyphChecker
-
-    checker = GlyphChecker.load()
-    if checker is None and mode is MlMode.on:
-        err.print("[red]error:[/] OCR needs `pip install promptinjectorfinder[ocr]`")
-        raise typer.Exit(2)
-    if not quiet:
-        err.print(f"[dim]OCR glyph check: {'on' if checker else 'not installed'}[/]")
-    return checker
+# ------------------------------------------------------------------------------ detectors
 
 
 def _load_ml(mode: MlMode, quiet: bool = False):
-    if mode is MlMode.off:
-        return None
-    from .ml.cascade import MLCascade
-
     try:
-        ml = MLCascade.load(require=mode is MlMode.on)
-    except RuntimeError as e:
+        ml = runner.load_ml(mode.value)
+    except runner.DetectorUnavailable as e:
         err.print(f"[red]error:[/] {e}")
         raise typer.Exit(2)
-    if not quiet:
+    if not quiet and mode is not MlMode.off:
         if ml is None:
             err.print("[dim]ML detectors: not installed (rules only; see `pif models download`)[/]")
         else:
             err.print(f"[dim]ML detectors: {ml.description}[/]")
     return ml
+
+
+def _load_ocr(mode: MlMode, quiet: bool = False):
+    try:
+        checker = runner.load_ocr(mode.value)
+    except runner.DetectorUnavailable as e:
+        err.print(f"[red]error:[/] {e}")
+        raise typer.Exit(2)
+    if not quiet and mode is not MlMode.off:
+        err.print(f"[dim]OCR glyph check: {'on' if checker else 'not installed'}[/]")
+    return checker
 
 
 # ------------------------------------------------------------------------------ commands
@@ -200,8 +174,11 @@ def scan_cmd(
                 bar.update(task, current=_short(f))
                 done(i, scan(str(f), opt))
         else:
-            with ProcessPoolExecutor(max_workers=workers, initializer=_worker_init, initargs=(ml.value, ocr.value, max(1, (os.cpu_count() or 1) // workers))) as ex:
-                futures = {ex.submit(_scan_in_worker, str(f), opt): i for i, f in enumerate(files)}
+            if ml is MlMode.on:
+                _load_ml(ml, quiet=True)  # fail fast in the parent if models are missing
+            initargs = (ml.value, ocr.value, runner.threads_per_worker(workers))
+            with ProcessPoolExecutor(max_workers=workers, initializer=runner.worker_init, initargs=initargs) as ex:
+                futures = {ex.submit(runner.scan_in_worker, str(f), opt): i for i, f in enumerate(files)}
                 for fut in as_completed(futures):
                     i = futures[fut]
                     try:
