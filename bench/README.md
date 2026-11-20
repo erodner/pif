@@ -1,5 +1,10 @@
 # Benchmarks
 
+| Benchmark | What it tests | Source |
+|---|---|---|
+| [CrackedPDFs](#crackedpdfs) | 15 hiding techniques, synthetic payloads, matched benign confounders; published baselines | external (arXiv 2607.19396) |
+| [PlantedPI-PDF](planted/README.md) | real injection texts (EN/DE) + hard benign trigger-word texts (NotInject) planted with 16 techniques | built reproducibly by `planted/build.py` |
+
 ## CrackedPDFs
 
 [CrackedPDFs](https://arxiv.org/abs/2607.19396) ([dataset](https://huggingface.co/datasets/volkthienpreecha/crackedpdfs),
