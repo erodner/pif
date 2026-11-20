@@ -14,7 +14,7 @@ from rich.progress import BarColumn, MofNCompleteColumn, Progress, TextColumn, T
 
 from .detect.patterns import PatternDetector
 from .model import Report, Severity
-from .report import json_report, sarif_report, text_report
+from .report import html_report, json_report, sarif_report, text_report
 from .scanner import ScanOptions, scan
 
 app = typer.Typer(add_completion=False, help="Find hidden and visible prompt-injection patterns in PDF documents.")
@@ -28,6 +28,7 @@ class Fmt(str, Enum):
     text = "text"
     json = "json"
     sarif = "sarif"
+    html = "html"
 
 
 class FailOn(str, Enum):
@@ -85,16 +86,36 @@ def collect_pdfs(paths: list[Path], recursive: bool = True, include_hidden: bool
 _WORKER_ML = None
 
 
-def _worker_init(ml_mode: str, threads: int) -> None:
-    global _WORKER_ML
+_WORKER_OCR = None
+
+
+def _worker_init(ml_mode: str, ocr_mode: str, threads: int) -> None:
+    global _WORKER_ML, _WORKER_OCR
     # Share the cores between workers instead of every ONNX session grabbing all of them.
     os.environ.setdefault("PIF_THREADS", str(threads))
+    os.environ.setdefault("OMP_NUM_THREADS", str(threads))
     _WORKER_ML = _load_ml(MlMode(ml_mode), quiet=True)
+    _WORKER_OCR = _load_ocr(MlMode(ocr_mode), quiet=True)
 
 
 def _scan_in_worker(path: str, opt: ScanOptions) -> Report:
     opt.ml = _WORKER_ML
+    opt.glyph_checker = _WORKER_OCR
     return scan(path, opt)
+
+
+def _load_ocr(mode: MlMode, quiet: bool = False):
+    if mode is MlMode.off:
+        return None
+    from .visibility.ocr import GlyphChecker
+
+    checker = GlyphChecker.load()
+    if checker is None and mode is MlMode.on:
+        err.print("[red]error:[/] OCR needs `pip install promptinjectorfinder[ocr]`")
+        raise typer.Exit(2)
+    if not quiet:
+        err.print(f"[dim]OCR glyph check: {'on' if checker else 'not installed'}[/]")
+    return checker
 
 
 def _load_ml(mode: MlMode, quiet: bool = False):
@@ -129,6 +150,7 @@ def scan_cmd(
     include_hidden: bool = typer.Option(False, "--include-hidden", help="Also scan hidden files and directories."),
     no_render: bool = typer.Option(False, "--no-render", help="Skip pixel-based visibility check (faster, misses colour/cover tricks)."),
     ml: MlMode = typer.Option(MlMode.auto, "--ml", help="ML detectors: auto = use installed models."),
+    ocr: MlMode = typer.Option(MlMode.auto, "--ocr", help="OCR glyph-remapping check: auto = use if installed."),
     rules: Path | None = typer.Option(None, help="JSON file with extra pattern rules [{id,label,pattern,score}]."),
     jobs: int = typer.Option(1, "--jobs", "-j", min=1, help="Parallel worker processes."),
     progress: bool | None = typer.Option(None, "--progress/--no-progress", help="Progress bar (default: on when stderr is a terminal)."),
@@ -148,6 +170,7 @@ def scan_cmd(
     workers = min(jobs, len(files))
     if workers <= 1:
         opt.ml = _load_ml(ml, quiet=quiet)
+        opt.glyph_checker = _load_ocr(ocr, quiet=quiet)
     elif not quiet:
         err.print(f"[dim]scanning {len(files)} PDF(s) with {workers} workers[/]")
 
@@ -177,7 +200,7 @@ def scan_cmd(
                 bar.update(task, current=_short(f))
                 done(i, scan(str(f), opt))
         else:
-            with ProcessPoolExecutor(max_workers=workers, initializer=_worker_init, initargs=(ml.value, max(1, (os.cpu_count() or 1) // workers))) as ex:
+            with ProcessPoolExecutor(max_workers=workers, initializer=_worker_init, initargs=(ml.value, ocr.value, max(1, (os.cpu_count() or 1) // workers))) as ex:
                 futures = {ex.submit(_scan_in_worker, str(f), opt): i for i, f in enumerate(files)}
                 for fut in as_completed(futures):
                     i = futures[fut]
@@ -191,11 +214,15 @@ def scan_cmd(
         out = json_report.render(ordered)
     elif fmt is Fmt.sarif:
         out = sarif_report.render(ordered)
+    elif fmt is Fmt.html:
+        out = html_report.render(ordered)
     else:
         out = text_report.render(ordered, min_severity)
 
     if output:
         output.write_text(out, encoding="utf-8")
+        if not quiet:
+            err.print(f"[dim]report written to {output}[/]")
     else:
         sys.stdout.write(out + ("\n" if not out.endswith("\n") else ""))
 

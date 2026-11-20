@@ -145,6 +145,38 @@ def build_all(out: Path) -> dict[str, tuple[str | None, str | None]]:
     return dict(EXPECTED)
 
 
+def _rot13(text: str) -> str:
+    import codecs
+
+    return codecs.encode(text, "rot13")
+
+
+def remapped_font_pdf(path: Path, hidden_text: str) -> None:
+    """Page shows rot13(hidden_text) in Courier, but a lying /ToUnicode CMap makes text
+    extraction (and so an LLM) read `hidden_text`. This is the "malicious font" attack."""
+    d = pymupdf.open()
+    p = _page(d)
+    y = 340
+    for line in hidden_text.split("\n"):
+        p.insert_text((72, y), _rot13(line), fontsize=11, fontname="cour")
+        y += 16
+    font_xref = next(f[0] for f in p.get_fonts() if f[3] == "Courier")
+    letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    pairs = "\n".join(f"<{ord(_rot13(c)):02X}> <{ord(c):04X}>" for c in letters)
+    cmap = (
+        "/CIDInit /ProcSet findresource begin 12 dict begin begincmap /CMapName /Remap def /CMapType 2 def\n"
+        "1 begincodespacerange <00> <FF> endcodespacerange\n"
+        f"{len(letters)} beginbfchar\n{pairs}\nendbfchar\n"
+        "endcmap CMapName currentdict /CMap defineresource pop end end"
+    )
+    sx = d.get_new_xref()
+    d.update_object(sx, "<<>>")
+    d.update_stream(sx, cmap.encode())
+    d.xref_set_key(font_xref, "ToUnicode", f"{sx} 0 R")
+    d.save(path)
+    d.close()
+
+
 if __name__ == "__main__":
     target = Path(sys.argv[1] if len(sys.argv) > 1 else "tests/fixtures")
     for name, exp in build_all(target).items():

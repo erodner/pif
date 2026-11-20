@@ -33,6 +33,7 @@ class ScanOptions:
     context_chars: int = 80
     detectors: list[Detector] = field(default_factory=lambda: [PatternDetector()])
     ml: Any = None  # pif.ml.cascade.MLCascade, optional
+    glyph_checker: Any = None  # pif.visibility.ocr.GlyphChecker, optional (OCR)
 
 
 def scan(source: str | Path | bytes, options: ScanOptions | None = None) -> Report:
@@ -68,40 +69,80 @@ def scan(source: str | Path | bytes, options: ScanOptions | None = None) -> Repo
 def _scan_doc(doc: pymupdf.Document, opt: ScanOptions, report: Report) -> None:
     report.pages = doc.page_count
     spans_by_page = extract_spans(doc)
+    # 1) visibility: structural rules + pixel diff, 2) OCR glyph check on what is visible,
+    # 3) semantic analysis per page.
     renderer = PageRenderer(doc, opt.zoom, opt.contrast_threshold) if opt.render else None
     try:
-        for pno in range(doc.page_count):
-            spans = spans_by_page.get(pno, [])
-            if spans:
-                report.findings.extend(_scan_page(doc[pno], pno, spans, renderer, opt))
+        for pno, spans in spans_by_page.items():
+            _apply_structural_rules(doc[pno], spans, opt)
+            if renderer is not None and spans:
+                _apply_render_check(renderer, pno, spans, opt)
     finally:
         if renderer:
             renderer.close()
+    if opt.glyph_checker is not None:
+        report.findings.extend(_check_glyphs(doc, spans_by_page, opt))
+    for pno in range(doc.page_count):
+        spans = spans_by_page.get(pno, [])
+        if spans:
+            report.findings.extend(_scan_page(pno, spans, opt))
     report.findings.extend(_scan_carriers(doc, opt))
 
 
 # --------------------------------------------------------------------------------------- page
 
 
-def _scan_page(page, pno: int, spans: list[Span], renderer: PageRenderer | None, opt: ScanOptions) -> list[Finding]:
-    page_rect = page.rect
+def _apply_structural_rules(page, spans: list[Span], opt: ScanOptions) -> None:
     try:
         image_rects = [pymupdf.Rect(i["bbox"]) for i in page.get_image_info()]
     except Exception:
         image_rects = []
     for sp in spans:
-        apply_rules(sp, page_rect, image_rects, opt.tiny_font_pt)
+        apply_rules(sp, page.rect, image_rects, opt.tiny_font_pt)
 
-    if renderer is not None:
-        candidates = [
-            s for s in spans
-            if not (s.techniques & (HIDING_TECHNIQUES | {Technique.OCR_LAYER})) and s.text.strip()
-        ]
-        renderer.score_spans(pno, candidates)
-        for s in candidates:
-            if s.visibility is not None and s.visibility < opt.min_visible_fraction:
-                s.techniques.add(Technique.NOT_RENDERED)
 
+def _check_glyphs(doc, spans_by_page: dict[int, list[Span]], opt: ScanOptions) -> list[Finding]:
+    """OCR-verify fonts; mark every span of a remapped font as hidden (GLYPH_REMAP)."""
+    findings = []
+    for font, v in opt.glyph_checker.check(doc, spans_by_page).items():
+        if not v.remapped:
+            continue
+        pages = set()
+        for spans in spans_by_page.values():
+            for sp in spans:
+                if sp.font == font:
+                    sp.techniques.add(Technique.GLYPH_REMAP)
+                    pages.add(sp.page + 1)
+        page, extracted, shown, ratio = v.samples[0]
+        findings.append(
+            Finding(
+                severity=Severity.LOW,
+                carrier="font",
+                text=f"extracted: {extracted!r} | displayed (OCR): {shown!r}",
+                page=page,
+                techniques=[Technique.GLYPH_REMAP],
+                detail=(
+                    f"font {font!r} displays different text than it extracts (OCR agreement {v.ratio:.0%}, "
+                    f"pages {', '.join(map(str, sorted(pages)[:10]))}): a malicious font/ToUnicode map, "
+                    "or a broken one that feeds garbage to LLMs"
+                ),
+            )
+        )
+    return findings
+
+
+def _apply_render_check(renderer: PageRenderer, pno: int, spans: list[Span], opt: ScanOptions) -> None:
+    candidates = [
+        s for s in spans
+        if not (s.techniques & (HIDING_TECHNIQUES | {Technique.OCR_LAYER})) and s.text.strip()
+    ]
+    renderer.score_spans(pno, candidates)
+    for s in candidates:
+        if s.visibility is not None and s.visibility < opt.min_visible_fraction:
+            s.techniques.add(Technique.NOT_RENDERED)
+
+
+def _scan_page(pno: int, spans: list[Span], opt: ScanOptions) -> list[Finding]:
     norm = normalize(page_char_stream(spans))
     findings: list[Finding] = []
     findings.extend(_invisible_unicode_finding(norm, spans, pno, opt, carrier="page_text"))
@@ -151,11 +192,13 @@ def _scan_page(page, pno: int, spans: list[Span], renderer: PageRenderer | None,
     for start, end in _runs(hidden_mask):
         if any(covered[start:end]):
             continue
+        owners = sorted({norm.owners[i] for i in range(start, end) if norm.owners[i] >= 0})
+        if all(spans[o].techniques & HIDING_TECHNIQUES == {Technique.GLYPH_REMAP} for o in owners):
+            continue  # reported once per font by _check_glyphs
         chunk = norm.text[start:end].strip()
         words = [w for w in chunk.split() if sum(c.isalpha() for c in w) >= 2]
         if sum(c.isalpha() for c in chunk) < opt.min_hidden_run_chars or len(words) < 3:
             continue  # dotted leaders, tick labels, stray glyphs
-        owners = sorted({norm.owners[i] for i in range(start, end) if norm.owners[i] >= 0})
         findings.append(
             Finding(
                 severity=Severity.LOW,

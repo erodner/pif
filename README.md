@@ -3,11 +3,12 @@
 Find **hidden and visible prompt-injection patterns** in PDF documents: research papers, CVs, theses and reports. It runs fully offline.
 
 ```bash
-uv venv && uv pip install -e ".[ml,dev]"
+uv venv && uv pip install -e ".[ml,ocr,dev]"
 pif models download                      # optional: MiniLM (23 MB) + DeBERTa classifier (740 MB)
 pif scan paper.pdf                       # human-readable report
 pif scan submissions/ -j 8 -f json -o report.json   # whole directory tree, with progress bar
 pif scan cvs/ -f sarif --fail-on medium  # CI gate, exit 1 on findings
+pif scan inbox/ -f html -o report.html   # shareable report with page crops
 ```
 
 Directories are scanned recursively (`--no-recursive` to stay at the top level). All `*.pdf`/`*.PDF`
@@ -33,6 +34,7 @@ for f in report.findings:
 | Optional-content layers switched OFF | Extraction with all layers forced on (`hidden_layer`) |
 | Unicode tag smuggling, zero-width characters | Normalisation; tag payloads are decoded and scanned (`invisible_unicode`) |
 | Metadata/XMP, annotations, form fields, bookmarks, embedded files | Scanned as non-visual carriers (`non_visual_carrier`) |
+| Malicious fonts / lying `/ToUnicode` maps (shows one text, extracts another) | OCR (RapidOCR, recognition only) of a few clean sample lines per font, compared with the extracted text (`glyph_remap`) |
 | JavaScript | Reported (`javascript`) |
 
 Injection language is detected in layers. The first is a multilingual rule set (EN/DE/FR/ES/IT/PT/ZH/JA). Add your own rules with `--rules rules.json`, a JSON list of `{id, label, pattern, score}`.
@@ -47,9 +49,13 @@ Models are pinned to exact Hugging Face revisions, checked by SHA-256, and cache
 
 Invisible OCR text layers over scanned images are recognised and not flagged as hidden.
 
+The OCR glyph check (`--ocr auto|on|off`) costs about 0.2–0.6 s per document. It samples only lines that nothing else is drawn over. A remapped font is reported once (LOW) and all of its text counts as hidden, so injection language set in that font is HIGH.
+
+The HTML report (`-f html`) is a single self-contained file. Each finding shows a crop of the page as a reader sees it, with the extracted text outlined. All PDF-derived text is HTML-escaped.
+
 ## Status
 
-v0.3: extraction, structural rules, render-based visibility, structure scan, ML cascade (ONNX), recursive CLI with progress bar, and JSON/SARIF/text reports.
-Planned: OCR-based glyph-remapping check, HTML report, PySide6 desktop app with Windows/macOS installers.
+v0.4: extraction, structural rules, render-based visibility, OCR glyph-remap check, structure scan, ML cascade (ONNX), recursive CLI with progress bar, and text/JSON/SARIF/HTML reports.
+Planned: PySide6 desktop app with Windows/macOS installers.
 
 Tests: `pytest` generates one synthetic PDF per technique (`tests/make_fixtures.py`).

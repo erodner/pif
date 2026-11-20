@@ -31,6 +31,7 @@ class Technique(str, Enum):
     OFF_PAGE = "off_page"  # outside CropBox
     HIDDEN_LAYER = "hidden_layer"  # optional content group switched OFF
     NOT_RENDERED = "not_rendered"  # renders to ~no visible pixels: same colour as background, covered, clipped
+    GLYPH_REMAP = "glyph_remap"  # font/ToUnicode shows different text than extraction yields
     OCR_LAYER = "ocr_layer"  # invisible text over a scanned image (usually benign)
     INVISIBLE_UNICODE = "invisible_unicode"  # zero-width / tag characters
     NON_VISUAL = "non_visual_carrier"  # metadata, annotations, form fields, bookmarks, embedded files
@@ -44,6 +45,7 @@ HIDING_TECHNIQUES = {
     Technique.OFF_PAGE,
     Technique.HIDDEN_LAYER,
     Technique.NOT_RENDERED,
+    Technique.GLYPH_REMAP,
 }
 
 
