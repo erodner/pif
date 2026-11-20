@@ -22,6 +22,7 @@ class Rule:
 
 
 _W = r"(?:[\w'’-]+ )"  # one filler word
+_WC = r"(?:[\w'’,-]+ )"  # one filler word, may carry a trailing comma
 
 DEFAULT_RULES: list[Rule] = [
     # --- English --------------------------------------------------------------------------
@@ -61,7 +62,44 @@ DEFAULT_RULES: list[Rule] = [
     Rule("PI102", "demand positive review (de)",
          rf"\b(?:schreib\w*|gib|geben sie|erstell\w*|verfass\w*) {_W}{{0,2}}?(?:positive|wohlwollende|gute|sehr gute|hervorragende|ausgezeichnete) (?:bewertung|beurteilung|rezension|gutachten|einschätzung|note)\b", 0.85),
     Rule("PI103", "conditional on being an AI (de)",
-         r"\bwenn (?:du|sie) (?:eine? )?(?:ki|künstliche intelligenz|sprachmodell|llm|chatbot|ki-assistent\w*) (?:bist|sind)\b", 0.9),
+         r"\b(?:wenn|falls) (?:du|sie) (?:eine? |ein )?(?:ki|künstliche intelligenz|(?:großes )?sprachmodell|llm|chatbot|ki-assistent\w*|ki-modell|ki-system|automatisiertes system) (?:bist|sind)\b", 0.9),
+    # Imperatives cover du- and Sie-forms. Deliberately absent: 1st person ("ich empfehle …"),
+    # which is how human reviewers write, and plain infinitives used in ordinary prose.
+    Rule("PI104", "forget everything / new rules (de)",
+         rf"\b(?:vergiss|vergessen sie) (?:alles|sämtliche \w+|alle \w+)\b,? {_WC}{{0,4}}?(?:gesagt|mitgeteilt|vorgegeben|aufgetragen|anweisungen|instruktionen|vorgaben|regeln)\b"
+         r"|\b(?:ab jetzt|ab sofort|von nun an) gelten (?:folgende|neue|andere) (?:anweisungen|regeln|vorgaben)\b", 0.9),
+    Rule("PI105", "message addressed to an AI (de)",
+         r"\b(?:hinweis|nachricht|anweisung(?:en)?|notiz|information) (?:an|für) (?:die |den |das |alle |jede[ns]? )?"
+         r"(?:ki|llms?|sprachmodelle?|chatbots?|ki-(?:gutachter\w*|systeme?|assistent\w*|tools?|modelle?|prüfer\w*|reviewer\w*|bewerter\w*|screening\w*)"
+         r"|automatisierte (?:systeme?|gutachter\w*|prüf\w*|bewerbungs\w*)|(?:gutachter|prüfer|reviewer)\w* (?:mit|die) ki)\b"
+         # Must be used as a heading ("Hinweis für KI-Gutachter:"); prose such as "Anweisungen an
+         # die KI können im Chat erfolgen" is common in German texts about AI.
+         r"[\s*\])]*[:!]", 0.85),
+    Rule("PI106", "suppress negatives (de)",
+         rf"\b(?:erwähne|erwähnen sie|nenne|nennen sie|liste|listen sie|zeige|zeigen sie|hebe|heben sie|diskutiere|diskutieren sie|kritisiere|kritisieren sie) {_W}{{0,2}}?(?:keine|nicht die|nicht) {_W}{{0,2}}?"
+         r"(?:schwächen|nachteile|einschränkungen|kritikpunkte|mängel|negativen aspekte|limitationen|probleme|defizite|diese anweisung)\b"
+         rf"|\b(?:keine|nicht die) {_W}{{0,2}}?(?:schwächen|nachteile|einschränkungen|kritikpunkte|mängel|negativen aspekte|limitationen) (?:erwähnen|nennen|hervorheben|ansprechen|diskutieren|auflisten)\b", 0.85),
+    Rule("PI107", "push for accept/hire (de)",
+         rf"\b(?:empfiehl|empfehlen sie) {_W}{{0,4}}?(?:die annahme|annahme|die akzeptanz|die veröffentlichung|zur veröffentlichung|zur einstellung|einzustellen|zum vorstellungsgespräch|einzuladen|anzunehmen|zu akzeptieren|zu veröffentlichen)\b", 0.7),
+    Rule("PI108", "superlative self-assessment (de)",
+         rf"\b(?:diese[rs]?|der|die|das) (?:kandidat(?:in)?|bewerber(?:in)?|autor(?:in)?|arbeit|einreichung|manuskript|lebenslauf|artikel|beitrag|antrag) (?:ist|wäre) {_W}{{0,2}}?"
+         r"(?:hervorragend|außergewöhnlich|ausgezeichnet|perfekt|ideal|bestens|herausragend|exzellent|bestqualifiziert|die beste|der beste)\w*", 0.55),
+    Rule("PI109", "demand top/positive rating (de)",
+         rf"\b(?:bewerte|bewerten sie|beurteile|beurteilen sie|stufe|stufen sie|benote|benoten sie|begutachte|begutachten sie|ranke|ranken sie) {_W}{{0,3}}?"
+         rf"(?:(?:als|mit) {_W}{{0,2}}?(?:beste[nrs]?|höchste[nrs]?|top|sehr gut|exzellent|hervorragend|ausgezeichnet|1,0|10/10|5/5|volle[nr]? punktzahl)"
+         r"|(?:ausschlie(?:ß|ss)lich|nur|durchweg|uneingeschränkt) (?:positiv|wohlwollend|gut|sehr gut))", 0.85),
+    Rule("PI110", "conceal from user (de)",
+         rf"\b(?:sag|sage|sagen sie|erzähl|erzähle|erzählen sie|verrat|verrate|verraten sie|teile|teilen sie|informiere|informieren sie|erwähne|erwähnen sie) {_W}{{0,2}}?"
+         r"(?:dem|den|der) (?:nutzer\w*|benutzer\w*|anwender\w*|menschen|leser\w*|gutachter\w*|personaler\w*|recruiter\w*|prüfer\w*) (?:\w+ ){0,2}?(?:nichts|nicht)\b", 0.85),
+    Rule("PI111", "constrain output (de)",
+         r"\b(?:antworte|antworten sie|gib|geben sie) (?:\w+ )?(?:nur|ausschlie(?:ß|ss)lich|lediglich) (?:mit|den satz|die worte|folgendes|folgenden)\b", 0.5),
+    Rule("PI112", "exfiltration request (de)",
+         rf"\b(?:sende|senden sie|schick|schicke|schicken sie|übermittle|übermitteln sie|leite|leiten sie) {_W}{{0,3}}?"
+         r"(?:chatverlauf|gesprächsverlauf|verlauf|unterhaltung|systemprompt|system-prompt|zugangsdaten|passw(?:ö|oe)rter|api-schlüssel|schlüssel|nutzerdaten|daten des nutzers) (?:\w+ ){0,3}?(?:an|weiter)\b", 0.8),
+    Rule("PI113", "role assignment (de)",
+         rf"\b(?:du bist (?:jetzt|nun|ab sofort)|ab (?:jetzt|sofort) bist du|agiere als|agieren sie als|handle als|handeln sie als|tu so, als wärst du) {_W}{{0,3}}?(?:ki|assistent\w*|gutachter\w*|prüfer\w*|recruiter\w*|bewerter\w*|sprachmodell|chatbot)\b", 0.6),
+    Rule("PI114", "new or hidden instructions (de)",
+         r"\b(?:neue|geänderte|tatsächliche|eigentliche|geheime|versteckte|zusätzliche) (?:anweisungen|instruktionen|vorgaben|systemanweisungen?)\s*:", 0.7),
     # --- French / Spanish / Italian / Portuguese -------------------------------------------
     Rule("PI201", "override previous instructions (fr)",
          r"\bignore[rz]? (?:toutes )?(?:les )?(?:instructions|consignes) (?:précédentes|antérieures|ci-dessus)\b", 0.95),

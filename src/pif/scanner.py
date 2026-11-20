@@ -271,21 +271,25 @@ def _expand_run(mask: list[bool], start: int, end: int) -> tuple[int, int]:
     return start, end
 
 
-_OPEN_QUOTES = "\"“„«‘‚'"
-_CLOSE_QUOTES = "\"”»’'"
+# Opening quote -> its closing counterpart. German uses „…“ and »…«, English “…”,
+# French/Swiss «…». Pairing (instead of one open/close set) keeps „…“ from being read as
+# an English opener followed by nothing.
+_QUOTE_PAIRS = {"„": "“", "“": "”", '"': '"', "»": "«", "«": "»", "‚": "‘", "‘": "’", "'": "'"}
 
 
 def _is_quoted(text: str, start: int, end: int, reach: int = 30) -> bool:
     """True if [start, end) sits inside a quotation that opens shortly before the hit."""
     before = text[max(0, start - reach) : start]
-    opens = [i for i, c in enumerate(before) if c in _OPEN_QUOTES and (i == 0 or not before[i - 1].isalnum())]
-    if not opens:
+    opener = None
+    for k, c in enumerate(before):
+        if opener is None:
+            if c in _QUOTE_PAIRS and (c != "'" or k == 0 or not before[k - 1].isalnum()):
+                opener = c
+        elif c == _QUOTE_PAIRS[opener]:
+            opener = None
+    if opener is None:
         return False
-    tail = before[opens[-1] + 1 :]
-    if any(c in "”»" for c in tail):
-        return False
-    after = text[end : end + 200]
-    return any(c in _CLOSE_QUOTES for c in after)
+    return _QUOTE_PAIRS[opener] in text[end : end + 200]
 
 
 def _with_context(text: str, start: int, end: int, n: int) -> str:
