@@ -22,7 +22,8 @@ Issues = "https://github.com/erodner/pif/issues"
 
 [project.optional-dependencies]
 ml = ["onnxruntime>=1.17", "tokenizers>=0.15"]
-ocr = ["rapidocr-onnxruntime>=1.3"]
+# rapidocr-onnxruntime has no wheels for Python 3.13+ yet; the OCR check is skipped there.
+ocr = ["rapidocr-onnxruntime>=1.3; python_version < '3.13'"]
 gui = ["PySide6>=6.6"]
 all = ["promptinjectorfinder[ml,ocr,gui]"]
 dev = ["pytest>=8"]

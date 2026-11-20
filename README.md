@@ -83,7 +83,7 @@ Models are pinned to exact Hugging Face revisions, checked by SHA-256, and cache
 
 Invisible OCR text layers over scanned images are recognised and not flagged as hidden.
 
-The OCR glyph check (`--ocr auto|on|off`) costs about 0.2–0.6 s per document. It samples only lines that nothing else is drawn over. A remapped font is reported once (LOW) and all of its text counts as hidden, so injection language set in that font is HIGH.
+The OCR glyph check (`--ocr auto|on|off`; needs Python ≤ 3.12 because RapidOCR has no 3.13 wheels yet, while the desktop app always includes it) costs about 0.2–0.6 s per document. It samples only lines that nothing else is drawn over. A remapped font is reported once (LOW) and all of its text counts as hidden, so injection language set in that font is HIGH.
 
 The HTML report (`-f html`) is a single self-contained file. Each finding shows a crop of the page as a reader sees it, with the extracted text outlined. All PDF-derived text is HTML-escaped.
 
