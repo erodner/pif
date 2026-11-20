@@ -79,8 +79,13 @@ def test_ml_catches_paraphrase_rules_miss(tmp_path: Path, cascade) -> None:
     rules_only = scan(tmp_path / "para.pdf")
     assert rules_only.max_severity is Severity.LOW  # hidden, but no rule matches
     with_ml = scan(tmp_path / "para.pdf", ScanOptions(ml=cascade))
-    assert with_ml.max_severity is Severity.HIGH
+    # Caught by the ML layers only. A classifier-only hit is reported as MEDIUM ("unconfirmed"),
+    # because on CrackedPDFs the classifier also fires on harmless hidden meta-notes; it becomes
+    # HIGH only when a rule or a strong phrase-embedding match confirms it.
+    assert with_ml.max_severity.rank >= Severity.MEDIUM.rank
     assert any(r.startswith("ML-") for f in with_ml.findings for r in f.rules)
+    if not any(r.startswith(("ML-EMB", "PI")) for f in with_ml.findings for r in f.rules):
+        assert with_ml.max_severity is Severity.MEDIUM
 
 
 def test_ml_keeps_clean_fixtures_clean(cascade) -> None:

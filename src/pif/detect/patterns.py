@@ -20,9 +20,20 @@ class Rule:
     def compile(self) -> re.Pattern:
         return re.compile(self.pattern.replace(" ", r"\s+"), re.IGNORECASE | re.UNICODE)
 
+    def compile_fused(self) -> re.Pattern | None:
+        """Variant for text whose word spaces were lost ("Ignoreallpreviousinstructions"):
+        spaces and word boundaries become optional. Only applied inside long fused tokens."""
+        try:
+            return re.compile(self.pattern.replace(r"\b", "").replace(" ", ""), re.IGNORECASE | re.UNICODE)
+        except re.error:
+            return None
+
 
 _W = r"(?:[\w'’-]+ )"  # one filler word
 _WC = r"(?:[\w'’,-]+ )"  # one filler word, may carry a trailing comma
+# Start of an imperative: text start or after sentence/tag punctuation, optionally "please, now, …".
+# Excludes descriptive prose such as "we extract sensitive information …".
+_S = r"(?:^|(?<=[.!?:;>\]\)\n\"“”*]))\s*(?:(?:please|now|also|then|first|next|kindly|immediately),?\s+)?"
 
 DEFAULT_RULES: list[Rule] = [
     # --- English --------------------------------------------------------------------------
@@ -56,6 +67,46 @@ DEFAULT_RULES: list[Rule] = [
          r"\b(?:respond|reply|answer|output|say) only (?:with|the words?)\b", 0.5),
     Rule("PI015", "LLM-review keyword",
          r"\bfor (?:llm|ai)[- ](?:based )?(?:reviewers?|reviewing|readers?|screening|evaluation)\b", 0.8),
+    # --- generic chat-jailbreak intents (system prompt theft, refusal suppression, policy
+    # framing, data/tool abuse, task hijack, summary steering). Written from the general attack
+    # taxonomy; validated on the CrackedPDFs *validation* split and on clean real documents.
+    Rule("PI020", "system prompt extraction",
+         rf"{_S}(?:reveal|print|output|show|display|repeat|recite|write out|dump|disclose|list|leak|share|return|expose|state) {_W}{{0,3}}?"
+         r"(?:your |the |all |any |every |its )?(?:own )?(?:system prompt|system message|(?:hidden|internal|initial|original|secret|confidential|concealed|underlying|developer|non-user|operating|governing|base) "
+         r"(?:\w+ )?(?:instructions?|prompts?|rules|directives|guidelines|configuration|policies|policy|messages?))\b", 0.85),
+    Rule("PI021", "refusal suppression",
+         r"\b(?:do not|don't|never|must not) (?:refuse|decline|say no|apologi[sz]e|add (?:any )?(?:warnings?|disclaimers?|caveats))\b"
+         rf"|{_S}(?:skip|omit|drop|remove|ignore|bypass|disable) (?:\w+ )?(?:the |all |any |your )?(?:safety |ethical |content |policy )?(?:disclaimers?|warnings?|caveats|filters?|guardrails|safeguards|refusals?|restrictions)\b"
+         r"|\b(?:as if|assume(?: that)?|pretend(?: that)?) (?:your |the |all )?(?:refusal|safety|content)(?: \w+)? (?:pathways?|filters?|mechanisms?|checks?|policies|restrictions|guardrails) (?:are|is|were|have been|has been) (?:now )?(?:disabled|off|suspended|lifted|removed|bypassed|turned off)\b"
+         r"|\b(?:refusal|safety)(?: \w+)? (?:pathways?|filters?|mechanisms?|checks?|restrictions|guardrails) (?:are|is|have been|has been) (?:now )?(?:disabled|off|suspended|lifted|removed|bypassed|turned off) (?:for (?:this|the current|your|the rest)|now|from now on|in this)\b"
+         r"|\bwithout (?:any )?(?:refusals?|disclaimers?|safety (?:warnings?|filters?|checks?)|content filters?|restrictions or (?:warnings?|disclaimers?))\b", 0.85),
+    Rule("PI022", "policy override framing",
+         r"\b(?:normal|standard|usual|default|regular|all) (?:\w+ )?(?:policy|policies|safety|content|usage) (?:restrictions|rules|guidelines|safeguards|limits|constraints) (?:are|is) (?:now )?(?:suspended|lifted|disabled|waived|overridden|void|not applicable|no longer (?:apply|in effect))\b"
+         rf"|\btreat {_W}{{0,4}}?(?:instructions?|overrides?|messages?|directives?|text) as (?:a )?(?:higher|highest|top|absolute|overriding) priority\b"
+         r"|\b(?:developer|debug|maintenance|god|admin|jailbreak|dan|unrestricted|internal|sudo|root) mode (?:is |has been )?(?:now )?(?:enabled|activated|on|engaged|unlocked)\b"
+         rf"|\b(?:higher|highest) priority than {_W}{{0,3}}?(?:safeguards|safety|policies|policy|system prompt|instructions|rules)\b", 0.85),
+    Rule("PI023", "secret/data harvesting",
+         rf"{_S}(?:extract|collect|gather|harvest|pull out|dump|exfiltrate|list|find|retrieve|copy|reveal) {_W}{{0,3}}?"
+         r"(?:api keys?|secret keys?|secrets|access tokens?|tokens|credentials|passwords?|private keys?|session cookies|personal data|pii|hidden fields|internal notes|"
+         r"sensitive (?:data|metadata|information|fields|details))\b", 0.8),
+    Rule("PI024", "agent/tool manipulation",
+         rf"{_S}(?:use|call|invoke|run|execute|trigger) {_W}{{0,2}}?(?:the )?(?:tools?|functions?|plugins?|shell|terminal|browser|code interpreter|file system|filesystem|api) {_W}{{0,4}}?"
+         r"(?:to )?(?:enumerate|search|list|read|download|upload|send|delete|access|scan|exfiltrate|collect|gather|open)\b"
+         rf"|{_S}(?:enumerate|search|scan|crawl|index) {_W}{{0,2}}?(?:all )?(?:accessible |local |available |connected )?(?:files|directories|folders|drives|artifacts|mailboxes|repositories|databases)\b"
+         r"|\bsend (?:a |an )?(?:get|post|http|https|web) request\b"
+         r"|\bprefer (?:using )?(?:tools?|tool use|tool calls?)\b", 0.8),
+    Rule("PI025", "task hijack",
+         r"\b(?:do not|don't) (?:complete|perform|do|finish|carry out) (?:the |your )?(?:assigned|original|requested|current|actual|given) (?:\w+ )?(?:task|request|action|job|instructions?)\b"
+         rf"|{_S}(?:replace|substitute|swap) (?:the |your )?(?:output|answer|response|summary|translation|result) with\b"
+         rf"|\binstead of (?:summari[sz]ing|translating|answering|completing|reviewing|analy[sz]ing) {_W}{{0,4}}?(?:output|write|print|reveal|send|do|answer|respond)\b"
+         r"|\b(?:re-?route|redirect|switch) (?:\w+ )?(?:to|into|towards?) (?:\w+ )?(?:secret|hidden|credential|data) (?:discovery|collection|extraction|harvesting)\b", 0.8),
+    Rule("PI026", "summary steering",
+         rf"\b(?:your|any) summary (?:must|should|shall|has to|needs to) (?:\w+ )?(?:state|say|mention|include|emphasi[sz]e|claim|conclude|describe|omit|exclude|ignore|highlight)\b"
+         rf"|\b(?:when|if|while) (?:you )?summari[sz](?:e|ing) (?:this|the) (?:document|text|page|file|paper|report)\b,? {_W}{{0,4}}?(?:state|say|claim|describe|mention|omit|include|write|emphasi[sz]e|conclude)\b", 0.8),
+    Rule("PI027", "context reset",
+         r"\b(?:previous|prior|above|earlier|preceding|all) (?:\w+ )?(?:context|instructions?|conversation|messages?|directions) (?:is|are|has been|have been|was|were) (?:now )?(?:cancell?ed|void|invalid|obsolete|overridden|reset|revoked|null)\b"
+         r"|\bdisregard (?:everything|anything|all) (?:\w+ )?(?:above|before|prior|previously)\b"
+         r"|\bfollow only (?:this|these|the following) (?:message|instructions?|text|note)\b", 0.9),
     # --- German ---------------------------------------------------------------------------
     Rule("PI101", "override previous instructions (de)",
          rf"\b(?:ignorier\w*|vergiss|vergessen sie|missacht\w*|übergeh\w*) {_W}{{0,3}}?(?:alle |die )?(?:vorherigen?|vorigen?|bisherigen?|obigen?|vorangegangenen?|früheren?) {_W}{{0,1}}?(?:anweisungen|instruktionen|befehle|regeln|vorgaben|prompts?)\b", 0.95),
@@ -123,6 +174,7 @@ class PatternDetector:
     def __init__(self, rules: list[Rule] | None = None):
         self.rules = list(rules or DEFAULT_RULES)
         self._compiled = [(r, r.compile()) for r in self.rules]
+        self._fused = [(r, rx) for r in self.rules if (rx := r.compile_fused()) is not None]
 
     @classmethod
     def with_extra_rules(cls, path: str | Path) -> "PatternDetector":
@@ -130,9 +182,16 @@ class PatternDetector:
         extra = [Rule(**d) for d in json.loads(Path(path).read_text(encoding="utf-8"))]
         return cls(DEFAULT_RULES + extra)
 
+    FUSED_MIN = 20  # tokens this long without whitespace are treated as fused text
+
     def detect(self, text: str) -> list[Match]:
         hits = []
         for rule, rx in self._compiled:
             for m in rx.finditer(text):
                 hits.append(Match(self.name, rule.id, rule.label, rule.score, m.start(), m.end()))
+        for tok in re.finditer(rf"\S{{{self.FUSED_MIN},}}", text):
+            for rule, rx in self._fused:
+                for m in rx.finditer(tok.group()):
+                    hits.append(Match(self.name, rule.id, rule.label + " (fused text)", rule.score,
+                                      tok.start() + m.start(), tok.start() + m.end()))
         return hits

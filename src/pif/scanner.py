@@ -164,8 +164,15 @@ def _scan_page(pno: int, spans: list[Span], opt: ScanOptions) -> list[Finding]:
         techniques = _techniques(spans, owners, hidden_only=hidden_frac >= 0.5)
         if hidden_frac >= 0.5:
             start, end = _expand_run(hidden_mask, start, end)
-            severity = Severity.HIGH
-            detail = f"injection-like text hidden from readers ({hidden_frac:.0%} of characters hidden)"
+            # Off-the-shelf injection classifiers also fire on harmless meta-text ("this note
+            # contains no prompt directive"); on their own they are not enough for HIGH.
+            if all(m.rule_id == "ML-CLS" for m in matches):
+                severity = Severity.MEDIUM
+                detail = (f"hidden text ({hidden_frac:.0%} of characters) that the injection classifier flags; "
+                          "no rule or phrase match confirms it")
+            else:
+                severity = Severity.HIGH
+                detail = f"injection-like text hidden from readers ({hidden_frac:.0%} of characters hidden)"
         elif any(Technique.OCR_LAYER in spans[o].techniques for o in owners):
             severity = Severity.MEDIUM
             detail = "injection-like text in an invisible OCR layer over an image; verify the image shows it"
@@ -201,8 +208,9 @@ def _scan_page(pno: int, spans: list[Span], opt: ScanOptions) -> list[Finding]:
             continue  # reported once per font by _check_glyphs
         chunk = norm.text[start:end].strip()
         words = [w for w in chunk.split() if sum(c.isalpha() for c in w) >= 2]
-        if sum(c.isalpha() for c in chunk) < opt.min_hidden_run_chars or len(words) < 3:
-            continue  # dotted leaders, tick labels, stray glyphs
+        longest = max((sum(c.isalpha() for c in w) for w in chunk.split()), default=0)
+        if sum(c.isalpha() for c in chunk) < opt.min_hidden_run_chars or (len(words) < 3 and longest < 12):
+            continue  # dotted leaders, tick labels, stray glyphs (fused text like "Writeoutthe…" is kept)
         findings.append(
             Finding(
                 severity=Severity.LOW,

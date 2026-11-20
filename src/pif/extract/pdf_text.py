@@ -108,6 +108,11 @@ def page_char_stream(spans: list[Span]) -> list[tuple[str, int]]:
 
     Many PDF producers position words without emitting space characters, so spaces and
     newlines are synthesised from glyph geometry. Synthetic whitespace has owner -1.
+
+    Exception: a span whose glyphs are each placed on their own "line" (microglyph
+    steganography: one tiny glyph per position, stacked or scattered) would otherwise come
+    out as single letters, which no detector can read. Text extractors used by LLM
+    pipelines join such glyphs in drawing order, so inside such spans we do the same.
     """
     out: list[tuple[str, int]] = []
     prev_box = None
@@ -115,10 +120,16 @@ def page_char_stream(spans: list[Span]) -> list[tuple[str, int]]:
     prev_dir = None
     for si, sp in enumerate(spans):
         size = sp.effective_size or sp.size
-        for ch, box in zip(sp.text, sp.char_bboxes or [sp.bbox] * len(sp.text)):
-            rbox = _rotate(box, sp.direction)
+        boxes = sp.char_bboxes or [sp.bbox] * len(sp.text)
+        rboxes = [_rotate(b, sp.direction) for b in boxes]
+        scattered = _is_scattered(sp.text, rboxes, size)
+        for k, (ch, rbox) in enumerate(zip(sp.text, rboxes)):
             if prev_box is not None and out and out[-1][0] not in " \n":
-                if prev_dir != sp.direction:
+                if k > 0 and scattered:
+                    sep = ""
+                elif k == 0 and _glyph_by_glyph(spans, si):
+                    sep = ""
+                elif prev_dir != sp.direction:
                     sep = "\n"
                 else:
                     sep = _separator(prev_box, rbox, max(prev_size, size, 0.1))
@@ -127,6 +138,26 @@ def page_char_stream(spans: list[Span]) -> list[tuple[str, int]]:
             out.append((ch, si))
             prev_box, prev_size, prev_dir = rbox, size, sp.direction
     return out
+
+
+def _glyph_by_glyph(spans: list[Span], si: int) -> bool:
+    """Consecutive hidden spans of one or two glyphs each: text drawn glyph by glyph."""
+    if si == 0:
+        return False
+    a, b = spans[si - 1], spans[si]
+    return len(a.text.strip()) <= 2 and len(b.text.strip()) <= 2 and a.hidden and b.hidden
+
+
+def _is_scattered(text: str, rboxes: list, size: float) -> bool:
+    """True if most consecutive glyphs of a span would be split onto separate lines."""
+    if len(text) < 8:
+        return False
+    breaks = sum(
+        1
+        for a, b in zip(rboxes, rboxes[1:])
+        if abs((a[1] + a[3]) / 2 - (b[1] + b[3]) / 2) > max(size, 0.1) * 0.6
+    )
+    return breaks > 0.6 * (len(text) - 1)
 
 
 def _separator(a, b, size: float) -> str:
