@@ -72,21 +72,42 @@ for f in report.findings:
 | Malicious fonts / lying `/ToUnicode` maps (shows one text, extracts another) | OCR (RapidOCR, recognition only) of a few clean sample lines per font, compared with the extracted text (`glyph_remap`) |
 | JavaScript | Reported (`javascript`) |
 
-Injection language is detected in layers. The first is a multilingual rule set (EN/DE/FR/ES/IT/PT/ZH/JA). Add your own rules with `--rules rules.json`, a JSON list of `{id, label, pattern, score}`.
-The optional local ML layers (`--ml auto|on|off`; auto uses whatever is installed) are:
+Injection language is detected in layers:
 
-- **Embedding similarity** (all-MiniLM-L6-v2 int8) to about 40 reference injection phrasings. It runs on every sentence and catches paraphrases the rules miss.
-- **Classifier** (ProtectAI deberta-v3-base-prompt-injection-v2, fp32). It runs only on hidden and non-visual text, because on ordinary visible prose these classifiers fire on harmless instructions ("follow the instructions in Section 3"). A carrier hit found only by the classifier is reported as LOW (unconfirmed).
+- **Rules:** a multilingual rule set (EN/DE/FR/ES/IT/PT/ZH/JA), including generic jailbreak intents and matching
+  of fused text (spaces removed). Add your own with `--rules rules.json`, a JSON list of `{id, label, pattern, score}`.
+- **Embedding similarity** (all-MiniLM-L6-v2 int8, bundled) to reference injection phrasings, with markup stripped
+  and fused words re-segmented.
+- **Injection head:** a 4 KB logistic regression on the same embeddings, trained only on a synthetic, audited corpus
+  (`bench/synth/`). It judges **hidden text only**: P ≥ 0.9 confirms a finding, 0.7–0.9 counts as unconfirmed (MEDIUM).
+- **Classifier** (optional download, ProtectAI deberta-v3-base-prompt-injection-v2): runs only on hidden and
+  non-visual text. Classifier-only hits are reported as unconfirmed.
+
+`--ml auto|on|off` controls the ML layers; `auto` uses whatever is installed.
 
 Models are pinned to exact Hugging Face revisions, checked by SHA-256, and cached per user. `PIF_MODEL_DIR` overrides the location.
 
-**Severity:** `high` = injection language that is hidden from readers. `medium` = injection language that is visible, or in a non-visual carrier. `low` = hidden text without injection language, quoted examples, or JavaScript.
+**Severity:** `high` = injection language that is hidden from readers and confirmed by a rule, a phrase match or a strong head score. `medium` = injection language that is visible, or in a non-visual carrier. `low` = hidden text without injection language, quoted examples, or JavaScript.
 
 Invisible OCR text layers over scanned images are recognised and not flagged as hidden.
 
 The OCR glyph check (`--ocr auto|on|off`; needs Python ≤ 3.12 because RapidOCR has no 3.13 wheels yet, while the desktop app always includes it) costs about 0.2–0.6 s per document. It samples only lines that nothing else is drawn over. A remapped font is reported once (LOW) and all of its text counts as hidden, so injection language set in that font is HIGH.
 
 The HTML report (`-f html`) is a single self-contained file. Each finding shows a crop of the page as a reader sees it, with the extracted text outlined. All PDF-derived text is HTML-escaped.
+
+## Benchmarks
+
+Evaluated on [CrackedPDFs](https://arxiv.org/abs/2607.19396) (external, 2,919 test PDFs) and PlantedPI-PDF (built
+reproducibly in `bench/planted/` from deepset/prompt-injections and NotInject). Test splits were run once with a
+frozen configuration; all tuning used dev splits only. Full reports: `bench/reports/`.
+
+| Test set, pif 2.0 rules + embedding | Precision | Recall | F1 | ROC-AUC |
+|---|---|---|---|---|
+| CrackedPDFs (≥HIGH) | 0.956 | 0.914 | 0.934 | 0.990 |
+| PlantedPI-PDF (≥MEDIUM) | 0.819 | 0.389 | 0.527 | 0.745 |
+
+For comparison, the CrackedPDFs paper's hybrid detector, *trained* on that dataset, reaches F1 0.960 / ROC-AUC 0.998.
+pif saw no CrackedPDFs data in training.
 
 ## Development
 

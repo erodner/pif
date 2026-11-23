@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "promptinjectorfinder"
-version = "0.5.1"
+version = "2.0.0"
 description = "Find hidden and visible prompt-injection patterns in PDF documents"
 readme = "README.md"
 requires-python = ">=3.10"
