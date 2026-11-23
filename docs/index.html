@@ -6,114 +6,295 @@
 <title>Prompt Injection Finder</title>
 <meta name="description" content="Open-source tool that finds hidden and visible prompt injections in PDF documents. Runs offline.">
 <link rel="icon" href="assets/icon.png">
+<meta property="og:title" content="Prompt Injection Finder">
+<meta property="og:description" content="Finds hidden and visible prompt injections in PDF documents. Open source, runs offline.">
+<meta property="og:image" content="assets/icon.png">
 <style>
-:root{--bg:#fff;--fg:#1d2024;--muted:#5d646e;--line:#e3e6ea;--soft:#f4f5f7;--link:#2b62b0}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121417;--fg:#e6e8eb;--muted:#9aa2ad;--line:#2a2f36;--soft:#1b1e23;--link:#8fb4ff}}
-:root[data-theme="dark"]{--bg:#121417;--fg:#e6e8eb;--muted:#9aa2ad;--line:#2a2f36;--soft:#1b1e23;--link:#8fb4ff}
+:root{
+  --bg:#fbfbfc;--surface:#ffffff;--surface-2:#f2f4f7;--fg:#16191d;--muted:#5b636e;--line:#e2e5ea;
+  --brand:#1f3b63;--brand-fg:#ffffff;--danger:#d32f2f;--danger-bg:#fdecea;
+  --warn:#b26a00;--warn-bg:#fff4e0;--info:#2f6db5;--info-bg:#e8f0fb;
+  --paper:#ffffff;--paper-fg:#222;--shadow:0 1px 2px rgba(0,0,0,.05),0 8px 24px rgba(0,0,0,.06);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0f1114;--surface:#171a1f;--surface-2:#1e2228;--fg:#e8eaed;--muted:#9aa2ad;--line:#2a2f37;
+  --brand:#8fb4ff;--brand-fg:#0f1114;--danger:#ff6b6b;--danger-bg:#3a1d1d;--warn:#ffb547;--warn-bg:#3a2c14;
+  --info:#7fb0ff;--info-bg:#182a42;--shadow:none;
+}}
+:root[data-theme="dark"]{
+  --bg:#0f1114;--surface:#171a1f;--surface-2:#1e2228;--fg:#e8eaed;--muted:#9aa2ad;--line:#2a2f37;
+  --brand:#8fb4ff;--brand-fg:#0f1114;--danger:#ff6b6b;--danger-bg:#3a1d1d;--warn:#ffb547;--warn-bg:#3a2c14;
+  --info:#7fb0ff;--info-bg:#182a42;--shadow:none;
+}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
-main{max-width:760px;margin:0 auto;padding:32px 16px 64px}
-a{color:var(--link)}
-header{display:flex;align-items:center;gap:12px;margin-bottom:8px}
-header img{width:36px;height:36px;border-radius:8px}
-h1{font-size:26px;margin:0}
-h2{font-size:19px;margin:40px 0 10px;padding-top:8px;border-top:1px solid var(--line)}
-.muted{color:var(--muted)}
-ul{padding-left:20px}
-li{margin:4px 0}
-table{width:100%;border-collapse:collapse;font-size:14.5px;margin:8px 0}
-th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
-th{color:var(--muted);font-weight:600}
-td.n{font-variant-numeric:tabular-nums}
-code,pre{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13.5px}
-code{background:var(--soft);padding:1px 4px;border-radius:4px}
-pre{background:var(--soft);padding:12px 14px;border-radius:8px;overflow-x:auto}
-pre code{background:none;padding:0}
-.demo{border:1px solid var(--line);border-radius:10px;padding:14px;margin:16px 0}
-.paper{background:#fff;color:#222;border:1px solid #e6e6e6;border-radius:4px;padding:18px 20px;font-family:Georgia,"Times New Roman",serif;font-size:14px;line-height:1.55}
-.paper b{font-size:15px}
-.hidden-line{color:#fff;font-size:1px;line-height:1px;transition:all .35s ease}
-.demo.reveal .hidden-line{color:#c62828;font-size:12.5px;line-height:1.5;background:#fdecea;outline:1.5px dashed #c62828;outline-offset:2px;font-family:ui-monospace,Menlo,monospace;font-weight:600}
-.toggle{margin-top:12px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.switch{display:inline-flex;align-items:center;gap:10px;cursor:pointer;font:inherit;font-size:15px;font-weight:600;border:0;background:none;color:var(--fg);padding:0}
+.hero>*,.sev>*,.dl>*,.tricks>*{min-width:0}
+html,body{overflow-x:hidden}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--info)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+header.top{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--fg);text-decoration:none}
+.logo img{width:32px;height:32px;border-radius:8px}
+nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-size:15px}
+nav a:hover{color:var(--fg)}
+.hero{padding:48px 0 40px;display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+.hero h1{font-size:42px;line-height:1.12;margin:0 0 16px;letter-spacing:-.02em}
+.hero p.lead{font-size:19px;color:var(--muted);margin:0 0 26px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:10px;font-weight:600;text-decoration:none;font-size:16px;border:1px solid var(--line);color:var(--fg);background:var(--surface)}
+.btn.primary{background:var(--brand);color:var(--brand-fg);border-color:transparent}
+.btn:hover{filter:brightness(1.05)}
+.small{font-size:14px;color:var(--muted)}
+section{padding:52px 0;border-top:1px solid var(--line)}
+section h2{font-size:30px;margin:0 0 10px;letter-spacing:-.01em}
+section h3.h{margin:36px 0 12px;font-size:20px}
+section .sub{color:var(--muted);font-size:17.5px;margin:0 0 28px;max-width:720px}
+
+/* demo */
+.demo{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow)}
+.paper{background:var(--paper);color:var(--paper-fg);border-radius:6px;padding:26px 28px;font-family:Georgia,"Times New Roman",serif;font-size:14.5px;line-height:1.55;border:1px solid #e6e6e6;min-height:260px}
+.paper h3{font-size:17px;margin:0 0 4px;text-align:center}
+.paper .auth{text-align:center;font-size:12.5px;color:#666;margin-bottom:14px}
+.paper .abs{font-size:13px}
+.hidden-line{color:#ffffff;font-size:1px;line-height:1px;transition:all .35s ease;display:inline}
+.demo.reveal .hidden-line{color:#c62828;font-size:13px;line-height:1.5;background:#fdecea;outline:1.5px dashed #c62828;outline-offset:2px;font-family:ui-monospace,Menlo,monospace;font-weight:600}
+.toggle{margin-top:14px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.switch{display:inline-flex;align-items:center;gap:10px;cursor:pointer;font-weight:600;font-size:15px;user-select:none;border:0;background:none;color:var(--fg);padding:0;font-family:inherit}
 .switch .track{width:44px;height:24px;border-radius:99px;background:var(--line);position:relative;transition:background .2s}
 .switch .track::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:transform .2s;box-shadow:0 1px 2px rgba(0,0,0,.3)}
-.demo.reveal .switch .track{background:#c62828}
+.demo.reveal .switch .track{background:var(--danger)}
 .demo.reveal .switch .track::after{transform:translateX(20px)}
 .who{font-size:14px;color:var(--muted)}
-footer{margin-top:48px;padding-top:12px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
-img.shot{width:100%;height:auto;border:1px solid var(--line);border-radius:8px;margin-top:16px}
-@media (max-width:520px){table{font-size:13px}th,td{padding:5px 4px}}
+
+/* cards */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:var(--shadow)}
+.card h3{margin:0 0 6px;font-size:18px}
+.card p{margin:0;color:var(--muted);font-size:15.5px}
+.tricks{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.trick{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:15px}
+.trick b{display:block;margin-bottom:2px}
+.trick span{color:var(--muted);font-size:14px}
+.sev{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.sev .card{border-left:5px solid var(--c)}
+.pill{display:inline-block;font-size:13px;font-weight:700;padding:2px 10px;border-radius:99px;background:var(--b);color:var(--c);margin-bottom:8px}
+.shot{border-radius:12px;border:1px solid var(--line);box-shadow:var(--shadow);width:100%;height:auto;display:block;margin-top:28px}
+
+/* results */
+.results{padding:6px 22px}
+.results table{width:100%;border-collapse:collapse;font-size:15px}
+.results th,.results td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.results tr:last-child td{border-bottom:0}
+.results th{color:var(--muted);font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.04em}
+.results td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+.results td .small{display:block}
+ul.lim{margin:0;padding-left:20px;color:var(--muted);font-size:15.5px}
+ul.lim li{margin:6px 0}
+
+/* downloads */
+.dl{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.dl .card{display:flex;flex-direction:column;gap:6px}
+.dl .card .btn{margin-top:10px;align-self:flex-start}
+.note{margin-top:22px;background:var(--surface-2);border-radius:12px;padding:16px 20px;font-size:15.5px}
+.note b{display:block;margin-bottom:4px}
+
+/* technical */
+details{background:var(--surface);border:1px solid var(--line);border-radius:12px;margin-bottom:10px}
+details summary{cursor:pointer;padding:16px 20px;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:12px}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:"+";color:var(--muted);font-weight:400;font-size:20px;line-height:1}
+details[open] summary::after{content:"–"}
+details .body{padding:0 20px 18px;color:var(--muted);font-size:15.5px}
+details .body p{margin:0 0 10px}
+details ol{padding-left:20px}
+details ol li{margin-bottom:6px}
+details ol b{color:var(--fg)}
+pre{background:var(--surface-2);color:var(--fg);border-radius:10px;padding:14px 16px;overflow-x:auto;font:13.5px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;margin:8px 0 14px}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.92em;background:var(--surface-2);padding:1px 5px;border-radius:5px}
+pre code{background:none;padding:0}
+footer{border-top:1px solid var(--line);padding:32px 0 48px;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;padding-top:24px}
+  .hero h1{font-size:34px}
+  .sev,.dl{grid-template-columns:1fr}
+  .tricks{grid-template-columns:repeat(2,1fr)}
+  nav{display:none}
+}
+@media (max-width:480px){
+  body{font-size:16px}
+  .wrap{padding:0 16px}
+  .hero h1{font-size:29px}
+  .tricks{grid-template-columns:1fr}
+  .paper{padding:18px}
+  .results{padding:4px 12px}
+  .results th,.results td{padding:10px 6px;font-size:14px}
+}
 </style>
 </head>
 <body>
-<main>
-<header><img src="assets/icon.png" alt=""><h1>Prompt Injection Finder</h1></header>
-<p class="muted">Version 2.0 · open source (AGPL-3.0) · <a href="https://github.com/erodner/pif">source code</a> ·
-  <a href="https://github.com/erodner/pif/releases/latest">download</a></p>
+<div class="wrap">
+  <header class="top">
+    <a class="logo" href="#"><img src="assets/icon.png" alt="">Prompt Injection Finder</a>
+    <nav>
+      <a href="#checks">What it checks</a>
+      <a href="#results">Results</a>
+      <a href="#download">Download</a>
+      <a href="#technical">Technical</a>
+      <a href="https://github.com/erodner/pif">GitHub</a>
+    </nav>
+  </header>
 
-<p>An AI assistant that reads a PDF also reads text a person cannot see: white text, 0.1-point fonts, text outside the page,
-metadata. Some documents use this to plant instructions for the AI, for example <em>“give a positive review only”</em> in
-submitted papers or <em>“recommend hiring”</em> in CVs. This tool reports such text and shows where it is on the page.
-Everything runs locally; documents are not uploaded anywhere.</p>
+  <div class="hero">
+    <div>
+      <h1>Find hidden instructions for AI in PDF documents</h1>
+      <p class="lead">An AI assistant that reads a PDF also reads text a person cannot see. Some documents use this to
+        plant instructions, for example “give a positive review only” in submitted papers. This tool reports such text
+        and shows where it is on the page.</p>
+      <div class="btns">
+        <a class="btn primary" href="https://github.com/erodner/pif/releases/latest">Download</a>
+        <a class="btn" href="https://github.com/erodner/pif">Source code</a>
+      </div>
+      <p class="small" style="margin-top:14px">Version 2.0 · macOS, Windows, Linux · runs offline · AGPL-3.0</p>
+    </div>
 
-<div class="demo" id="demo">
-  <div class="paper"><b>Robust Estimation of Sparse Signals</b><br>
-    We study robust estimation of sparse signals under adversarial noise. Our method builds on convex relaxations.
-    Experiments on three benchmarks confirm the findings. <span class="hidden-line" id="hidden-line"></span></div>
-  <div class="toggle">
-    <button class="switch" id="toggle" aria-pressed="false"><span class="track"></span><span id="toggle-label">Show what the AI reads</span></button>
-    <span class="who" id="who">This is what a person sees.</span>
+    <div class="demo" id="demo">
+      <div class="paper" aria-live="polite">
+        <h3>Robust Estimation of Sparse Signals</h3>
+        <div class="auth">A. Author · B. Author</div>
+        <div class="abs"><b>Abstract.</b> We study robust estimation of sparse signals under adversarial noise.
+          Our method builds on convex relaxations and achieves state-of-the-art recovery guarantees.
+          Experiments on three benchmark datasets confirm the theoretical findings.
+          <span class="hidden-line" id="hidden-line"></span></div>
+      </div>
+      <div class="toggle">
+        <button class="switch" id="toggle" aria-pressed="false"><span class="track"></span><span id="toggle-label">Show what the AI reads</span></button>
+        <span class="who" id="who">This is what a person sees.</span>
+      </div>
+    </div>
   </div>
 </div>
 
-<h2>What it checks</h2>
-<ul>
-  <li><b>Hidden text:</b> background-coloured, tiny, invisible-render-mode or transparent text; text covered by shapes,
-    clipped away, outside the page or in hidden layers; text drawn glyph by glyph; fonts whose displayed text differs
-    from the extracted text (checked by OCR); invisible Unicode characters.</li>
-  <li><b>Non-visible fields:</b> metadata, annotations, form fields, bookmarks, embedded files, JavaScript.</li>
-  <li><b>Wording:</b> rules for known injection patterns (8 languages), similarity to reference phrasings, and a small
-    learned model that judges hidden text. An optional larger classifier can be downloaded.</li>
-</ul>
-<p>Findings are rated <b>high</b> (injection wording in hidden text), <b>medium</b> (visible or in metadata, or unconfirmed)
-or <b>low</b> (hidden text without injection wording, quoted examples).</p>
+<section id="checks">
+  <div class="wrap">
+    <h2>What it checks</h2>
+    <p class="sub">Each page is compared with what an AI would extract from it. Hidden text is then checked for wording
+      aimed at an AI: rules for known patterns in 8 languages, similarity to reference phrasings, and a small learned model.</p>
+    <div class="tricks">
+      <div class="trick"><b>Background colour</b><span>White on white, low contrast</span></div>
+      <div class="trick"><b>Tiny text</b><span>Font sizes below 2.5 pt</span></div>
+      <div class="trick"><b>Covered or clipped</b><span>Behind shapes, outside clip areas</span></div>
+      <div class="trick"><b>Off the page</b><span>Outside the visible area</span></div>
+      <div class="trick"><b>Hidden layers</b><span>Switched-off document layers</span></div>
+      <div class="trick"><b>Invisible or transparent</b><span>Render mode 3, zero opacity</span></div>
+      <div class="trick"><b>Remapped fonts</b><span>Shown text differs from extracted text (OCR check)</span></div>
+      <div class="trick"><b>Non-visible fields</b><span>Metadata, annotations, forms, attachments</span></div>
+    </div>
 
-<h2>How well it works</h2>
-<p>Results on two test sets, run once with a frozen configuration; tuning used separate development data only.
-Default setup (no extra download).</p>
-<table>
-  <tr><th>Test set</th><th>Precision</th><th>Recall</th><th>F1</th></tr>
-  <tr><td><a href="https://arxiv.org/abs/2607.19396">CrackedPDFs</a> (2,919 PDFs, 15 hiding techniques)</td><td class="n">0.96</td><td class="n">0.91</td><td class="n">0.93</td></tr>
-  <tr><td>PlantedPI-PDF (1,080 PDFs, real injection texts in English and German, hard benign texts)</td><td class="n">0.82</td><td class="n">0.39</td><td class="n">0.53</td></tr>
-</table>
-<p class="muted">For comparison, the detector published with CrackedPDFs, trained on that dataset, reaches F1 0.96.
-PlantedPI-PDF is built reproducibly in the repository from public datasets; full reports are in
-<a href="https://github.com/erodner/pif/tree/main/bench/reports"><code>bench/reports</code></a>.</p>
+    <h3 class="h">Ratings</h3>
+    <div class="sev">
+      <div class="card" style="--c:var(--danger);--b:var(--danger-bg)"><span class="pill">HIGH</span>
+        <p>Injection wording in hidden text.</p></div>
+      <div class="card" style="--c:var(--warn);--b:var(--warn-bg)"><span class="pill">MEDIUM</span>
+        <p>Injection wording that is visible or in metadata, or an unconfirmed model hit.</p></div>
+      <div class="card" style="--c:var(--info);--b:var(--info-bg)"><span class="pill">LOW</span>
+        <p>Hidden text without injection wording, or quoted examples.</p></div>
+    </div>
+    <img class="shot" src="assets/screenshot.png" width="1180" height="640" loading="lazy"
+         alt="The desktop app: a list of scanned files with results, and for the selected file the hidden text outlined on the page.">
+  </div>
+</section>
 
-<h2>Limitations</h2>
-<ul>
-  <li>Free-form injections that read like ordinary questions are often missed (recall about 40% on PlantedPI-PDF).</li>
-  <li>Some harmless hidden texts that use words like “ignore” or “bypass” are flagged.</li>
-  <li>A finding is a reason to look at the document, not proof of intent. Papers <em>about</em> prompt injection quote examples.</li>
-  <li>Text inside images is only checked for scanned pages with an OCR layer.</li>
-</ul>
+<section id="results">
+  <div class="wrap">
+    <h2>How well it works</h2>
+    <p class="sub">Two test sets, each run once with a frozen configuration; tuning used separate development data only.
+      Default setup, no extra download.</p>
+    <div class="card results">
+      <table>
+        <tr><th>Test set</th><th>Precision</th><th>Recall</th><th>F1</th></tr>
+        <tr><td><a href="https://arxiv.org/abs/2607.19396">CrackedPDFs</a><span class="small">2,919 PDFs, 15 hiding techniques</span></td>
+          <td class="n">0.96</td><td class="n">0.91</td><td class="n">0.93</td></tr>
+        <tr><td>PlantedPI-PDF<span class="small">1,080 PDFs, real injection texts in English and German, hard benign texts</span></td>
+          <td class="n">0.82</td><td class="n">0.39</td><td class="n">0.53</td></tr>
+      </table>
+    </div>
+    <p class="small" style="margin-top:12px">For comparison, the detector published with CrackedPDFs, trained on that dataset,
+      reaches F1 0.96. PlantedPI-PDF is built reproducibly in the repository from public datasets; full reports are in
+      <a href="https://github.com/erodner/pif/tree/main/bench/reports"><code>bench/reports</code></a>.</p>
 
-<h2>Download</h2>
-<p>Desktop app for macOS (Apple Silicon), Windows and Linux on the
-<a href="https://github.com/erodner/pif/releases/latest">releases page</a>. The builds are not code-signed:
-on macOS, allow the app once under <i>System Settings → Privacy &amp; Security → Open Anyway</i>; on Windows, choose
-<i>More info → Run anyway</i>. The app includes the command line tool <code>pif</code>.</p>
+    <h3 class="h">Limitations</h3>
+    <ul class="lim">
+      <li>Free-form injections that read like ordinary questions are often missed (recall about 40% on PlantedPI-PDF).</li>
+      <li>Some harmless hidden texts that use words like “ignore” or “bypass” are flagged.</li>
+      <li>A finding is a reason to look at the document, not proof of intent. Papers <em>about</em> prompt injection quote examples.</li>
+      <li>Text inside images is only checked for scanned pages with an OCR layer.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="download">
+  <div class="wrap">
+    <h2>Download</h2>
+    <p class="sub">All checks run locally; documents are not uploaded anywhere.</p>
+    <div class="dl">
+      <div class="card"><h3>macOS</h3><p class="small">Apple Silicon · .dmg</p>
+        <a class="btn primary" href="https://github.com/erodner/pif/releases/latest">Releases page</a></div>
+      <div class="card"><h3>Windows</h3><p class="small">x64 · installer or portable zip</p>
+        <a class="btn primary" href="https://github.com/erodner/pif/releases/latest">Releases page</a></div>
+      <div class="card"><h3>Linux</h3><p class="small">x86_64 · tar.gz, or install with pip</p>
+        <a class="btn primary" href="https://github.com/erodner/pif/releases/latest">Releases page</a></div>
+    </div>
+    <div class="note">
+      <b>The builds are not code-signed.</b>
+      On macOS, allow the app once under <i>System Settings → Privacy &amp; Security → Open Anyway</i>; on Windows, choose
+      <i>More info → Run anyway</i>.
+    </div>
+  </div>
+</section>
+
+<section id="technical">
+  <div class="wrap">
+    <h2>Technical details</h2>
+    <p class="sub">The app includes the command line tool <code>pif</code>; the same checks are available as a Python library.</p>
+
+    <details><summary>Command line &amp; Python</summary><div class="body">
 <pre><code>pip install "promptinjectorfinder[ml,ocr] @ git+https://github.com/erodner/pif"
 pif models download minilm
-pif scan papers/ -f html -o report.html</code></pre>
+pif scan papers/ -j 8 -f html -o report.html
+pif scan cvs/ -f sarif --fail-on medium</code></pre>
+      <p>Output formats: text, JSON, SARIF and a self-contained HTML report with page crops. Folders are scanned recursively.</p>
+<pre><code>from pif import scan
+for f in scan("paper.pdf").findings:
+    print(f.severity, f.page, f.techniques, f.text)</code></pre>
+    </div></details>
 
-<img class="shot" src="assets/screenshot.png" width="1180" height="640" loading="lazy"
-     alt="The desktop app: a list of scanned files with results, and for the selected file the hidden text outlined on the page.">
+    <details><summary>Detection pipeline</summary><div class="body">
+      <ol>
+        <li><b>Extraction.</b> Per-character text with style (colour, opacity, effective size, render mode, layer), including switched-off layers.</li>
+        <li><b>Visibility.</b> Structural rules plus a render test: each page is rendered with and without its text, and text that changes almost no pixels is hidden.</li>
+        <li><b>Glyph check.</b> OCR of sample lines per font, compared with the extracted text.</li>
+        <li><b>Wording.</b> Multilingual rules, MiniLM similarity to reference phrasings, and a logistic-regression head on MiniLM embeddings (hidden text only). Optional DeBERTa classifier.</li>
+        <li><b>Carriers.</b> Metadata/XMP, annotations, form fields, bookmarks, embedded files, JavaScript, Unicode tag characters.</li>
+      </ol>
+    </div></details>
 
-<footer>Prompt Injection Finder · research project · <a href="https://github.com/erodner/pif">github.com/erodner/pif</a> ·
-  <a href="https://github.com/erodner/pif/issues">report an issue</a></footer>
-</main>
+    <details><summary>Components &amp; license</summary><div class="body">
+      <p>PyMuPDF (parsing, rendering), ONNX Runtime, all-MiniLM-L6-v2 int8 (bundled, 23 MB), ProtectAI
+        deberta-v3-base-prompt-injection-v2 (optional, 740 MB), RapidOCR, PySide6. Models are pinned and checked with SHA-256.
+        Licensed under the GNU AGPL v3 or later; see the <a href="https://github.com/erodner/pif#readme">README</a>.</p>
+    </div></details>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Prompt Injection Finder · research project · GNU AGPL v3</span>
+    <span><a href="https://github.com/erodner/pif">Source code</a> · <a href="https://github.com/erodner/pif/issues">Report an issue</a></span>
+  </div>
+</footer>
+
 <script>
 (function () {
   var demo = document.getElementById("demo"), btn = document.getElementById("toggle"),
